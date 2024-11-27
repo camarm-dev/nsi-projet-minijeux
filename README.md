@@ -5,4 +5,4 @@ NSI 1ère Projet Mini Jeux
 
 - Style 8-bit / police pixelisée (type minecraft)
 - Cartouches de jeux
-- Les juex tournent dans une borne d'arcade
+- Les jeux tournent dans une borne d'arcade
