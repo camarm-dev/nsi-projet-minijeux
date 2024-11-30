@@ -11,6 +11,19 @@ Rétrospective de l'avancée du projet chaque jour.
   - arcade
 - Création des fichiers HTML de base
 
+## À la maison (27 Novembre - 2 Décembre)
+
+- Initialisation de la structure et des fichiers css
+
+| Structure                                | Fichiers css                                |
+|------------------------------------------|---------------------------------------------|
+| ![img.png](.github/images/structure.png) | ![img.png](.github/images/fichiers_css.png) | 
+
+- Début d'une sélection de jeux
+![img.png](.github/images/selection_jeux.png)
+- Création d'un écran de chargement
+![img.png](.github/images/loader.png)
+
 ## Lundi 2 Décembre
 
 - Paramétrage d'outils pour la gestion des tâches
