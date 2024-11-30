@@ -3,7 +3,9 @@
 const loader = document.getElementById('loader')
 
 document.addEventListener('DOMContentLoaded', () => {
-    loader.classList.add('hidden')
+    setTimeout(() => {
+        loader.classList.add('hidden')
+    }, 1000)
 })
 
 document.addEventListener('beforeunload', () => {
@@ -12,5 +14,7 @@ document.addEventListener('beforeunload', () => {
 
 function goTo(path) {
     loader.classList.remove('hidden')
-    location.href = path
+    setTimeout(() => {
+        location.href = path
+    }, 500)
 }
