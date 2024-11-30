@@ -1,6 +1,49 @@
+@import "fonts.css";
+@import "theme.css";
+
 body {
     margin: 0;
     padding: 0;
+    background: var(--background);
+    color: var(--color);
+    font-family: var(--font), sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+#loader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: .5s ease-in-out;
+}
+
+#loader.hidden {
+    z-index: -100;
+    opacity: 0;
+}
+
+#loader img {
+    animation: 1s ease-in-out loading infinite;
+}
+
+@keyframes loading {
+    from {
+        opacity: 0;
+        scale: 1;
+    }
+    70% {
+        opacity: 1;
+        scale: 1.05;
+    }
 }
 
 .grid {
