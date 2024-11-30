@@ -91,3 +91,18 @@ header {
 .game:hover {
     transform: translate(0, -10%);
 }
+
+.borneArcade {
+    background-image: url(../img/arcade.png);
+    background-size: 1000px 1000px;
+    margin: auto;
+    width: 1000px;
+    height: 1000px;
+}
+
+.playingGame {
+    width: 300px;
+    height: 230px;
+    background: #222;
+    transform: translate(340px, 190px);
+}
