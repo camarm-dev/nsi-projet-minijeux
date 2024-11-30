@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 1;
-    transition: .5s ease-in-out;
+    transition: .2s ease-in-out;
     z-index: 100;
 }
 
