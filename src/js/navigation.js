@@ -12,8 +12,10 @@ document.addEventListener('beforeunload', () => {
     loader.classList.remove('hidden')
 })
 
-function goTo(path) {
+function goTo(path, gameImage) {
     loader.classList.remove('hidden')
+    const loaderImage = loader.querySelector('img')
+    loaderImage.src = gameImage
     setTimeout(() => {
         location.href = path
     }, 500)
