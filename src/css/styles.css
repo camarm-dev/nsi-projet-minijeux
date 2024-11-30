@@ -9,6 +9,15 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+a {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--hover);
+}
+
 .hidden {
     display: none;
 }
