@@ -1,0 +1,94 @@
+@import "fonts.css";
+@import "theme.css";
+
+
+*{
+    background: var(--background);
+    color: var(--color);
+    font-family: var(--font), sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*borne acrade*/
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 800px;
+    background-image: url("src/img/borne_arcade_v1_vide.png");
+    background-size: cover;
+    background-position: center;
+}
+
+h1{text-align: center;}
+
+/*gestions des celules*/
+.cell{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border-right: 2px solid  var(--color);
+    border-bottom: 2px solid  var(--color);
+    cursor: pointer;
+}
+
+/*remov des bords*/
+.cell.highlight {
+    border-right: 2px solid var(--hover);
+    border-bottom: 2px solid var(--hover);
+}
+
+/*remov des bords*/
+.cell:nth-child(3n) {border-right: none;}
+.cell:nth-child(6) ~ .cell {border-bottom: none;}
+
+
+/*gestions du tab*/
+.board {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4rem;
+}
+
+/*remov game_end*/
+
+.white {color: var(--color);}
+
+#game_end {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: var(--background);
+}
+
+/*centrer*/
+#game_end p, #game_end input{
+    position: fixed;
+    top: 45%; left: 45%;
+    transform: translate(-45%, -45%);
+    text-align: center;
+}
+
+#game_end p{margin-top: 2rem;}
+
+/*boutton*/
+#reload {
+    color: var(--primary);
+}
+
+#reload:hover {
+    color: var(--hover);
+}
