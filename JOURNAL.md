@@ -33,3 +33,4 @@ Rétrospective de l'avancée du projet chaque jour.
 - Rédaction Cahier des Charges
 - Finalisation Morpion
 - Design: cartouche morpion, PFC & borne arcade
+![icone morpion](src/img/morpion.png)
