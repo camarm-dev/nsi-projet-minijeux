@@ -73,13 +73,13 @@ header {
 .grid {
     margin: 3em auto auto;
     display: grid;
-    max-width: calc(600px + 3em);
+    max-width: calc(128px * 3 + 3em);
     gap: 1em;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 .game {
-    width: 200px;
+    width: 128px;
     transition: .1s ease-in-out;
     cursor: pointer;
 }
