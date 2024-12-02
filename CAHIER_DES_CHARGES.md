@@ -16,6 +16,8 @@ Répartition des rôles
 - Direction artistique "8-bit"
 - Page d'accueil
 - 5 jeux: Osu, Pierre Feuille Ciseaux, Morpion, Jeu du Dino, Juste prix
+- Comptes
+- Page de classement
 
 ## Description du projet
 
@@ -47,7 +49,7 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 ## Exigences fonctionnelles
 
 - Connexion / création comptes
-- Personnalisation interface
+- Personnalisation interface (couleur)
 - Pouvoir jouer aux 5 jeux
 - Page d'accueil
 - (Bonus) Système de classement
@@ -59,6 +61,7 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 - Base Sqlite: database.db
 - Design: dossier design
 - Dépôt Git
+- Une démonstration du site web ouverte sur internet
 
 ## Planning
 
