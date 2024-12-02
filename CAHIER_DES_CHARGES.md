@@ -38,9 +38,9 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 | Page de modification de compte | Page de modification de compte avec formulaire et champs, pseudo, couleur. Pouvoir supprimer son compte. | Frontend | Page | HTML, CSS |
 | Gestion des utilisateurs | Gestion des utilisateurs avec création, modification & suppression de compte. Requêtes POST. Stockage dans une base Sqlite. Stockage du jeton de connexion dans un cookie. | Backend | Fonctionalité | Python, Sqlite |
 | Sécurisation des comptes | Sécurisation des comptes avec hashage des mots de passe et règles: minimum de 10 caractère avec 1 caractère spécial. | Backend | Sécurité | Python, Regex |
-| Système de classement | Classement des joueur en fonction de leurs points. | Backend | Fonctionalité | Python |
+| Système de classement | Classement des joueurs en fonction de leurs points. | Backend | Fonctionalité | Python |
 | Page de classement | Affichage du classement des joueurs. Bonus: classement par jeu + statistiques. | Frontend | Page | HTML, CSS |
-| Acquisition des parties gagnées | Bouton "Envoyer ma progression" sur les page pour envoyer les points gagnés. | Frontend | Page | HTML, CSS |
+| Acquisition des parties gagnées | Bouton "Envoyer ma progression" sur les pages pour envoyer les points gagnés. | Frontend | Page | HTML, CSS |
 | Acquisition des parties gagnées | Sauvegarder les parties gagnées dans une table. Préciser sur quel jeux les parties ont été gagnées. | Backend | Fonctionalité | Python, Sqlite |
 
 
