@@ -130,5 +130,5 @@ function updateGamesStatus(status){
 
 }
 
-function endGame(){document.getElementById('game_end').style.display = "block"}
+function endGame(){document.getElementById('game_end').style.display = "flex"}
 function realoadGame(){window.location.reload()}

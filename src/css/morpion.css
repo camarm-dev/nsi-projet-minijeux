@@ -27,6 +27,50 @@ body{
     background-position: center;
 }
 
+/*loader*/
+#loader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: .2s ease-in-out;
+    z-index: 100;
+}
+
+#loader.hidden {
+    z-index: -100;
+    opacity: 0;
+}
+
+#loader img {
+    animation: 1s ease-in-out loading infinite;
+}
+
+@keyframes loading {
+    from {
+        opacity: 0;
+        scale: 1;
+    }
+    70% {
+        opacity: 1;
+        scale: 1.05;
+    }
+}
+
+header {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto 2em;
+}
+
 h1{text-align: center;}
 
 /*gestions des celules*/
@@ -68,27 +112,34 @@ h1{text-align: center;}
 #game_end {
     position: fixed;
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    top: 0; right: 0; bottom: 0; left: 0;
     background-color: var(--background);
 }
 
 /*centrer*/
 #game_end p, #game_end input{
-    position: fixed;
     top: 45%; left: 45%;
     transform: translate(-45%, -45%);
     text-align: center;
+    position: absolute;
 }
 
-#game_end p{margin-top: 2rem;}
+#game_end p{margin-top: 4rem;}
 
 /*boutton*/
-#reload {
+#reload, #accueil {
     color: var(--primary);
 }
 
-#reload:hover {
+#reload{
+    margin-top: 2rem;
+    top:6; bottom: 6; left: 6; right: 6;
+}
+
+#reload:hover, #accueil:hover {
     color: var(--hover);
 }
