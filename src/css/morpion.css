@@ -119,13 +119,6 @@ h1{text-align: center;}
     text-align: center;
 }
 
-#game_end p{margin-top: 4rem;}
-
-/*boutton*/
-#reload, #accueil {
-    color: var(--primary);
-}
-
-#reload:hover, #accueil:hover {
-    color: var(--hover);
+#game_end p {
+    margin-top: 4rem;
 }

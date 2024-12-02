@@ -9,6 +9,28 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+.buttons {
+    display: flex;
+    gap: 1em;
+}
+
+button {
+
+    margin-top: .5em;
+    background: var(--primary);
+    outline: none;
+    border: .55px solid #acacac;
+    color: var(--color) !important;
+    padding: .1em 1em;
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+button:hover {
+    background: var(--hover);
+    color: var(--background) !important;
+}
+
 a {
     color: var(--primary);
     cursor: pointer;
