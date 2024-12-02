@@ -27,8 +27,8 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 | --- | --- | --- | --- | --- |
 | Accueil | Page d'accueil avec affichage des jeux en grille, sous forme de cartouche | Frontend | Page | HTML, CSS |
 | Loader | Écran de chargement | Frontend | Animation | Javscript, CSS, HTML |
-| Borne d'arcade | Affichage des juex dans une borne d'arcade | Frontend | Mise en page | CSS |
-| Morpion | Jeu du morpion, à jouer à deux | Frontend | Page Jeu | HTML, CSS, Javascript |
+| Borne d'arcade | Affichage des jeux dans une borne d'arcade | Frontend | Mise en page | CSS |
+| Morpion | Jeu du morpion, à jouer à deux ou contre l'ordinateur. | Frontend | Page Jeu | HTML, CSS, Javascript |
 | Dino | Jeu du dino, à jouer tout seul | Frontend | Page Jeu | HTML, CSS, Javascript |
 | Juste prix | Jeu du juste prix, à jouer tout seul | Frontend | Page Jeu | HTML, CSS, Javascript |
 | OSU | OSU, jeu en rythme à jouer seul | Frontend | Page Jeu | HTML, CSS, Javascript |
