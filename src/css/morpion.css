@@ -116,10 +116,7 @@ h1{text-align: center;}
 
 /*centrer*/
 #game_end p, #game_end input{
-    top: 45%; left: 45%;
-    transform: translate(-45%, -45%);
     text-align: center;
-    position: absolute;
 }
 
 #game_end p{margin-top: 4rem;}
@@ -127,11 +124,6 @@ h1{text-align: center;}
 /*boutton*/
 #reload, #accueil {
     color: var(--primary);
-}
-
-#reload{
-    margin-top: 2rem;
-    top:6; bottom: 6; left: 6; right: 6;
 }
 
 #reload:hover, #accueil:hover {
