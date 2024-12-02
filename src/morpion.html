@@ -9,10 +9,23 @@
         <link rel="stylesheet" href="css/morpion.css">
     </head>
     <body>
+        <!--loader-->
+        <div id="loader">
+            <img alt="Loader image" src="../design/inspi%20cartouche.png">
+            <p>Chargement...</p>
+        </div>
+
+        <header>
+            <h1>Jeu ""</h1>
+            <img alt="Born d'arcade" src="img/arcade_small.png"/>
+        </header>
+
+
         <!--fin du jeu-->
         <div id="game_end">
-            <p class="white" id="end_game_statue">...</p>
-            <input type="submit" value="Recomencer" id="reload" onclick="realoadGame()">
+                <p class="white" id="end_game_statue">...</p>
+                <input type="submit" value="Recomencer" id="reload" onclick="realoadGame()">
+                <input type="submit" value="Retour à l'accueil" id="accueil" onclick="goTo('./index.html')">
         </div>
 
         <!--tab des cellules-->
@@ -30,6 +43,7 @@
 
         <!--dubut-->
         <h1 id="gameStatus">le joueur 1 commance</h1>
+        <script src="js/navigation.js"></script>
         <script src="js/morpion.js"></script>
     </body>
 </html>
