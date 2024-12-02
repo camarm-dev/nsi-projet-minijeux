@@ -31,3 +31,5 @@ Rétrospective de l'avancée du projet chaque jour.
 - Paramétrage d'outils pour la gestion des tâches
 ![Capture d'écran du projet Github](.github/images/project.png)
 - Rédaction Cahier des Charges
+- Finalisation Morpion
+- Design: cartouche morpion, PFC & borne arcade
