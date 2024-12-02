@@ -21,7 +21,8 @@ Répartition des rôles
 
 Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et le framework [Flask](https://flask.palletsprojects.com/en/stable/).
 
-**Description des fonctionnalités Frontend**
+### Tableau des fonctionalités
+
 | Nom | Description | Périmètre | Type | Technologies |
 | --- | --- | --- | --- | --- |
 | Accueil | Page d'accueil avec affichage des jeux en grille, sous forme de cartouche | Frontend | Page | HTML, CSS |
@@ -42,7 +43,6 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 | Acquisition des parties gagnées | Bouton "Envoyer ma progression" sur les page pour envoyer les points gagnés. | Frontend | Page | HTML, CSS |
 | Acquisition des parties gagnées | Sauvegarder les parties gagnées dans une table. Préciser sur quel jeux les parties ont été gagnées. | Backend | Fonctionalité | Python, Sqlite |
 
-**Description des fonctionnalités Backend**
 
 ## Exigences fonctionnelles
 
