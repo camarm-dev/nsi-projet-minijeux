@@ -4,6 +4,10 @@ NSI 1ère Projet Mini Jeux
 ## Liens utiles
 - Gestion des tâches : [projet Github](https://github.com/users/camarm-dev/projects/6)
 
+## Crédits
+
+Ce projet est disponible sous la licence [CeCILL-2.1](./LICENSE).
+
 ## Direction artistique / graphisme
 
 - Style 8-bit / police pixelisée (type minecraft)
