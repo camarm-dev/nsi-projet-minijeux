@@ -1,10 +1,15 @@
-
 // constante
 
 const cells = document.querySelectorAll('.cell');
 const gamestatus =  document.getElementById('gameStatus');
 const endgamestatus =  document.getElementById('end_game_statue');
 const playerOne = 'X'; const playerTwo ='O';
+const menu = document.getElementById('menu');
+const board = document.querySelector('.board');
+const twoPlayersBtn = document.getElementById('twoPlayers');
+const vsRobotBtn = document.getElementById('vsRobot');
+const emptyCells = [...cells].filter(cell => cell.innerHTML === '');
+let isVsRobot = false;
 let playerturn = playerOne ;
 
 const winningpaterns = [
@@ -18,6 +23,26 @@ const winningpaterns = [
     [2, 4, 6]
     ]
 
+
+// menu depart
+board.style.display = 'none';
+
+//choix du mode
+twoPlayersBtn.addEventListener('click', () => {
+    isVsRobot = false;
+    startGame();
+});
+
+vsRobotBtn.addEventListener('click', () => {
+    isVsRobot = true;
+    startGame();
+});
+
+function startGame() {
+    menu.classList.add('hidden');
+    board.style.display = 'flex';
+    document.getElementById('gameStatus').classList.remove('hidden');
+}
 
 
 //animation des cellules
@@ -73,21 +98,52 @@ cells.forEach(cell =>{
 })
 
 
-function playGame(e){
+function playGame(e) {
+    // verif case deja occuper
+    if (e.target.innerHTML !== '') {
+        return; 
+    }
+    
     e.target.innerHTML = playerturn;
 
-    //verif des wins
-    if (checkWin(playerturn)){
+    //verif des win
+    if (checkWin(playerturn)) {
         updateGamesStatus("wins" + playerturn);
         return endGame();
-    } else if(checkdraw()){
+    } else if (checkdraw()) {
         updateGamesStatus("draw");
         return endGame();
     }
 
-    //tours
-    updateGamesStatus(playerturn)
-    playerturn == playerOne ? playerturn = playerTwo : playerturn = playerOne ;
+    // alterner les joueur
+    updateGamesStatus(playerturn);
+    playerturn = playerturn === playerOne ? playerTwo : playerOne;
+
+    // mode Robot
+    if (isVsRobot && playerturn === playerTwo) {
+        setTimeout(botPlay, 500); // paus pour simuler le temps d un humain mdr
+    }
+}
+
+function botPlay() {
+    const emptyCells = [...cells].filter(cell => cell.innerHTML === '');
+    const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+
+    if (randomCell) {
+        randomCell.innerHTML = playerturn;
+
+        if (checkWin(playerturn)) {
+            updateGamesStatus("wins" + playerturn);
+            return endGame();
+        } else if (checkdraw()) {
+            updateGamesStatus("draw");
+            return endGame();
+        }
+
+        // repasser au j 1
+        updateGamesStatus(playerturn);
+        playerturn = playerOne;
+    }
 }
 
 function checkWin(playerturn){
@@ -97,6 +153,7 @@ function checkWin(playerturn){
         })
     })
 }
+
 function checkdraw(){
     return [...cells].every(cell =>{
         return cell.innerHTML == playerOne || cell.innerHTML == playerTwo;
@@ -118,7 +175,7 @@ function updateGamesStatus(status){
             statusTexte = "Le joueur 1(X) a gagné!";
             break;
         case 'winsO':
-            statusTexte = "Le joueur 2(O) a gagné!";
+            statusTexte = isVsRobot ? "Le robot(O) a gagné!" : "Le joueur 2(O) a gagné!";
             break;
         case 'draw':
             statusTexte = "Egalité!";
