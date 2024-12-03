@@ -122,3 +122,21 @@ h1{text-align: center;}
 #game_end p {
     margin-top: 4rem;
 }
+
+/*Menue*/
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin: 2em;
+    text-align: center;
+}
+
+#menu.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
