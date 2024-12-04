@@ -1,5 +1,9 @@
 @import "styles.css";
 
+header {
+    margin-bottom: 10em;
+}
+
 .board, .results, #menu {
     max-width: 780px;
     margin: auto;
@@ -16,7 +20,7 @@
     display: none;
 }
 
-.board p {
+.board p:not(.light) {
     color: var(--grey);
 }
 
@@ -29,6 +33,14 @@
 
 .item {
     cursor: pointer;
+}
+
+.item img {
+    transition: .1s ease-in-out;
+}
+
+.item:hover img {
+    transform: translate(0, -10%);
 }
 
 .item img {
