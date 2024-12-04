@@ -1,0 +1,31 @@
+@import "styles.css";
+
+.board, .items, #menu {
+    max-width: 780px;
+    margin: auto;
+    text-align: center;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.board p {
+    color: var(--grey);
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.item {
+
+}
+
+.item img {
+    
+}
