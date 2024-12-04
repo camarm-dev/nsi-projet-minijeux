@@ -15,20 +15,21 @@ body {
 }
 
 button {
-
     margin-top: .5em;
     background: var(--primary);
     outline: none;
-    border: .55px solid #acacac;
+    border: none;
     color: var(--color) !important;
     padding: .1em 1em;
     cursor: pointer;
     font-family: var(--font);
+    box-shadow: 3px 3px 0 0 var(--primary-black);
 }
 
 button:hover {
     background: var(--hover);
     color: var(--background) !important;
+    box-shadow: 3px 3px 0 0 var(--hover-black);
 }
 
 a {
