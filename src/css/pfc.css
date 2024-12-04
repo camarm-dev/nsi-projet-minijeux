@@ -1,6 +1,6 @@
 @import "styles.css";
 
-.board, .items, #menu {
+.board, .results, #menu {
     max-width: 780px;
     margin: auto;
     text-align: center;
@@ -12,6 +12,10 @@
     gap: 2em;
 }
 
+.board.hidden, .results.hidden {
+    display: none;
+}
+
 .board p {
     color: var(--grey);
 }
@@ -19,13 +23,19 @@
 .items {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     gap: 1em;
 }
 
 .item {
-
+    cursor: pointer;
 }
 
 .item img {
-    
+
+}
+
+.results {
+    display: flex;
+    justify-content: space-evenly;
 }
