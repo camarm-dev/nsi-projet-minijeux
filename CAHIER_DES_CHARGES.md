@@ -3,7 +3,7 @@
 Projet minijeux 1ère NSI.
 
 
-Répartition des rôles
+### Répartition des rôles
 
 | Personne | Rôle |
 | --- | --- |
@@ -14,9 +14,9 @@ Répartition des rôles
 ## Objectifs
 
 - Direction artistique "8-bit"
-- Page d'accueil
+- Page d'accueil avec sélection du juex
 - 5 jeux: Osu, Pierre Feuille Ciseaux, Morpion, Jeu du Dino, Juste prix
-- Comptes
+- Comptes (gestion d'une base d'utilisateurs)
 - Page de classement
 
 ## Description du projet
@@ -57,11 +57,11 @@ Site Web avec HTML, CSS et Javascript pour le frontend. Backend avec Python, et 
 ## Livrables attendus
 
 - Fichiers du site HTML, CSS, Javascript & Images
-- Serveur web et gestion des utilisateurs: main.py
+- Serveur web et gestion des utilisateurs: main.py (et fichiers python annexes...)
 - Base Sqlite: database.db
 - Design: dossier design
 - Dépôt Git
-- Une démonstration du site web ouverte sur internet
+- Une démonstration du site web fonctionnelle ouverte sur internet
 
 ## Planning
 
