@@ -40,3 +40,5 @@ Rétrospective de l'avancée du projet chaque jour.
 ![img.png](.github/images/morpion_avancement.png)
 - Styles des boutons
 ![Boutons](.github/images/bouton.png)
+- Ajout d'une page de crédits
+![crédits](.github/images/credits.png)
