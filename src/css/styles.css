@@ -9,6 +9,19 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+.credits {
+    margin-top: 5em !important;
+    cursor: pointer;
+    color: var(--grey);
+    font-size: .9em;
+    max-width: 500px;
+}
+
+.credits.paragraph {
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+}
+
 .buttons {
     display: flex;
     gap: 1em;
