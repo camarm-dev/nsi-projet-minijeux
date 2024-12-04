@@ -19,22 +19,12 @@
             <h1>Morpion</h1>
         </header>
 
-
-        <!--fin du jeu-->
-        <div id="game_end">
-            <p class="white" id="end_game_statue">...</p>
-            <div class="buttons">
-                <button id="reload" onclick="realoadGame()">Recomencer</button>
-                <button id="accueil" onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
-            </div>
-        </div>
-
         <!--menu-->
         <div id="menu">
             <h2>Choisissez un mode de jeu :</h2>
             <div class="buttons">
                 <button id="twoPlayers">2 Joueurs</button>
-                <button id="vsRobot">Robots</button>
+                <button id="vsRobot">Contre ordinateur</button>
             </div>
         </div>
 
@@ -49,6 +39,15 @@
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
+        </div>
+
+        <!--fin du jeu-->
+        <div id="game_end">
+            <p class="white" id="end_game_statue">...</p>
+            <div class="buttons">
+                <button id="reload" onclick="realoadGame()">Recomencer</button>
+                <button id="accueil" onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
+            </div>
         </div>
 
         <!--dubut-->

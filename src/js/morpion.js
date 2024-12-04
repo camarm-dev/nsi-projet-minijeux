@@ -187,5 +187,8 @@ function updateGamesStatus(status){
 
 }
 
-function endGame(){document.getElementById('game_end').style.display = "flex"}
+function endGame() {
+    document.getElementById('game_end').style.display = "flex"
+    gamestatus.classList.add('hidden')
+}
 function realoadGame(){window.location.reload()}

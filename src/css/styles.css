@@ -9,26 +9,40 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+.credits {
+    margin-top: 5em !important;
+    cursor: pointer;
+    color: var(--grey);
+    font-size: .9em;
+    max-width: 500px;
+}
+
+.credits.paragraph {
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+}
+
 .buttons {
     display: flex;
     gap: 1em;
 }
 
 button {
-
     margin-top: .5em;
     background: var(--primary);
     outline: none;
-    border: .55px solid #acacac;
+    border: none;
     color: var(--color) !important;
     padding: .1em 1em;
     cursor: pointer;
     font-family: var(--font);
+    box-shadow: 3px 3px 0 0 var(--primary-black);
 }
 
 button:hover {
     background: var(--hover);
     color: var(--background) !important;
+    box-shadow: 3px 3px 0 0 var(--hover-black);
 }
 
 a {

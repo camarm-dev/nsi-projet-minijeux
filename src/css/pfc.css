@@ -1,0 +1,79 @@
+@import "styles.css";
+
+header {
+    margin-bottom: 10em;
+}
+
+.board, .results, #menu {
+    max-width: 780px;
+    margin: auto;
+    text-align: center;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.board.hidden, .results.hidden {
+    display: none;
+}
+
+.board p:not(.light) {
+    color: var(--grey);
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.item img {
+    transition: .1s ease-in-out;
+}
+
+.item:hover img {
+    transform: translate(0, -10%);
+}
+
+.item img {
+
+}
+
+.results {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.results .element {
+    height: 125px;
+    overflow: hidden;
+}
+
+.results .element .roulette {
+    transform: translate(0, -250px);
+}
+
+.results.animated .element .roulette {
+    animation: .5s ease-in-out roulette infinite;
+    transform: translate(0, -250px);
+}
+
+@keyframes roulette {
+    from {
+        transform: translate(0, 0);
+    }
+    99% {
+        transform: translate(0, -375px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
