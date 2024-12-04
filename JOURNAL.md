@@ -35,6 +35,8 @@ Rétrospective de l'avancée du projet chaque jour.
 - Design: cartouche morpion, PFC & borne arcade
 ![icone morpion](src/img/morpion.png)
 
-## Mercredi
+## Mercredi 4 Décembre
+- Amélioration du morpion : ajoue d'un mode de jeux contre ordinateur
+![img.png](.github/images/morpion_avancement.png)
 - Styles des boutons
 ![Boutons](.github/images/bouton.png)
