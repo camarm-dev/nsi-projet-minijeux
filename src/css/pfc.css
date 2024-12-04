@@ -51,3 +51,29 @@ header {
     display: flex;
     justify-content: space-evenly;
 }
+
+.results .element {
+    height: 125px;
+    overflow: hidden;
+}
+
+.results .element .roulette {
+    transform: translate(0, -250px);
+}
+
+.results.animated .element .roulette {
+    animation: .5s ease-in-out roulette infinite;
+    transform: translate(0, -250px);
+}
+
+@keyframes roulette {
+    from {
+        transform: translate(0, 0);
+    }
+    99% {
+        transform: translate(0, -375px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
