@@ -34,3 +34,7 @@ Rétrospective de l'avancée du projet chaque jour.
 - Finalisation Morpion
 - Design: cartouche morpion, PFC & borne arcade
 ![icone morpion](src/img/morpion.png)
+
+## Mercredi
+- Styles des boutons
+![Boutons](.github/images/bouton.png)
