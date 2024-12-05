@@ -15,13 +15,23 @@
             <img alt="Loader image" src="img/morpion.png">
             <p>Chargement...</p>
         </div>
-
+        
         <header>
             <h1>OSU!</h1>
         </header>
-
+        
+        <!--Menu-->
+        <div id="levelMenu" class="menu">
+            <h2>Choisissez un niveau :</h2>
+            <div class="buttons">
+                <button class="levelButton" data-level="easy">Facile</button>
+                <button class="levelButton" data-level="medium">Moyen</button>
+                <button class="levelButton" data-level="hard">Difficile</button>
+            </div>
+        </div>
+        
         <!--Jeu-->
-        <div class="particle_sunbeams">
+        <div class="particle-container" id="particleContainer">
             <div class='cursor' id="cursor"></div>
         </div>
         <div id="monScore" class="score">Score : 0</div>
