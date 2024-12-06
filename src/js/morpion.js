@@ -57,12 +57,12 @@ cells.forEach((cell, index) => {
         const isNotFirstCol = index % 3 !== 0;
         const isNotLastCol = index % 3 !== 2;
 
-        // bordure du haut 
+        // bordure du haut
         if (isNotTopRow) {
             cells[index - 3].style.borderBottomColor = 'var(--hover)';
         }
 
-        // bordure du bas 
+        // bordure du bas
         if (isNotBottomRow) {
             cells[index + 3].style.borderTopColor = 'var(--hover)';
         }
@@ -101,9 +101,9 @@ cells.forEach(cell =>{
 function playGame(e) {
     // verif case deja occuper
     if (e.target.innerHTML !== '') {
-        return; 
+        return;
     }
-    
+
     e.target.innerHTML = playerturn;
 
     //verif des win
@@ -178,7 +178,7 @@ function updateGamesStatus(status){
             statusTexte = isVsRobot ? "Le robot(O) a gagné!" : "Le joueur 2(O) a gagné!";
             break;
         case 'draw':
-            statusTexte = "Egalité!";
+            statusTexte = "Égalité!";
             break;
     }
 
