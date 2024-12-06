@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu du dino</title>
+  <link rel="icon" href="img/arcade.png">
+  <link rel="stylesheet" href="css/dino.css">
+</head>
+<body>
+<!--loader-->
+<div id="loader">
+  <img alt="Loader image" src="img/cartouche.png">
+  <p>Chargement...</p>
+</div>
+
+<header>
+  <h1>Jeu du dino</h1>
+</header>
+
+<div class="arcade disabled">
+  <div id="menu" class="center">
+    <p id="gameEndStatus">Appuyez sur "Jouer" pour commencer.</p>
+    <div class="buttons">
+      <button id="play">Jouer</button>
+      <button onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
+    </div>
+  </div>
+  <div id="game" class="screen">
+    <div id="status">Score: <span id="score">0</span></div>
+    <div id="dino"></div>
+    <div id="cactus1"></div>
+    <div id="cactus2"></div>
+    <div id="bird"></div>
+  </div>
+</div>
+
+<div id="infos" class="center">
+  <p>Appuyez sur espace pour sauter</p>
+</div>
+
+<script src="js/navigation.js"></script>
+<script src="js/dino.js"></script>
+</body>
+</html>
+
