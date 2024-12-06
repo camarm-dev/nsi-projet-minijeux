@@ -56,6 +56,12 @@ header {
     animation: none !important;
 }
 
+#status {
+    top: 2em;
+    position: relative;
+    left: 2em;
+}
+
 #dino {
     background-image: url("../img/dino.png");
     background-size: 27.9px 30px;
