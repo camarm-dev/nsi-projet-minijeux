@@ -120,6 +120,10 @@ header {
     cursor: pointer;
 }
 
+.game.disabled {
+    opacity: .5;
+}
+
 .game img {
     max-width: 100%;
 }
