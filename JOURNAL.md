@@ -42,3 +42,13 @@ Rétrospective de l'avancée du projet chaque jour.
 ![Boutons](.github/images/bouton.png)
 - Ajout d'une page de crédits
 ![crédits](.github/images/credits.png)
+
+## À la maison (4 Décembre - 9 Décembre)
+- Commencement du jeu du dino
+![dino.png](.github/images/dino.png)
+- Création des pages de connexion / création de compte
+
+| Création de compte | Connexion |
+| --- |-----------|
+|![img.png](.github/images/createAcc.png) | ![img.png](.github/images/login.png)          |
+
