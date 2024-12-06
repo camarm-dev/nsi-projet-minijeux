@@ -1,3 +1,9 @@
+<div align="center">
+
+![borne_arcade_v1.png](design/borne_arcade_v1.png)
+
+</div> 
+
 # Projet mini jeux NSI
 NSI 1ère Projet Mini Jeux
 
