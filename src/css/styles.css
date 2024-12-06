@@ -157,6 +157,10 @@ form {
     flex-direction: column;
 }
 
+form h2 {
+    margin-top: 0;
+}
+
 .field {
     display: flex;
     flex-direction: column;
@@ -164,7 +168,7 @@ form {
 }
 
 .field label {
-    color: var(--grey);
+    /*color: var(--grey);*/
     margin-bottom: .5em;
     font-size: .7em;
 }
