@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8"
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pierre Feuille Ciseaux</title>
@@ -34,7 +34,7 @@
                     <p>Ciseaux</p>
                 </div>
             </div>
-            <p>Choisissez pierre, feuille ou ciseaux</p>
+            <p class="light">Choisissez pierre, feuille ou ciseaux</p>
         </div>
 
         <div id="results" class="results hidden">
@@ -46,7 +46,7 @@
                     <img src="img/paper.png" alt="">
                 </div>
             </div>
-            <div class="element">
+            <div class="element text">
                 <p id="winner">Pierre !</p>
             </div>
             <div class="element">
@@ -61,6 +61,7 @@
 
         <div id="menu" class="hidden">
             <button id="play">Rejouer</button>
+            <button onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
         </div>
 
         <script src="js/navigation.js"></script>

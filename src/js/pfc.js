@@ -35,6 +35,7 @@ choices.forEach(el => {
         setTimeout(() => {
             computerElement.src = `img/${computerChoice}.png`
             userElement.src = `img/${userChoice}.png`
+            resetAnimation()
             winnerElement.textContent = winText
             menu.classList.remove('hidden')
         }, 1800)

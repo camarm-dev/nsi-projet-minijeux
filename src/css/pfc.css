@@ -10,6 +10,13 @@ header {
     text-align: center;
 }
 
+#menu:not(.hidden) {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
 .board {
     display: flex;
     flex-direction: column;
@@ -61,17 +68,38 @@ header {
     transform: translate(0, -250px);
 }
 
+.results .element.text {
+    min-width: max-content;
+}
+
+.results.animated .element:not(.text):before {
+    background: linear-gradient(var(--background) 2%, transparent, var(--background) 98%);
+}
+
+.results .element:not(.text):before {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 125px;
+    background: transparent;
+    margin: auto;
+    position: relative;
+    z-index: 99;
+    transition: .1s ease-in-out;
+}
+
 .results.animated .element .roulette {
-    animation: .5s ease-in-out roulette infinite;
+    animation: .3s ease-in-out roulette;
+    animation-iteration-count: 6;
     transform: translate(0, -250px);
 }
 
 @keyframes roulette {
     from {
-        transform: translate(0, 0);
+        transform: translate(0, -125px);
     }
     99% {
-        transform: translate(0, -375px);
+        transform: translate(0, -500px);
     }
     to {
         transform: translate(0, 0);
