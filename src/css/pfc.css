@@ -65,7 +65,7 @@ header {
 }
 
 .results .element .roulette {
-    transform: translate(0, -250px);
+    transform: translate(0, -375px);
 }
 
 .results .element.text {
@@ -91,7 +91,7 @@ header {
 .results.animated .element .roulette {
     animation: .3s ease-in-out roulette;
     animation-iteration-count: 6;
-    transform: translate(0, -250px);
+    transform: translate(0, -375px);
 }
 
 @keyframes roulette {
