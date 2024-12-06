@@ -1,0 +1,146 @@
+@import "styles.css";
+
+header {
+    margin-bottom: 10em;
+}
+
+#menu {
+    text-align: center;
+    transform: translate(0, 275px);
+    z-index: 50;
+    position: relative;
+}
+
+#menu .buttons {
+    width: max-content;
+    margin: 1em auto auto;
+}
+
+.arcade {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.screen {
+    height: 500px;
+    width: 800px;
+    margin: auto;
+    background: #000;
+    overflow: hidden;
+}
+
+.arcade p {
+    display: none;
+}
+
+.arcade.disabled .screen {
+    opacity: 0.2;
+}
+
+.arcade.disabled p {
+    display: block;
+    color: white;
+    width: max-content;
+    margin: auto;
+}
+
+.arcade.disabled * {
+    animation-play-state: paused !important;
+}
+
+.arcade.reset * {
+    animation: none !important;
+}
+
+#dino {
+    background-image: url("../img/dino.png");
+    background-size: 27.9px 30px;
+    height: 30px;
+    width: 27.9px;
+    top: 449px;
+    left: 50px;
+    position: relative;
+}
+
+#dino.jumping {
+    animation: jump linear .49s;
+}
+
+#cactus1 {
+    animation: cactus linear 3s infinite;
+    background-image: url("../img/cactus1.png");
+    background-size: 47px 56.6px;
+    height: 56.6px;
+    width: 47px;
+    top: 393px;
+    left: 800px;
+    position: relative;
+}
+
+#cactus2 {
+    animation: cactus1 linear 3s infinite;
+    animation-delay: 7.5s;
+    background-image: url("../img/cactus1.png");
+    background-size: 47px 56.6px;
+    height: 56.6px;
+    width: 47px;
+    top: 336px;
+    left: 800px;
+    position: relative;
+}
+
+#bird {
+    animation: bird linear 4s infinite;
+    animation-delay: 20s;
+    background-image: url("../img/bird.png");
+    background: #fff;
+    background-size: 29.6px 29.5px;
+    height: 29.5px;
+    width: 29.6px;
+    top: 70px;
+    left: 800px;
+    position: relative;
+}
+
+#score {
+    margin: 1em auto auto;
+    width: max-content;
+}
+
+@keyframes jump {
+    from {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -200px);
+    }
+}
+
+
+@keyframes cactus {
+    from {
+        left: 800px;
+    }
+    to {
+        left: -47px;
+    }
+}
+
+@keyframes cactus1 {
+    from {
+        left: 800px;
+    }
+    to {
+        left: -47px;
+    }
+}
+
+
+@keyframes bird {
+    from {
+        left: 800px;
+    }
+    to {
+        left: -47px;
+    }
+}
