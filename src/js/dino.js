@@ -52,7 +52,7 @@ function play() {
     arcade.classList.add("reset")
     setTimeout(() => { arcade.classList.remove("reset") }, 200)
     scoreInterval = setInterval(updateScore, 2000)
-    gameInterval = setInterval(engine, 100)
+    gameInterval = setInterval(engine, 50)
 }
 
 function engine() {

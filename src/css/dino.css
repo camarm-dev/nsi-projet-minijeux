@@ -76,6 +76,8 @@ header {
     animation: jump linear .49s;
 }
 
+/* TODO utiliser des transform pour les transitions (c'est plus opti) */
+
 #cactus1 {
     animation: cactus linear 3s infinite;
     background-image: url("../img/cactus1.png");
