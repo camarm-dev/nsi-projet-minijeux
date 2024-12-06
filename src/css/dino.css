@@ -1,7 +1,7 @@
 @import "styles.css";
 
 header {
-    margin-bottom: 10em;
+    margin-bottom: 2em;
 }
 
 #menu {
@@ -17,8 +17,11 @@ header {
 }
 
 .arcade {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em auto;
+    /*width: 918px;*/
+    /*height: 1190px;*/
+    /*background-image: url("../img/arcade_large.png");*/
+    background-size: 918px 1190px;
 }
 
 .screen {
@@ -27,6 +30,7 @@ header {
     margin: auto;
     background: #000;
     overflow: hidden;
+    position: relative;
 }
 
 .arcade p {
