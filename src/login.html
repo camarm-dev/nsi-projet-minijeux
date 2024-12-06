@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de mini jeux</title>
+    <link rel="icon" href="img/arcade.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="loader">
+        <img alt="Loader image" src="img/arcade.png">
+        <p>Chargement...</p>
+    </div>
+
+    <header>
+        <h1>Se connecter</h1>
+        <p class="center">Connecte-toi pour continuer</p>
+    </header>
+    <form action="/login" method="post">
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="toi@email.com">
+        </div>
+        <div class="field">
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" placeholder="*******">
+        </div>
+        <div class="field">
+            <button type="submit">Me connecter</button>
+        </div>
+    </form>
+    <p onclick="goTo('./credits.html')" class="center credits">&copy; Gaspard, Julien & Armand, 1ère NSI.</p>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
