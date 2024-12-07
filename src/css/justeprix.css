@@ -60,4 +60,5 @@ header {
 .input input {
     border-color: var(--color);
     background: #000;
+    box-shadow: none;
 }
