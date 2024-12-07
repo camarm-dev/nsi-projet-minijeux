@@ -15,9 +15,12 @@
     <header>
         <h1>Site de mini jeux</h1>
         <img alt="Born d'arcade" src="img/arcade.png"/>
+        <div class="buttons center">
+            <button onclick="goTo('login.html')">Se connecter</button>
+            <button onclick="goTo('create_account.html')">S'inscrire</button>
+        </div>
     </header>
-
-    <p class="center">Sélectionne une cartouche pour jouer.</p>
+    <p class="center">Sélectionne une cartouche pour jouer en tant qu'invité.</p>
     <div class="grid">
         <div title="Morpion" class="game" onclick="goTo('./morpion.html', 'img/morpion.png')">
             <img src="img/morpion.png">
