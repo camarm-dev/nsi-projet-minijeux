@@ -52,3 +52,5 @@ Rétrospective de l'avancée du projet chaque jour.
 | --- |-----------|
 |![img.png](.github/images/createAcc.png) | ![img.png](.github/images/login.png)          |
 
+- Commencement du jeu du juste prix
+![img.png](.github/images/justeprix.png)
