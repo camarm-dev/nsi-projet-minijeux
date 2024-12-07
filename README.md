@@ -19,3 +19,14 @@ Ce projet est disponible sous la licence [CeCILL-2.1](./LICENSE).
 - Style 8-bit / police pixelisée (type minecraft)
 - Cartouches de jeux
 - Les jeux tournent dans une borne d'arcade
+
+## Documentation
+
+- Installer les dépendances python
+```shell
+pip install -r requirements.txt
+```
+- Lancer le serveur
+```shell
+python3 main.py
+```
