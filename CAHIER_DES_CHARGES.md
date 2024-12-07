@@ -1,6 +1,6 @@
 # Cahier des charges
 
-Projet minijeux 1ère NSI.
+Ce cahier des charges décrit le fonctionnement du projet ainsi que les fonctionnalités attendues de ce projet.
 
 
 ### Répartition des rôles
