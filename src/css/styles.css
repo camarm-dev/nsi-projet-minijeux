@@ -54,6 +54,15 @@ a:hover {
     color: var(--hover);
 }
 
+.grey {
+    color: var(--grey);
+}
+
+a.grey {
+    color: var(--grey);
+    text-decoration: underline var(--grey);
+}
+
 .hidden {
     display: none;
 }
@@ -159,6 +168,7 @@ form {
 
 form h2 {
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .field {
