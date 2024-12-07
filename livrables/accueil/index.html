@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de mini jeux</title>
+    <link rel="icon" href="img/arcade.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="loader">
+        <img alt="Loader image" src="img/arcade.png">
+        <p>Chargement...</p>
+    </div>
+
+    <header class="menu">
+        <div class="menuContent">
+            <div class="start">
+                <img alt="Born d'arcade" src="img/arcade.png"/>
+                <h2>Mini jeux rétro</h2>
+            </div>
+            <div class="buttons">
+                <button onclick="goTo('login.html')">Se connecter</button>
+                <button onclick="goTo('create_account.html')">S'inscrire</button>
+            </div>
+        </div>
+    </header>
+    <p class="center">Sélectionne une cartouche pour jouer en tant qu'invité.</p>
+    <div class="grid">
+        <div title="Morpion" class="game" onclick="goTo('./morpion.html', 'img/morpion.png')">
+            <img src="img/morpion.png">
+        </div>
+        <div title="Pierre Feuille Ciseaux" class="game" onclick="goTo('./pfc.html', 'img/pfc.png')">
+            <img src="img/pfc.png">
+        </div>
+<!--   TODO changer l'image     -->
+        <div title="Jeu du dino" class="game" onclick="goTo('./dino.html', 'img/cartouche.png')">
+            <img src="img/cartouche.png">
+        </div>
+        <div title="Juste Prix" class="game" onclick="goTo('./justeprix.html', 'img/cartouche.png')">
+            <img src="img/cartouche.png">
+        </div>
+<!--   Autre cartouches pour remplir la grille     -->
+        <div title="Arrive bientôt" class="game disabled">
+            <img src="img/cartouche.png">
+        </div>
+        <div title="Arrive bientôt" class="game disabled">
+            <img src="img/cartouche.png">
+        </div>
+        <div title="Arrive bientôt" class="game disabled">
+            <img src="img/cartouche.png">
+        </div>
+    </div>
+    <p onclick="goTo('./credits.html')" class="center credits">&copy; Gaspard, Julien & Armand, 1ère NSI.</p>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
