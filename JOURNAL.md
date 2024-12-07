@@ -54,3 +54,6 @@ Rétrospective de l'avancée du projet chaque jour.
 
 - Commencement du jeu du juste prix
 ![img.png](.github/images/justeprix.png)
+
+- Restylisation de la page d'accueil
+![img.png](.github/images/homepage.png)
