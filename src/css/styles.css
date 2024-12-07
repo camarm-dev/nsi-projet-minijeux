@@ -9,6 +9,48 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+.menu {
+    width: 100%;
+    padding: 5px 15px;
+    border: var(--color) 2px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 3px 3px 0 0 var(--grey);
+    max-width: 800px;
+    margin: 1em auto 3em;
+}
+
+.menuContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 780px;
+    width: 100%;
+}
+
+.menu .start {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu img {
+    height: 3em;
+    margin-right: .5em;
+}
+
+.menu .buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.menu .buttons button {
+    height: min-content;
+}
+
 .credits {
     margin-top: 5em !important;
     cursor: pointer;
