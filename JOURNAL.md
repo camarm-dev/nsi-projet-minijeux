@@ -57,3 +57,6 @@ Rétrospective de l'avancée du projet chaque jour.
 
 - Restylisation de la page d'accueil
 ![img.png](.github/images/homepage.png)
+
+- Configuration d'un rétroplanning
+![retroplanning.png](.github/images/retroplanning.png)
