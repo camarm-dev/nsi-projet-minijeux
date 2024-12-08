@@ -27,7 +27,7 @@ body{
 .particle {
    position: absolute;
    border-radius: 50%;
-   background-color: yellow;
+   background-color:  var(--hover-black);
    opacity: 0.7;
    width: 6px;
    height: 6px;
@@ -45,6 +45,7 @@ body{
        opacity: 0;
    }
 }
+
 
 /*Menu*/
 .menu {
@@ -119,13 +120,3 @@ body.menu-active {
    color: var(--primary);
    text-align: center;
 }
-
-
-
-.balle{
-    width: 50px;
-    height: 50px;
-    background-color: blue;
-    position: absolute;
-}
-
