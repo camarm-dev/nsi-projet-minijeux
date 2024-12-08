@@ -34,7 +34,7 @@ function isDead() {
 
 function jump() {
     // Check if not already jumping
-    if (dino.classList.contains("jump")) return
+    if (dino.classList.contains("jumping")) return
     dino.classList.add('jumping')
     setTimeout(() => {
         dino.classList.remove('jumping')
