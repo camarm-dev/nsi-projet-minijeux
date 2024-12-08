@@ -16,11 +16,11 @@ body{
    pointer-events: none;
    left: -100px;
    top: 50%;
-   background-color: yellow; /* boule jaune */
+   background-color: var(--hover); /* boule jaune */
    z-index: 10000;
    height: 20px;
    width: 20px;
-   box-shadow: 0 0 20px rgba(255, 255, 0, 0.7); /* glow */
+   box-shadow: 0 0 40px var(--hover-black); /* glow */
 }
 
 /* particules */
@@ -74,7 +74,51 @@ body.menu-active {
    display: none; 
 }
 
+/*Balle*/
 
+#boxBalle {
+   width: 100px; 
+   height: 100px;
+   background-size: cover;
+   background-position: center;
+   position: absolute; 
+   transition: transform 0.2s ease; 
+}
+
+
+#boxBalle:hover {
+   transform: scale(1.1); 
+}
+
+#monScore, #monTimer {
+   position: fixed;
+   left: 10px; 
+   font-family: var(--font);
+   color: var(--primary);
+   font-size: 1.5rem;
+
+}
+
+#monScore {
+   top: 10px; 
+}
+
+#monTimer {
+   top: 50px; 
+}
+
+/*couldown*/
+
+#levelCountdown {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-family: var(--font);
+   font-size: 5rem;
+   color: var(--primary);
+   text-align: center;
+}
 
 
 
