@@ -30,3 +30,6 @@ pip install -r requirements.txt
 ```shell
 python3 main.py
 ```
+
+## Sound effect
+https://pixabay.com/sound-effects/success-02-68338/
