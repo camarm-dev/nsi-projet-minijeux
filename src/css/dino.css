@@ -18,9 +18,6 @@ header {
 
 .arcade {
     margin: 2em auto;
-    /*width: 918px;*/
-    /*height: 1190px;*/
-    /*background-image: url("../img/arcade_large.png");*/
     background-size: 918px 1190px;
 }
 

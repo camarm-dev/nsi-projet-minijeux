@@ -8,6 +8,7 @@ const resultsElement = document.getElementById('results')
 const userElement = document.getElementById('user')
 const computerElement = document.getElementById('computer')
 const winnerElement = document.getElementById('winner')
+const userRouletteImages = document.querySelectorAll('.userRoulette')
 
 let currentGame = {
     winner: null,
@@ -32,10 +33,13 @@ choices.forEach(el => {
         } else {
             winText = 'Match nul !'
         }
+        userElement.src = `img/${userChoice}.png`
+        for (const image of userRouletteImages) {
+            image.src = `img/${userChoice}.png`
+        }
         setTimeout(() => {
             resultsElement.classList.remove('animated')
             computerElement.src = `img/${computerChoice}.png`
-            userElement.src = `img/${userChoice}.png`
             winnerElement.textContent = winText
             menu.classList.remove('hidden')
         }, 1800)
@@ -49,11 +53,13 @@ choices.forEach(el => {
 })
 
 function resetAnimation() {
-    // TODO
     resultsElement.classList.remove('animated')
     winnerElement.textContent = 'Pierre !'
     computerElement.src = `img/rock.png`
     userElement.src = `img/rock.png`
+    for (const image of userRouletteImages) {
+        image.src = `img/rock.png`
+    }
 }
 
 function getWinner(computer, user) {
