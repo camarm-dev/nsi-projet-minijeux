@@ -20,7 +20,7 @@ body{
    z-index: 10000;
    height: 20px;
    width: 20px;
-   box-shadow: 0 0 40px var(--hover-black); /* glow */
+   box-shadow: 0 0 60px var(--hover); /* glow */
 }
 
 /* particules */
@@ -29,8 +29,8 @@ body{
    border-radius: 50%;
    background-color:  var(--hover-black);
    opacity: 0.7;
-   width: 6px;
-   height: 6px;
+   width: 12px;
+   height: 12px;
    pointer-events: none;
    animation: fadeOut 1s ease-out forwards;
 }
