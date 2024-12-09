@@ -5,6 +5,7 @@ const playButton = document.getElementById('play')
 const input = document.getElementById('input')
 const history = document.getElementById('history')
 
+const acceptedKeys = "0123456789"
 let tries = 0
 let price = 0
 
@@ -38,7 +39,7 @@ function addToHistory(guess, message) {
 }
 
 function guess(value) {
-    input.value = ""
+    input.innerText = ""
     tries += 1
     if (value > price) {
         addToHistory(value, "Plus petit !")
@@ -50,9 +51,16 @@ function guess(value) {
     }
 }
 
-input.addEventListener('keyup', (event) => {
+
+playButton.addEventListener('click', play)
+window.addEventListener('keyup', (event) => {
+    if (acceptedKeys.includes(event.key)) {
+        input.innerText += event.key
+    }
     if (event.key == "Enter") {
-        guess(input.value)
+        guess(input.innerText)
+    }
+    if (event.key == "Backspace") {
+        input.innerText = input.innerText.slice(0, -1)
     }
 })
-playButton.addEventListener('click', play)

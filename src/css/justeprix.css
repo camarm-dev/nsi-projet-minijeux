@@ -57,8 +57,35 @@ header {
     animation: none !important;
 }
 
-.input input {
-    border-color: var(--color);
-    background: #000;
-    box-shadow: none;
+.input {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+#input {
+    width: max-content;
+    min-width: 1em;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+#input:after {
+    display: block;
+    content: "";
+    width: 8px;
+    height: 1em;
+    background: #fff;
+    animation: .5s ease-in-out infinite blink;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
