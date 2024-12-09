@@ -31,6 +31,35 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
+## Base de données
+
+La base de données est située à la racine; `database.db`. C'est une base Sqlite3.
+
+Ci-dessous la définition des tables:
+
+| Nom de la table | Description |
+| --- | --- |
+| users | Stockages des profils utilisateurs |
+| scores | Stockages des résultats des parties |
+
+**Table `users`**
+| Nom de la colonne (propriété) | Description |
+| --- | --- |
+| name | Nom complet de l'utilisateur |
+| pseudo | Pseudo de l'utilisateur |
+| email | Email de l'utilisateur |
+| password | Mot de passe hashé de l'utilisateur |
+| created_at | Date de création de l'utilisateur |
+
+
+**Table `scores`**
+| Nom de la colonne (propriété) | Description |
+| --- | --- |
+| game | Nom du jeu parmis `morpion`, `pfc`, `osu`, `dino`, `justeprix`. |
+| date | Date d'enregistrement de la partie |
+| user | Pseudo de l'utilisateur |
+| points | Nombres de points gagnés |
+
 ## Sound effect
 https://pixabay.com/sound-effects/success-02-68338/
 https://pixabay.com/sound-effects/arcade-countdown-7007/
