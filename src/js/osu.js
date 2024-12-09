@@ -178,8 +178,8 @@ function startCountdown(callback) {
         return;
     }
 
-    const sound2 = countDown
-    sound2 =
+    const sound2 = countDown;
+    sound2.play();
     countdown.classList.remove("hidden"); // Affiche le compte à rebours
 
     let countdownValue = 3; 
