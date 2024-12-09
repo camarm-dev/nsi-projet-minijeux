@@ -60,12 +60,17 @@ header {
 }
 
 .results .element {
-    height: 125px;
+    height: 136px;
+    width: 150px;
     overflow: hidden;
 }
 
 .results .element .roulette {
-    transform: translate(0, -375px);
+    transform: translate(0, -408px);
+}
+
+.results .element .roulette.small {
+    transform: translate(0, -136px);
 }
 
 .results .element.text {
@@ -80,7 +85,8 @@ header {
     content: "";
     display: block;
     width: 50%;
-    height: 125px;
+    height: 136px;
+    width: 150px;
     background: transparent;
     margin: auto;
     position: relative;
@@ -91,15 +97,34 @@ header {
 .results.animated .element .roulette {
     animation: .3s ease-in-out roulette;
     animation-iteration-count: 6;
-    transform: translate(0, -375px);
+    transform: translate(0, -408px);
+}
+
+.results.animated .element .roulette.small {
+    animation: .3s ease-in-out smallRoulette;
+    animation-iteration-count: 6;
+    transform: translate(0, -136px);
 }
 
 @keyframes roulette {
     from {
-        transform: translate(0, -125px);
+        transform: translate(0, -136px);
     }
     99% {
-        transform: translate(0, -500px);
+        transform: translate(0, -544px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+
+@keyframes smallRoulette {
+    from {
+        transform: translate(0, -136px);
+    }
+    99% {
+        transform: translate(0, -272px);
     }
     to {
         transform: translate(0, 0);
