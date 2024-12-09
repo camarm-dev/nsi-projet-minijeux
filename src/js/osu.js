@@ -96,6 +96,7 @@ function endGame() {
         <h1>Temps écoulé !</h1>
         <p>Votre score : ${score}</p>
         <button id="returnToMenu">Retour au menu</button>
+        <style>#returnToMenu{cursor:none;}</style>
     `;
 
     document.body.appendChild(endScreen);
@@ -113,8 +114,8 @@ function showMenu() {window.location.reload()}
 
 //curseur
 document.body.addEventListener("mousemove", function (e) {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+    cursor.style.left = (e.clientX + 5) + "px";
+    cursor.style.top = (e.clientY + 5) + "px";
 
     // gene des particules
     createParticle(e.clientX, e.clientY);
@@ -133,7 +134,7 @@ function createParticle(x, y) {
 
     setTimeout(() => {
         particle.remove();
-    }, 500);
+    }, 1000);
 }
 
 //cercle
@@ -143,7 +144,7 @@ function moveBoxBalle() {
     
     const randomX = Math.random() * (window.innerWidth - size);
     const randomY = Math.random() * (window.innerHeight - size);
-
+    
     boxBalle.style.left = `${randomX}px`;
     boxBalle.style.top = `${randomY}px`;
 }
