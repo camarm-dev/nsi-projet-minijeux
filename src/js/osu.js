@@ -6,6 +6,7 @@ const cursor = document.getElementById("cursor");
 const levelMenu = document.getElementById("levelMenu");
 const levelButtons = document.querySelectorAll(".levelButton");
 const clickSound = new Audio("audio/click.mp3");
+const countDown = new Audio("audio/arcade-countdown-7007.mp3")
 
 const totalImages = 5;
 let score = 0;
@@ -177,6 +178,8 @@ function startCountdown(callback) {
         return;
     }
 
+    const sound2 = countDown
+    sound2 =
     countdown.classList.remove("hidden"); // Affiche le compte à rebours
 
     let countdownValue = 3; 
