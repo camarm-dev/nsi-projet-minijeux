@@ -60,6 +60,8 @@ Ci-dessous la définition des tables:
 | user | Pseudo de l'utilisateur |
 | points | Nombres de points gagnés |
 
-## Sound effect
-https://pixabay.com/sound-effects/success-02-68338/
-https://pixabay.com/sound-effects/arcade-countdown-7007/
+## Crédits sons
+
+Les sons sont des sons libres de droits du site pixabay; liens des sites:
+- https://pixabay.com/sound-effects/success-02-68338/
+- https://pixabay.com/sound-effects/arcade-countdown-7007/
