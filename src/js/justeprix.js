@@ -13,7 +13,7 @@ function play() {
     price = Math.floor(Math.random() * 1000)
     menu.classList.add("hidden")
     arcade.classList.remove("disabled")
-    history.innerHTML = '<div class="message">Trouve le nombre entre 0 et 1000 !</div>'
+    history.innerHTML = '<div class="message">Trouve le nombre entre dans [0;1000] !</div>'
     input.classList.remove('hidden')
 }
 
