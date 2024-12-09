@@ -5,34 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
-  <link rel="icon" href="img/arcade.png">
+  <link rel="icon" href="/static/img/arcade.png">
   {% block imports %}
   {% endblock %}
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
 <div id="loader">
   {% block loader_image %}
-    <img alt="Loader image" src="img/arcade.png">
+    <img alt="Loader image" src="/static/img/arcade.png">
   {% endblock %}
   <p>Chargement...</p>
 </div>
 <header class="menu">
     <div class="menuContent">
         <div class="start">
-            <img alt="Born d'arcade" src="img/arcade.png"/>
+            <img alt="Born d'arcade" src="/static/img/arcade.png"/>
             <h2>Mini jeux rétro</h2>
         </div>
         <div class="buttons">
-            <button onclick="goTo('login.html')">Se connecter</button>
-            <button onclick="goTo('create_account.html')">S'inscrire</but>
+            <button onclick="goTo('/login')">Se connecter</button>
+            <button onclick="goTo('/createAccount')">S'inscrire</but>
         </div>
     </div>
 </header>
 {% block content %}
 
 {% endblock %}
-<p onclick="goTo('./credits.html', 'img/arcade.png')" class="center credits">&copy; Gaspard, Julien & Armand, 1ère NSI.</p>
-<script src="js/navigation.js"></script>
+<p onclick="goTo('/credits', '/static/img/arcade.png')" class="center credits">&copy; Gaspard, Julien & Armand, 1ère NSI.</p>
+<script src="/static/js/navigation.js"></script>
 </body>
 
