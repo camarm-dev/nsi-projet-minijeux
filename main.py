@@ -12,15 +12,15 @@ def dino():
   return render_template('dino.html', pseudo='invité', logged_in=False)
 
 @app.get('/game/osu')
-def dino():
+def osu():
   return render_template('osu.html', pseudo='invité', logged_in=False)
 
 @app.get('/game/morpion')
-def dino():
+def morpion():
   return render_template('morpion.html', pseudo='invité', logged_in=False)
 
 @app.get('/game/justeprix')
-def dino():
+def justeprix():
   return render_template('justeprix.html', pseudo='invité', logged_in=False)
 
 
