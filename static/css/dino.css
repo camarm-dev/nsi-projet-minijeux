@@ -21,7 +21,7 @@
 }
 
 
-#dino.jumping img {
+#dino.jumping img, .arcade.disabled #dino.jumping img {
     content: url("/static/img/dino.png")
 }
 
