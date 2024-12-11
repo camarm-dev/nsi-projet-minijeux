@@ -20,9 +20,12 @@
     animation: jump ease-in-out .5s;
 }
 
-
 #dino.jumping img, .arcade.disabled #dino.jumping img {
     content: url("/static/img/dino.png")
+}
+
+.arcade.disabled #bird img {
+    content: url("/static/img/bird.png")
 }
 
 /* TODO utiliser des transform pour les transitions (c'est plus opti) */
