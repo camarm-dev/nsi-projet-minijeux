@@ -43,7 +43,7 @@ Rétrospective de l'avancée du projet chaque jour.
 - Ajout d'une page de crédits
 ![crédits](.github/images/credits.png)
 
-## À la maison (4 Décembre - 9 Décembre)
+## À la maison (4 Décembre - 8 Décembre)
 - Commencement du jeu du dino
 ![dino.png](.github/images/dino.png)
 - Création des pages de connexion / création de compte
@@ -60,3 +60,8 @@ Rétrospective de l'avancée du projet chaque jour.
 
 - Configuration d'un rétroplanning
 ![retroplanning.png](.github/images/retroplanning.png)
+
+## Lundi 8 décembre
+à faire
+## Mercredi 11 décembre 
+à faire
