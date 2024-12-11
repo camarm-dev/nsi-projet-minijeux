@@ -14,43 +14,6 @@ header {
     margin: 1em auto auto;
 }
 
-.arcade {
-    margin: 2em auto;
-    background-size: 918px 1190px;
-}
-
-.screen {
-    height: 500px;
-    width: 800px;
-    margin: auto;
-    background: #000;
-    overflow: hidden;
-    position: relative;
-}
-
-.arcade p {
-    display: none;
-}
-
-.arcade.disabled .screen {
-    opacity: 0.2;
-}
-
-.arcade.disabled p {
-    display: block;
-    color: white;
-    width: max-content;
-    margin: auto;
-}
-
-.arcade.disabled * {
-    animation-play-state: paused !important;
-}
-
-.arcade.reset * {
-    animation: none !important;
-}
-
 #status {
     top: 2em;
     position: relative;

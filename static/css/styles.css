@@ -9,6 +9,10 @@ body {
     font-family: var(--font), sans-serif;
 }
 
+.mt {
+    margin-top: 2.5em;
+}
+
 .menu {
     width: 100%;
     padding: 5px 15px;
@@ -18,7 +22,7 @@ body {
     justify-content: center;
     box-shadow: 3px 3px 0 0 var(--grey);
     max-width: 800px;
-    margin: 1em auto 3em;
+    margin: 1em auto .5em;
 }
 
 .menuContent {
@@ -154,7 +158,11 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto auto 2em;
+    margin: auto;
+}
+
+header h1 {
+    margin-bottom: 0;
 }
 
 .grid {
@@ -183,21 +191,43 @@ header {
     transform: translate(0, -10%);
 }
 
-.borneArcade {
-    background-image: url(../img/arcade.png);
-    background-size: 1000px 1000px;
+
+.arcade {
+    margin: 2em auto;
+    background-size: 918px 1190px;
+}
+
+.screen {
+    height: 500px;
+    width: 800px;
     margin: auto;
-    width: 1000px;
-    height: 1000px;
+    background: #000;
+    overflow: hidden;
+    position: relative;
 }
 
-.playingGame {
-    width: 300px;
-    height: 230px;
-    background: #222;
-    transform: translate(340px, 190px);
+.arcade p {
+    display: none;
 }
 
+.arcade.disabled .screen {
+    opacity: 0.2;
+}
+
+.arcade.disabled p {
+    display: block;
+    color: white;
+    width: max-content;
+    margin: auto;
+}
+
+.arcade.disabled * {
+    animation-play-state: paused !important;
+}
+
+.arcade.reset * {
+    animation: none !important;
+}
 
 form {
     border: var(--color) 2px solid;
