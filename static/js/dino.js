@@ -72,6 +72,7 @@ function engine() {
 window.addEventListener('keydown', (event) => {
     console.log(event.code)
     if (event.code === "Space") {
+        event.preventDefault()
         jump()
     }
 })
