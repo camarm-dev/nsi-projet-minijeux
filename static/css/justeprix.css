@@ -1,0 +1,91 @@
+@import "styles.css";
+
+header {
+    margin-bottom: 2em;
+}
+
+#menu {
+    text-align: center;
+    transform: translate(0, 275px);
+    z-index: 50;
+    position: relative;
+}
+
+#menu .buttons {
+    width: max-content;
+    margin: 1em auto auto;
+}
+
+.arcade {
+    margin: 2em auto;
+    /*width: 918px;*/
+    /*height: 1190px;*/
+    /*background-image: url("../img/arcade_large.png");*/
+    background-size: 918px 1190px;
+}
+
+.screen {
+    padding: 1em;
+    height: 500px;
+    width: 800px;
+    margin: auto;
+    background: #000;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.arcade p {
+    display: none;
+}
+
+.arcade.disabled .screen {
+    opacity: 0.2;
+}
+
+.arcade.disabled p {
+    display: block;
+    color: white;
+    width: max-content;
+    margin: auto;
+}
+
+.arcade.disabled * {
+    animation-play-state: paused !important;
+}
+
+.arcade.reset * {
+    animation: none !important;
+}
+
+.input {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+#input {
+    width: max-content;
+    min-width: 1em;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+#input:after {
+    display: block;
+    content: "";
+    width: 8px;
+    height: 1em;
+    background: #fff;
+    animation: .5s ease-in-out infinite blink;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

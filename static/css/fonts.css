@@ -1,0 +1,9 @@
+@font-face {
+    src: url(../fonts/retro_gaming.ttf);
+    font-family: 'Retro Gaming';
+}
+
+:root {
+    --font: 'Retro Gaming', sans-serif;
+    --font-secondary: 'Retro Gaming', sans-serif;
+}
