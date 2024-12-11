@@ -24,8 +24,13 @@
             <h2>Mini-jeux rétro</h2>
         </div>
         <div class="buttons">
+          {% if logged_in %}
+            <button><img src="/static/img/trophée" alt=""></button>
+            <button><img src="/static/img/profil.png" alt=""> Mon profil</button>
+          {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
             <button onclick="goTo('/createAccount')">S'inscrire</but>
+          {% endif %}
         </div>
     </div>
 </header>
