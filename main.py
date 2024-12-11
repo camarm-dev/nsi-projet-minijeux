@@ -7,6 +7,10 @@ app = Flask('Site de minijeux')
 def home():
   return render_template('index.html', pseudo='invité')
 
+@app.get('/game/dino')
+def dino():
+  return render_template('dino.html', pseudo='invité')
+
 if __name__ == '__main__':
   database = sqlite3.connect('database.db', check_same_thread=False)
   app.run(host='0.0.0.0', port=8000)

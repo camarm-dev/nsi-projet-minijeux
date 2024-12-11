@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Jeu du dino{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="/static/css/dino.css">
+{% endblock %}
+
+{% block loader_image %}
+<img alt="Loader image" src="/static/img/cartouche.png">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Jeu du dino</h1>
+</header>
+
+<div class="arcade disabled">
+    <div id="menu" class="center">
+        <p id="gameEndStatus">Appuyez sur "Jouer" pour commencer.</p>
+        <div class="buttons">
+        <button id="play">Jouer</button>
+        <button onclick="goTo('/', '/static/img/arcade.png')">Retour à l'accueil</button>
+        </div>
+    </div>
+    <div id="game" class="screen">
+        <div id="status">Score: <span id="score">0</span></div>
+        <div id="dino"></div>
+        <div id="cactus1"></div>
+        <div id="cactus2"></div>
+        <div id="bird"></div>
+    </div>
+</div>
+
+<div id="infos" class="center">
+    <p>Appuyez sur espace pour sauter</p>
+</div>
+
+<script src="/static/js/navigation.js"></script>
+<script src="/static/js/dino.js"></script>
+{% endblock %}
