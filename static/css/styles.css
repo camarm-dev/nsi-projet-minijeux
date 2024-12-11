@@ -162,7 +162,8 @@ header {
 }
 
 header h1 {
-    margin-bottom: 0;
+    margin-bottom: .5em;
+    margin-top: .5em;
 }
 
 .grid {
@@ -191,9 +192,21 @@ header h1 {
     transform: translate(0, -10%);
 }
 
+#menu {
+    text-align: center;
+    transform: translate(-50%, 230px);
+    z-index: 50;
+    position: absolute;
+    left: 50%;
+}
+
+#menu .buttons {
+    width: max-content;
+    margin: 1em auto auto;
+}
 
 .arcade {
-    margin: 2em auto;
+    margin: auto;
     background-size: 918px 1190px;
 }
 
