@@ -33,13 +33,13 @@ choices.forEach(el => {
         } else {
             winText = 'Match nul !'
         }
-        userElement.src = `img/${userChoice}.png`
+        userElement.src = `/static/img/${userChoice}.png`
         for (const image of userRouletteImages) {
-            image.src = `img/${userChoice}.png`
+            image.src = `/static/img/${userChoice}.png`
         }
         setTimeout(() => {
             resultsElement.classList.remove('animated')
-            computerElement.src = `img/${computerChoice}.png`
+            computerElement.src = `/static/img/${computerChoice}.png`
             winnerElement.textContent = winText
             menu.classList.remove('hidden')
         }, 1800)
@@ -55,10 +55,10 @@ choices.forEach(el => {
 function resetAnimation() {
     resultsElement.classList.remove('animated')
     winnerElement.textContent = 'Pierre !'
-    computerElement.src = `img/rock.png`
-    userElement.src = `img/rock.png`
+    computerElement.src = `/static/img/rock.png`
+    userElement.src = `/static/img/rock.png`
     for (const image of userRouletteImages) {
-        image.src = `img/rock.png`
+        image.src = `/static/img/rock.png`
     }
 }
 
