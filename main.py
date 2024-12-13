@@ -44,6 +44,11 @@ def justeprix():
   return render_template('justeprix.html', pseudo='invité', logged_in=False)
 
 
+@app.get('/game/pfc')
+def pfc():
+  return render_template('pfc.html', pseudo='invité', logged_in=False)
+
+
 if __name__ == '__main__':
   database = sqlite3.connect('database.db', check_same_thread=False)
-  app.run(host='0.0.0.0', port=8000)
+  app.run(host='0.0.0.0', port=8000, debug=True)
