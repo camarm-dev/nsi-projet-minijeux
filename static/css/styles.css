@@ -246,7 +246,7 @@ form {
     border: var(--color) 2px solid;
     padding: 2em;
     width: 312px;
-    margin: auto;
+    margin: 2em auto auto;
     display: flex;
     flex-direction: column;
     max-width: 312px;
