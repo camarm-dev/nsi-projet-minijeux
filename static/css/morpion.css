@@ -16,9 +16,6 @@ body {
     position: relative;
     width: 600px;
     height: 800px;
-    background-image: url("src/img/borne_arcade_v1_vide.png");
-    background-size: cover;
-    background-position: center;
 }
 
 /*loader*/
