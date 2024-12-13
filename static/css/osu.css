@@ -1,9 +1,3 @@
-@import "fonts.css";
-@import "theme.css";
-@import "styles.css";
-
-
-
 body{
    cursor: none;
 }
@@ -59,7 +53,7 @@ body{
 }
 
 body.menu-active {
-   cursor: default; 
+   cursor: default;
 }
 
 .menu h2 {
@@ -68,32 +62,32 @@ body.menu-active {
 }
 
 #monScore, #monTimer, #boxBalle {
-   display: none; 
+   display: none;
 }
 
 .hidden {
-   display: none; 
+   display: none;
 }
 
 /*Balle*/
 
 #boxBalle {
-   width: 100px; 
+   width: 100px;
    height: 100px;
    background-size: cover;
    background-position: center;
-   position: absolute; 
-   transition: transform 0.2s ease; 
+   position: absolute;
+   transition: transform 0.2s ease;
 }
 
 
 #boxBalle:hover {
-   transform: scale(1.1); 
+   transform: scale(1.1);
 }
 
 #monScore, #monTimer {
    position: fixed;
-   left: 10px; 
+   left: 10px;
    font-family: var(--font);
    color: var(--primary);
    font-size: 1.5rem;
@@ -101,11 +95,11 @@ body.menu-active {
 }
 
 #monScore {
-   top: 10px; 
+   top: 10px;
 }
 
 #monTimer {
-   top: 50px; 
+   top: 50px;
 }
 
 /*couldown*/

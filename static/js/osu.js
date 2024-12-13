@@ -11,8 +11,8 @@ const countDown = new Audio("audio/arcade-countdown-7007.mp3")
 const totalImages = 5;
 let score = 0;
 let currentImageIndex = 1;
-let timer; 
-let timeRemaining = 60; 
+let timer;
+let timeRemaining = 60;
 
 
 
@@ -20,7 +20,7 @@ let timeRemaining = 60;
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("menu-active");
-    cursor.style.display = "none"; // masquer le curseur 
+    cursor.style.display = "none"; // masquer le curseur
     document.getElementById("particleContainer").style.display = "none"; // cache les particule
 });
 
@@ -65,8 +65,8 @@ function startTimer() {
         timerDisplay.textContent = `Temps restant : ${timeRemaining}`;
 
         if (timeRemaining <= 0) {
-            clearInterval(timer); 
-            endGame(); 
+            clearInterval(timer);
+            endGame();
         }
     }, 1000); // mise a jour chaque seconde
 }
@@ -104,8 +104,8 @@ function endGame() {
 
     // return menu
     document.getElementById("returnToMenu").addEventListener("click", () => {
-        document.body.removeChild(endScreen); 
-        showMenu(); 
+        document.body.removeChild(endScreen);
+        showMenu();
     });
 }
 
@@ -140,12 +140,12 @@ function createParticle(x, y) {
 
 //cercle
 function moveBoxBalle() {
-    const size = 100; 
+    const size = 100;
 
-    
+
     const randomX = Math.random() * (window.innerWidth - size);
     const randomY = Math.random() * (window.innerHeight - size);
-    
+
     boxBalle.style.left = `${randomX}px`;
     boxBalle.style.top = `${randomY}px`;
 }
@@ -153,21 +153,21 @@ function moveBoxBalle() {
 
 function changeCircleImage() {
     // mise a jour de l image de fond
-    boxBalle.style.backgroundImage = `url('img/${currentImageIndex}.png')`;
+    boxBalle.style.backgroundImage = `url('/static/img/${currentImageIndex}.png')`;
 
-    currentImageIndex = (currentImageIndex % totalImages) + 1; 
+    currentImageIndex = (currentImageIndex % totalImages) + 1;
 }
 
 // clic cercle
 boxBalle.addEventListener("click", () => {
-    const sound = clickSound.cloneNode(); 
+    const sound = clickSound.cloneNode();
     sound.play();
-    score++; // +1 au score jsp comment inplementer le meme quand dans osu je pense 
+    score++; // +1 au score jsp comment inplementer le meme quand dans osu je pense
             //peut etre a faire diferente box avec plusieur taille si qlq a une idée
     monScore.textContent = `Score : ${score}`; // mise a jours du score
 
-    moveBoxBalle(); 
-    changeCircleImage(); 
+    moveBoxBalle();
+    changeCircleImage();
 });
 
 //couldiwn
@@ -182,19 +182,19 @@ function startCountdown(callback) {
     sound2.play();
     countdown.classList.remove("hidden"); // Affiche le compte à rebours
 
-    let countdownValue = 3; 
+    let countdownValue = 3;
     countdown.textContent = countdownValue;
 
     const interval = setInterval(() => {
-        countdownValue--; 
+        countdownValue--;
         if (countdownValue > 0) {
-            countdown.textContent = countdownValue; 
+            countdown.textContent = countdownValue;
         } else {
-            clearInterval(interval); 
-            countdown.classList.add("hidden"); 
-            callback(); 
+            clearInterval(interval);
+            countdown.classList.add("hidden");
+            callback();
         }
-    }, 1000); 
+    }, 1000);
 }
 
 

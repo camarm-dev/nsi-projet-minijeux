@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}OSU!{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="/static/css/osu.css">
+{% endblock %}
+
+{% block loader_image %}
+<img alt="Loader image" src="/static/img/cartouche.png">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>OSU!</h1>
+    <button onclick="goTo('/')">Retour à l'accueil</button>
+</header>
+
+<!--Menu-->
+<div id="levelMenu" class="menu">
+    <h2>Choisissez un niveau :</h2>
+    <div class="buttons">
+        <button class="levelButton" data-level="easy">Facile</button>
+        <button class="levelButton" data-level="medium">Moyen</button>
+        <button class="levelButton" data-level="hard">Difficile</button>
+    </div>
+</div>
+
+<div id="levelCountdown" class="countdown hidden">3</div>
+<!--Jeu-->
+<div class="particle-container" id="particleContainer">
+    <div class='cursor' id="cursor"></div>
+</div>
+<div id="monScore" class="score">Score : 0</div>
+<div id="monTimer" class="timer">Temps restant : 60</div>
+<div id="boxBalle" class="balle"></div>
+
+<!--script-->
+<script src="/static/js/osu.js"></script>
+{% endblock %}
