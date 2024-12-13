@@ -19,6 +19,11 @@ def signup():
   return render_template('create_account.html', error=False, noMenu=True)
 
 
+@app.get('/credits')
+def credits():
+  return render_template('credits.html', noMenu=True)
+
+
 @app.get('/game/dino')
 def dino():
   return render_template('dino.html', pseudo='invité', logged_in=False)
