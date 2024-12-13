@@ -31,7 +31,7 @@ def dino():
 
 @app.get('/game/osu')
 def osu():
-  return render_template('osu.html', pseudo='invité', logged_in=False)
+  return render_template('osu.html', pseudo='invité', logged_in=False, noMenu=True)
 
 
 @app.get('/game/morpion')
