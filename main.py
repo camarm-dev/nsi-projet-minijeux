@@ -3,21 +3,26 @@ import sqlite3
 
 app = Flask('Site de minijeux')
 
+
 @app.get('/')
 def home():
   return render_template('index.html', pseudo='invité', logged_in=False)
+
 
 @app.get('/game/dino')
 def dino():
   return render_template('dino.html', pseudo='invité', logged_in=False)
 
+
 @app.get('/game/osu')
 def osu():
   return render_template('osu.html', pseudo='invité', logged_in=False)
 
+
 @app.get('/game/morpion')
 def morpion():
   return render_template('morpion.html', pseudo='invité', logged_in=False)
+
 
 @app.get('/game/justeprix')
 def justeprix():
