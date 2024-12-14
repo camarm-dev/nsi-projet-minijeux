@@ -91,3 +91,7 @@ CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NUL
 CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL)
 ```
 _Schéma de la BDD_
+
+- Mise en place d'une page de profil
+
+![img.png](.github/images/profile.png)
