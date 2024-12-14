@@ -400,7 +400,7 @@ input:focus, input:active {
     background: var(--danger-black);
 }
 
-.gameResults.morpion:not(.points0) {
+.gameResults.morpion:not(.points0), .gameResults.pfc:not(.points0) {
     border: 1px solid var(--success);
     background: var(--success-black);
 }
