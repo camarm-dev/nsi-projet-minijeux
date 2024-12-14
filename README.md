@@ -43,6 +43,7 @@ Ci-dessous la définition des tables:
 | scores | Stockages des résultats des parties |
 
 **Table `users`**
+
 | Nom de la colonne (propriété) | Description |
 | --- | --- |
 | name | Nom complet de l'utilisateur |
@@ -53,12 +54,26 @@ Ci-dessous la définition des tables:
 
 
 **Table `scores`**
+
 | Nom de la colonne (propriété) | Description |
 | --- | --- |
 | game | Nom du jeu parmis `morpion`, `pfc`, `osu`, `dino`, `justeprix`. |
 | date | Date d'enregistrement de la partie |
 | user | Pseudo de l'utilisateur |
 | points | Nombres de points gagnés |
+
+## À propos du hashage des mots de passes
+
+Comme décrit dans le cahier des charges, la sécurité des mots de passe est une couche de sécurité attendue.
+Nous utilisons l'algorithme [PBKDF2](https://fr.wikipedia.org/wiki/PBKDF2): Password Based Key Derivation Function 2.
+
+Son fonctionnement est itératif : 
+- il _hash_ le mot de passe avec un algorithme donné un certain nombre de fois (SHA-256, 260 000 fois dans notre cas)
+- en plus ce hashage, cet algorithme rajoute un sel ; une chaine de caractères aléatoires qui complique le cassage par force brute
+
+Cet algorithme permet donc de hasher des mots de passes et de comparer leur hash mais rend presque impossible le cassage de ceux-ci, car il est lent...
+
+L'implémentation python de cet algorithme est à `pbkdf2.py` et provient de [Password hashing in Python with pbkdf2 - Simon Willison](https://til.simonwillison.net/python/password-hashing-with-pbkdf2)
 
 ## Crédits sons
 
