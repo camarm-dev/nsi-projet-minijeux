@@ -53,7 +53,7 @@ function play() {
 
     // Reset animations
     arcade.classList.add("reset")
-    setTimeout(() => arcade.classList.remove("reset"), 10)
+    setTimeout(() => { arcade.classList.remove("reset") }, 200)
 
     // Start game
     scoreInterval = setInterval(updateScore, 2000)
