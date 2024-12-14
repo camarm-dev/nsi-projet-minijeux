@@ -25,7 +25,7 @@
       <p>sur {{ game.name }}</p>
 <!--      <p>le {{ game.date.strftime("%d %B %Y %H:%m") }}</p>-->
     </div>
-    <img src="{{ game.image }}" alt="Image de {{ game.name }}">
+    <img src="/static/img/{{ game.game }}.png" alt="Image de {{ game.name }}">
   </div>
   {% endfor %}
 </div>
