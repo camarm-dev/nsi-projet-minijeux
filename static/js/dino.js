@@ -47,10 +47,15 @@ function updateScore() {
 }
 
 function play() {
+    // Show game
     menu.classList.add("hidden")
     arcade.classList.remove("disabled")
+
+    // Reset animations
     arcade.classList.add("reset")
-    setTimeout(() => { arcade.classList.remove("reset") }, 200)
+    setTimeout(() => arcade.classList.remove("reset"), 10)
+
+    // Start game
     scoreInterval = setInterval(updateScore, 2000)
     gameInterval = setInterval(engine, 50)
 }
