@@ -75,6 +75,17 @@ Cet algorithme permet donc de hasher des mots de passes et de comparer leur hash
 
 L'implémentation python de cet algorithme est à `pbkdf2.py` et provient de [Password hashing in Python with pbkdf2 - Simon Willison](https://til.simonwillison.net/python/password-hashing-with-pbkdf2)
 
+## À propos des jetons de connexion
+
+Notre système utilise les Json Web Token ([JWT](https://fr.wikipedia.org/wiki/JSON_Web_Token)). Ces jetons uniques permettent d'identifier les utilisateurs.
+
+Ils possèdent : 
+- une charge utile, avec le pseudo unique de l'utilisateur
+- une date d'expiration
+- une signature, qui permet de vérifier leur authenticité (si le jeton a bien été généré par notre site)
+
+La clé secrète, permettant de générer des jetons qui font autorité est générée aléatoirement au lancement du site. Si elle venait à être compromise, le site doit donc être relancé.
+
 ## Crédits sons
 
 Les sons sont des sons libres de droits du site pixabay; liens des sites:
