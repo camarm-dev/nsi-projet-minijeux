@@ -101,7 +101,7 @@ button.image {
     align-items: center;
     width: max-content;
     background: transparent;
-    transition: .5s ease-in;
+    transition: .1s ease-in-out;
 }
 
 button.image:hover {
@@ -109,7 +109,7 @@ button.image:hover {
 }
 
 button.image img {
-    max-height: unset;
+    max-height: 3em;
     height: 100%;
     margin: 0 !important;
 }
