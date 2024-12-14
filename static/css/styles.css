@@ -354,6 +354,53 @@ input:focus, input:active {
 
 .user p {
     margin: 0;
-    width: 100%;
     color: var(--grey)
+}
+
+.history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 35%;
+    max-width: 500px;
+    min-width: 350px;
+    margin: auto;
+}
+
+.gameResults {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5em;
+    border: 1px solid var(--border);
+}
+
+.gameResults img {
+    transition: .1s ease-in-out;
+}
+
+.gameResults h2 {
+    margin: 0;
+}
+
+.gameResults p {
+    color: var(--grey);
+    margin: .5em 0 0;
+}
+
+.gameResults.points0 {
+    border: 1px solid var(--danger);
+    background: var(--danger-black);
+}
+
+.gameResults.morpion:not(.points0) {
+    border: 1px solid var(--success);
+    background: var(--success-black);
+}
+
+.gameResults:hover img {
+    transform: translate(0, -.5em);
 }
