@@ -6,7 +6,7 @@
     <p class="center">Créé ton compte et enregistre tes scores !</p>
 </header>
 {% if error %}
-<div class="box danger">
+<div class="box danger mt">
     {{ message }}
 </div>
 {% endif %}
@@ -23,7 +23,7 @@
     </div>
     <div class="field">
         <label for="username">Nom d'utilisateur</label>
-        <input pattern="/^[a-z\d]+$/g" required type="text" name="username" id="username" placeholder="gamerdu25">
+        <input pattern="^[a-z\d]+$" required type="text" name="username" id="username" placeholder="gamerdu25">
         <p class="grey help">Ne peut contenir que des lettres minuscules et des chiffres.</p>
     </div>
     <div class="field">
