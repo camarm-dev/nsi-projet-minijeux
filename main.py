@@ -12,18 +12,43 @@ sqlite3.register_adapter(datetime.datetime, lambda date: date.timestamp())
 sqlite3.register_converter("TIME", lambda date: datetime.datetime.fromtimestamp(date))
 
 
+def build_user(row: list):
+    return {
+        "pseudo": row[0],
+        "name": row[1],
+        "email": row[3],
+        "created_at": row[4]
+    }
+
+
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
     password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
     database.commit()
 
 
+def get_user(pseudo: str):
+    user = cursor.execute("SELECT * FROM users WHERE pseudo=?", (pseudo,)).fetchone()
+    if user:
+        build_user(user)
+
+
 def authenticate(email: str, password: str):
     user = cursor.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
     if user:
         pseudo, name, hashed_password, email, created_at = user
-        return verify_password(password, hashed_password)
+        return verify_password(password, hashed_password), build_user(user)
     return False
+
+
+def generate_token(username: str):
+    # TODO
+    ...
+
+
+def verify_token(token: str):
+    # TODO
+    ...
 
 
 def setup_database():
@@ -44,7 +69,8 @@ def login():
         data = request.form
         email = data.get('email', None)
         password = data.get('password', None)
-        if authenticate(email, password):
+        authenticated, user = authenticate(email, password)
+        if authenticated:
             # TODO generate token
             return redirect('/')
         return render_template('login.html', error=True, message="Impossible de vous authentifier. Mot de passe ou email invalide.", noMenu=True)
