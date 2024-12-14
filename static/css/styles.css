@@ -334,3 +334,26 @@ input:focus, input:active {
     border-color: var(--success);
     background: var(--success-black);
 }
+
+.user {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em auto auto;
+}
+
+.user img {
+    max-width: 150px;
+}
+
+.user h2 {
+    margin-bottom: 0;
+}
+
+.user p {
+    margin: 0;
+    width: 100%;
+    color: var(--grey)
+}

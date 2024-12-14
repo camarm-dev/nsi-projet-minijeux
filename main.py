@@ -124,6 +124,21 @@ def signup():
     return render_template('create_account.html', error=False, noMenu=True)
 
 
+@app.get('/me')
+def my_profile():
+    authenticated, user = get_authentication_status()
+    if authenticated:
+        return render_template('profile.html', logged_in=True, user=user, games=[])
+    return redirect('/login')
+
+
+@app.get('/@<username>')
+def profile(username: str):
+    authenticated, _ = get_authentication_status()
+    user = get_user(username)
+    return render_template('profile.html', logged_in=authenticated, user=user, games=[])
+
+
 @app.get('/credits')
 def credits():
     return render_template('credits.html', noMenu=True)

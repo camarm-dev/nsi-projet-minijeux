@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Site de mini jeux | Profil utilisateur{% endblock %}
+
+{% block content %}
+
+<div class="user">
+  <img src="/static/img/profil.png" alt="Photo de profil">
+  <h2>{{ user.name }}</h2>
+  <p>@{{ user.pseudo }}</p>
+</div>
+
+<h2 class="center mt">Historique des parties</h2>
+{% if games|length == 0 %}
+<div class="box danger mt">
+  Ce joueur n'a pas encore de parties enregistrées.
+</div>
+{% endif %}
+<div class="history">
+  {% for game in games %}
+  <div class="gameResults points{{ game.points }}">
+    <div class="start">
+      <h2>{{ game.points }}</h2>
+      <p>sur {{ game.name }}</p>
+    </div>
+    <img src="" alt="">
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
