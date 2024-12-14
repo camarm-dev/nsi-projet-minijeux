@@ -1,8 +1,11 @@
 import datetime
 import re
-from flask import Flask, render_template, request, redirect
+import secrets
+
+from flask import Flask, render_template, request, redirect, make_response
 import sqlite3
 from pbkdf2 import hash_password, verify_password
+import jwt
 
 app = Flask('Site de minijeux')
 
@@ -30,7 +33,7 @@ def insert_user(name: str, pseudo: str, email: str, password: str, created_at: d
 def get_user(pseudo: str):
     user = cursor.execute("SELECT * FROM users WHERE pseudo=?", (pseudo,)).fetchone()
     if user:
-        build_user(user)
+        return build_user(user)
 
 
 def authenticate(email: str, password: str):
@@ -41,14 +44,23 @@ def authenticate(email: str, password: str):
     return False
 
 
+def get_authentication_status():
+    if request.cookies.get('token', None):
+        token = request.cookies.get('token')
+        try:
+            user = verify_token(token)
+            return True, get_user(user['pseudo'])
+        except jwt.PyJWTError:
+            pass
+    return False, {}
+
+
 def generate_token(username: str):
-    # TODO
-    ...
+    return jwt.encode({"pseudo": username, "exp": datetime.datetime.now() + datetime.timedelta(days=30)}, SECRET, algorithm="HS256")
 
 
 def verify_token(token: str):
-    # TODO
-    ...
+    return jwt.decode(token, SECRET, algorithms=["HS256"])
 
 
 def setup_database():
@@ -58,22 +70,28 @@ def setup_database():
 
 @app.get('/')
 def home():
+    authenticated, user = get_authentication_status()
+    if authenticated:
+        return render_template('index.html', pseudo=user['pseudo'], logged_in=True, user=user)
     return render_template('index.html', pseudo='invité', logged_in=False)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.args.get('expired', False) != False:
-        return render_template('login.html', error=True, message="Votre session a expirée, merci de vous reconnecter.", noMenu=True)
+        return render_template('login.html', error=True, message="Votre session a expirée, merci de vous reconnecter.",
+                               noMenu=True)
     if request.method == 'POST':  # Formulaire envoyé
         data = request.form
         email = data.get('email', None)
         password = data.get('password', None)
         authenticated, user = authenticate(email, password)
         if authenticated:
-            # TODO generate token
-            return redirect('/')
-        return render_template('login.html', error=True, message="Impossible de vous authentifier. Mot de passe ou email invalide.", noMenu=True)
+            response = make_response(redirect('/'))
+            response.set_cookie('token', generate_token(user["pseudo"]))
+            return response
+        return render_template('login.html', error=True,
+                               message="Impossible de vous authentifier. Mot de passe ou email invalide.", noMenu=True)
     return render_template('login.html', error=False, noMenu=True)
 
 
@@ -89,14 +107,17 @@ def signup():
 
         # Le pseudo utilise des caractères interdits
         if not re.match(r"^[a-z\d]+$", pseudo):
-            return render_template('create_account.html', error=True, noMenu=True, message="Le nom d'utilisateur ne respecte pas le format demandé.")
+            return render_template('create_account.html', error=True, noMenu=True,
+                                   message="Le nom d'utilisateur ne respecte pas le format demandé.")
 
         try:
             insert_user(fullname, pseudo, email, password, created_at)
         except sqlite3.IntegrityError:
-            return render_template('create_account.html', error=True, noMenu=True, message="Le nom d'utilisateur ou l'email est déjà utilisé.")
+            return render_template('create_account.html', error=True, noMenu=True,
+                                   message="Le nom d'utilisateur ou l'email est déjà utilisé.")
         except Exception as e:
-            return render_template('create_account.html', error=True, noMenu=True, message=f"Une erreur inconnue est survenue: {e}")
+            return render_template('create_account.html', error=True, noMenu=True,
+                                   message=f"Une erreur inconnue est survenue: {e}")
         return redirect('/')
     return render_template('create_account.html', error=False, noMenu=True)
 
@@ -132,6 +153,7 @@ def pfc():
 
 
 if __name__ == '__main__':
+    SECRET = secrets.token_urlsafe(512)
     database = sqlite3.connect('database.db', check_same_thread=False)
     cursor = database.cursor()
     setup_database()
