@@ -1,4 +1,5 @@
 import datetime
+import locale
 import re
 import secrets
 import sys
@@ -11,10 +12,20 @@ import jwt
 
 app = Flask('Site de minijeux')
 
+GAMES = {
+    "osu": "OSU!",
+    "morpion": "Morpion",
+    "pfc": "Pierre Feuille Ciseaux",
+    "dino": "Jeu du dino",
+    "justeprix": "Juste Prix"
+}
+
+# Pour afficher les dates en français
+locale.setlocale(locale.LC_ALL, 'fr_FR.utf8')
 # Convertir un objet datetime en texte à l'insertion
 sqlite3.register_adapter(datetime.datetime, lambda date: date.timestamp())
 # Convertir du texte en objet datetime
-sqlite3.register_converter("TIME", lambda date: datetime.datetime.fromtimestamp(date))
+sqlite3.register_converter("TIME", lambda date: datetime.datetime.fromtimestamp(float(date.decode())))
 
 
 def build_user(row: list):
@@ -26,9 +37,24 @@ def build_user(row: list):
     }
 
 
+def build_score(row: list):
+    return {
+        "game": row[0],
+        "user": row[1],
+        "points": row[2],
+        "date": row[3],
+        "name": GAMES[row[0]]
+    }
+
+
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
     password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
+    database.commit()
+
+
+def insert_score(game: str, user: str, points: int, created_at: datetime.datetime):
+    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?)", (game, user, points, created_at))
     database.commit()
 
 
@@ -36,6 +62,13 @@ def get_user(pseudo: str):
     user = cursor.execute("SELECT * FROM users WHERE pseudo=?", (pseudo,)).fetchone()
     if user:
         return build_user(user)
+
+
+def get_user_scores(pseudo: str):
+    scores = cursor.execute("SELECT * FROM scores WHERE user=?", (pseudo,)).fetchall()
+    if scores:
+        return list(map(build_score, scores))
+    return []
 
 
 def authenticate(email: str, password: str):
@@ -128,7 +161,8 @@ def signup():
 def my_profile():
     authenticated, user = get_authentication_status()
     if authenticated:
-        return render_template('profile.html', logged_in=True, user=user, games=[])
+        games = get_user_scores(user['username'])
+        return render_template('profile.html', logged_in=True, user=user, games=games)
     return redirect('/login')
 
 
@@ -136,7 +170,8 @@ def my_profile():
 def profile(username: str):
     authenticated, _ = get_authentication_status()
     user = get_user(username)
-    return render_template('profile.html', logged_in=authenticated, user=user, games=[])
+    games = get_user_scores(username)
+    return render_template('profile.html', logged_in=authenticated, user=user, games=games)
 
 
 @app.get('/credits')
@@ -171,10 +206,11 @@ def pfc():
 
 if __name__ == '__main__':
     SECRET = secrets.token_urlsafe(512)
-    database = sqlite3.connect('database.db', check_same_thread=False)
+    database = sqlite3.connect('database.db', detect_types=sqlite3.PARSE_DECLTYPES, check_same_thread=False)
     cursor = database.cursor()
     setup_database()
     if '--dev' in sys.argv:
+        SECRET = 'debug'  # Prevent token validation fail after hot-reload
         app.run(host='0.0.0.0', port=8000, debug=True)
     else:
         print("Starting production server on http://0.0.0.0:8000...")
