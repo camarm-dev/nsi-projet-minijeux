@@ -1,7 +1,7 @@
 import datetime
 import re
 import secrets
-
+import uvicorn
 from flask import Flask, render_template, request, redirect, make_response
 import sqlite3
 from pbkdf2 import hash_password, verify_password
@@ -157,4 +157,4 @@ if __name__ == '__main__':
     database = sqlite3.connect('database.db', check_same_thread=False)
     cursor = database.cursor()
     setup_database()
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    uvicorn.run(app, host='0.0.0.0', port=8000, debug=True)
