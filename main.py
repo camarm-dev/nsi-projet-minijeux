@@ -1,7 +1,9 @@
 import datetime
 import re
 import secrets
-import uvicorn
+import sys
+
+import waitress
 from flask import Flask, render_template, request, redirect, make_response
 import sqlite3
 from pbkdf2 import hash_password, verify_password
@@ -157,4 +159,8 @@ if __name__ == '__main__':
     database = sqlite3.connect('database.db', check_same_thread=False)
     cursor = database.cursor()
     setup_database()
-    uvicorn.run(app, host='0.0.0.0', port=8000, debug=True)
+    if '--dev' in sys.argv:
+        app.run(host='0.0.0.0', port=8000, debug=True)
+    else:
+        print("Starting production server on http://0.0.0.0:8000...")
+        waitress.serve(app, host='0.0.0.0', port=8000)
