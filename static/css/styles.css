@@ -75,21 +75,43 @@ body {
 }
 
 button {
-    margin-top: .5em;
-    background: var(--primary);
     outline: none;
     border: none;
-    color: var(--color) !important;
-    padding: .1em 1em;
     cursor: pointer;
-    font-family: var(--font);
-    box-shadow: 3px 3px 0 0 var(--primary-black);
+    font-family: var(--font), sans-serif;
 }
 
-button:hover {
+button:not(.image) {
+    margin-top: .5em;
+    background: var(--primary);
+    box-shadow: 3px 3px 0 0 var(--primary-black);
+    padding: .1em 1em;
+    color: var(--color) !important;
+}
+
+button:not(.image):hover {
     background: var(--hover);
     color: var(--background) !important;
     box-shadow: 3px 3px 0 0 var(--hover-black);
+}
+
+button.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    background: transparent;
+    transition: .5s ease-in;
+}
+
+button.image:hover {
+    scale: 1.1;
+}
+
+button.image img {
+    max-height: unset;
+    height: 100%;
+    margin: 0 !important;
 }
 
 a {
@@ -306,4 +328,9 @@ input:focus, input:active {
 .box.danger {
     border-color: var(--danger);
     background: var(--danger-black);
+}
+
+.box.success {
+    border-color: var(--success);
+    background: var(--success-black);
 }
