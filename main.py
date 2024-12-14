@@ -227,7 +227,7 @@ def save_score():
 def my_profile():
     authenticated, user = get_authentication_status()
     if authenticated:
-        games = get_user_scores(user['username'])
+        games = get_user_scores(user['pseudo'])
         return render_template('profile.html', logged_in=True, user=user, games=games)
     return redirect('/login')
 
@@ -248,31 +248,31 @@ def credits():
 @app.get('/game/dino')
 def dino():
     authenticated, user = get_authentication_status()
-    return render_template('dino.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
+    return render_template('dino.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/osu')
 def osu():
     authenticated, user = get_authentication_status()
-    return render_template('osu.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated, noMenu=True)
+    return render_template('osu.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated, noMenu=True)
 
 
 @app.get('/game/morpion')
 def morpion():
     authenticated, user = get_authentication_status()
-    return render_template('morpion.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
+    return render_template('morpion.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/justeprix')
 def justeprix():
     authenticated, user = get_authentication_status()
-    return render_template('justeprix.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
+    return render_template('justeprix.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/pfc')
 def pfc():
     authenticated, user = get_authentication_status()
-    return render_template('pfc.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
+    return render_template('pfc.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 if __name__ == '__main__':
