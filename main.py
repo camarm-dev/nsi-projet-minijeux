@@ -247,27 +247,32 @@ def credits():
 
 @app.get('/game/dino')
 def dino():
-    return render_template('dino.html', pseudo='invité', logged_in=False)
+    authenticated, user = get_authentication_status()
+    return render_template('dino.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/osu')
 def osu():
-    return render_template('osu.html', pseudo='invité', logged_in=False, noMenu=True)
+    authenticated, user = get_authentication_status()
+    return render_template('osu.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated, noMenu=True)
 
 
 @app.get('/game/morpion')
 def morpion():
-    return render_template('morpion.html', pseudo='invité', logged_in=False)
+    authenticated, user = get_authentication_status()
+    return render_template('morpion.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/justeprix')
 def justeprix():
-    return render_template('justeprix.html', pseudo='invité', logged_in=False)
+    authenticated, user = get_authentication_status()
+    return render_template('justeprix.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 @app.get('/game/pfc')
 def pfc():
-    return render_template('pfc.html', pseudo='invité', logged_in=False)
+    authenticated, user = get_authentication_status()
+    return render_template('pfc.html', pseudo=user['username'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 if __name__ == '__main__':
