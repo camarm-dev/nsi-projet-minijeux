@@ -1,8 +1,8 @@
 import datetime
 import re
-
 from flask import Flask, render_template, request, redirect
 import sqlite3
+from pbkdf2 import hash_password
 
 app = Flask('Site de minijeux')
 
@@ -13,12 +13,13 @@ sqlite3.register_converter("TIME", lambda date: datetime.datetime.fromtimestamp(
 
 
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
+    password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
 
 
 def setup_database():
     cursor.execute("CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL)")
-    cursor.execute("")
+    cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL)")
 
 
 @app.get('/')
@@ -47,8 +48,10 @@ def signup():
 
         try:
             insert_user(fullname, pseudo, email, password, created_at)
+        except sqlite3.IntegrityError:
+            return render_template('create_account.html', error=True, noMenu=True, message="Le nom d'utilisateur ou l'email est déjà utilisé.")
         except Exception as e:
-            raise e
+            return render_template('create_account.html', error=True, noMenu=True, message=f"Une erreur inconnue est survenue: {e}")
         return redirect('/')
     return render_template('create_account.html', error=False, noMenu=True)
 
