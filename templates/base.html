@@ -26,8 +26,8 @@
         </div>
         <div class="buttons">
           {% if logged_in %}
-            <button class="image"><img src="/static/img/trophée" alt=""></button>
-            <button class="image"><img src="/static/img/profil.png" alt=""></button>
+            <button onclick="goTo('/leaderboard')" class="image"><img src="/static/img/trophée" alt=""></button>
+            <button onclick="goTo('/me')" class="image"><img src="/static/img/profil.png" alt=""></button>
           {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
             <button onclick="goTo('/createAccount')">S'inscrire</button>
