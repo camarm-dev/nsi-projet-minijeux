@@ -2,7 +2,7 @@ import datetime
 import re
 from flask import Flask, render_template, request, redirect
 import sqlite3
-from pbkdf2 import hash_password
+from pbkdf2 import hash_password, verify_password
 
 app = Flask('Site de minijeux')
 
@@ -15,6 +15,15 @@ sqlite3.register_converter("TIME", lambda date: datetime.datetime.fromtimestamp(
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
     password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
+    database.commit()
+
+
+def authenticate(email: str, password: str):
+    user = cursor.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
+    if user:
+        pseudo, name, hashed_password, email, created_at = user
+        return verify_password(password, hashed_password)
+    return False
 
 
 def setup_database():
@@ -27,8 +36,18 @@ def home():
     return render_template('index.html', pseudo='invité', logged_in=False)
 
 
-@app.get('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.args.get('expired', False) != False:
+        return render_template('login.html', error=True, message="Votre session a expirée, merci de vous reconnecter.", noMenu=True)
+    if request.method == 'POST':  # Formulaire envoyé
+        data = request.form
+        email = data.get('email', None)
+        password = data.get('password', None)
+        if authenticate(email, password):
+            # TODO generate token
+            return redirect('/')
+        return render_template('login.html', error=True, message="Impossible de vous authentifier. Mot de passe ou email invalide.", noMenu=True)
     return render_template('login.html', error=False, noMenu=True)
 
 
