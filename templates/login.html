@@ -10,7 +10,7 @@
     {{ message }}
 </div>
 {% endif %}
-<form action="/login" method="post">
+<form action="/login" method="post" enctype="multipart/form-data">
     <h2>Se connecter</h2>
     <p class="grey">Pas encore inscrit ? <a onclick="goTo('/createAccount')" class="grey">S'inscrire</a></p>
     <div class="field">
