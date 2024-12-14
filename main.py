@@ -1,4 +1,5 @@
 import datetime
+import json
 import locale
 import re
 import secrets
@@ -103,6 +104,35 @@ def setup_database():
     cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL)")
 
 
+def anticheat(game: str, points: int, user: dict):
+    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
+    match game:
+        case 'dino':
+            # TODO
+            # 2s/point
+            ...
+        case 'morpion':
+            # TODO
+            # La partie doit durer 10s
+            ...
+        case 'justeprix':
+            # TODO
+            # La partie doit durer 5s
+            ...
+        case 'pfc':
+            # TODO
+            # La partie doit durer minimum 5s
+            ...
+        case 'osu':
+            # TODO
+            # Pas plus de ??
+            ...
+        case _:
+            return False, 0
+    print(last_game)
+    return False, 0
+
+
 @app.get('/')
 def home():
     authenticated, user = get_authentication_status()
@@ -155,6 +185,42 @@ def signup():
                                    message=f"Une erreur inconnue est survenue: {e}")
         return redirect('/')
     return render_template('create_account.html', error=False, noMenu=True)
+
+
+@app.post('/sendScore')
+def save_score():
+    authenticated, user = get_authentication_status()
+    if not authenticated:
+        return {
+            "success": False,
+            "code": 401,
+            "messages": "Impossible de vous authentifier, veuillez vous connectez."
+        }
+    try:
+        data = json.loads(request.data)
+        score = data['score']
+        game = data['game']
+        date = datetime.datetime.now()
+        anticheat_ok, points = anticheat(game, int(score), user)
+        if anticheat_ok:
+            insert_score(game, user['username'], points, date)
+            return {
+                "success": True,
+                "code": 200,
+                "messages": "La partie a été sauvegardée !"
+            }
+        return {
+            "success": False,
+            "code": 400,
+            "messages": "Cette requête a été bloquée par l'anti cheat !"
+        }
+    except Exception as e:
+        pass
+    return {
+        "success": False,
+        "code": 500,
+        "messages": "Une erreur est survenue, impossible d'enregistrer le score."
+    }
 
 
 @app.get('/me')
