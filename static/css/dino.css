@@ -76,6 +76,9 @@
         transform: translate(60px, 120px);
         animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
     }
+    to {
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
+    }
 }
 
 
