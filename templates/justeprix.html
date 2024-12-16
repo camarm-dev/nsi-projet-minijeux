@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block loader_image %}
-<img alt="Loader image" src="/static/img/cartouche.png">
+<img alt="Loader image" src="/static/img/justeprix.png">
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
     <h1>Jeu du juste prix</h1>
 </header>
 
-<div class="arcade disabled">
+<div class="arcade disabled scrollable">
     <div id="menu" class="center">
         <p id="gameEndStatus">Appuyez sur "Jouer" pour commencer.</p>
         <div class="buttons">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div id="game" class="screen">
-        <div class="history" id="history"></div>
+        <div id="history"></div>
         <div class="input">
             <span>invite@justeprix $~</span>
             <div id="input"></div>
