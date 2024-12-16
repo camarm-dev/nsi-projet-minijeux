@@ -4,7 +4,7 @@ const cells = document.querySelectorAll('.cell');
 const gamestatus =  document.getElementById('gameStatus');
 const endgamestatus =  document.getElementById('end_game_statue');
 const playerOne = 'X'; const playerTwo ='O';
-const menu = document.getElementById('menu');
+const menu = document.getElementById('gameMenu');
 const board = document.querySelector('.board');
 const twoPlayersBtn = document.getElementById('twoPlayers');
 const vsRobotBtn = document.getElementById('vsRobot');

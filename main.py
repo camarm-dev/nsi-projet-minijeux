@@ -22,7 +22,7 @@ GAMES = {
 }
 
 # Pour afficher les dates en français
-locale.setlocale(locale.LC_ALL, 'fr_FR.utf8')
+#locale.setlocale(locale.LC_ALL, 'fr_FR.utf8')
 # Convertir un objet datetime en texte à l'insertion
 sqlite3.register_adapter(datetime.datetime, lambda date: date.timestamp())
 # Convertir du texte en objet datetime

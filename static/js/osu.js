@@ -1,3 +1,4 @@
+import * as Tone from "./tone.min.js";
 // Constantes
 const monScore = document.getElementById('monScore');
 const boxBalle = document.getElementById('boxBalle');
@@ -6,15 +7,15 @@ const levelMenu = document.getElementById("levelMenu");
 const levelButtons = document.querySelectorAll(".levelButton");
 const countDown = new Audio("audio/arcade-countdown-7007.mp3");
 const soundUrls = [
-    "audio/click1.mp3",
-    "audio/click2.mp3",
-    "audio/click3.mp3",
-    "audio/click4.mp3"
+    "/static/audio/click1.mp3",
+    "/static/audio/click2.mp3",
+    "/static/audio/click3.mp3",
+    "/static/audio/click4.mp3"
 ];
 const musicUrls = {
-    easy: "audio/easy-level.mp3",
-    medium: "audio/medium-level.mp3",
-    hard: "audio/hard-level.mp3"
+    easy: "/static/audio/easy-level.mp3",
+    medium: "/static/audio/medium-level.mp3",
+    hard: "/static/audio/hard-level.mp3"
 };
 const totalImages = 5;
 const totalSound = 4;
