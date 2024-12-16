@@ -125,12 +125,13 @@ def anticheat(game: str, points: int, user: dict):
             ...
         case 'osu':
             # TODO
-            # Pas plus de ??
+            # 30s min
+            # 15pt max
             ...
         case _:
             return False, 0
     print(last_game)
-    return False, 0
+    return True, points
 
 
 @app.get('/')
