@@ -1,3 +1,4 @@
+import * as Tone from "./tone.min.js";
 // Constantes
 const monScore = document.getElementById('monScore');
 const boxBalle = document.getElementById('boxBalle');
