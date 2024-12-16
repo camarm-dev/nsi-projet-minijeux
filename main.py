@@ -237,6 +237,8 @@ def my_profile():
 def profile(username: str):
     authenticated, _ = get_authentication_status()
     user = get_user(username)
+    if not user:
+        return render_template('error.html', logged_in=authenticated, message='Utilisateur introuvable')
     games = get_user_scores(username)
     return render_template('profile.html', logged_in=authenticated, user=user, games=games)
 
