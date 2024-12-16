@@ -237,6 +237,10 @@ header h1 {
     background-size: 918px 1190px;
 }
 
+.scrollable #game {
+    overflow-y: scroll;
+}
+
 .screen {
     height: 500px;
     width: 800px;
