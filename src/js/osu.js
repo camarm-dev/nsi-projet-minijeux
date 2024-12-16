@@ -93,6 +93,7 @@ function endGame() {
     endScreen.style.alignItems = "center";
     endScreen.style.justifyContent = "center";
     endScreen.style.fontFamily = "var(--font)";
+    endScreen.style.cursor = "none"; 
     endScreen.innerHTML = `
         <h1>Temps écoulé !</h1>
         <p>Votre score : ${score}</p>
@@ -143,8 +144,8 @@ function moveBoxBalle() {
     const size = 100; 
 
     
-    const randomX = Math.random() * (window.innerWidth - size);
-    const randomY = Math.random() * (window.innerHeight - size);
+    const randomX = Math.random() * (window.innerWidth - size - 100);
+    const randomY = Math.random() * (window.innerHeight - size -100);
     
     boxBalle.style.left = `${randomX}px`;
     boxBalle.style.top = `${randomY}px`;
