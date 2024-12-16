@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Site de mini jeux | Erreur{% endblock %}
+
+{% block content %}
+<div class="center mt">
+  <img class="center" src="/static/img/arcade.png" alt="">
+</div>
+<div class="box danger">
+  {{ message }}
+</div>
+<div class="buttons center">
+  <button onclick="goTo('/')">Retour à l'accueil</button>
+</div>
+{% endblock %}
