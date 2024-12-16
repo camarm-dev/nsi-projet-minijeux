@@ -100,3 +100,4 @@ _Schéma de la BDD_
 - V1 mise en ligne
 - création de compte et connexion fonctionnelle
 - avancement OSU
+- (ajouter image et détailler)
