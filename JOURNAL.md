@@ -33,7 +33,7 @@ Rétrospective de l'avancée du projet chaque jour.
 - Rédaction Cahier des Charges
 - Finalisation Morpion
 - Design: cartouche morpion, PFC & borne arcade
-![icone morpion](src/img/morpion.png)
+![icone morpion](static/img/morpion.png)
 
 ## Mercredi 4 Décembre
 - Amélioration du morpion : ajout d'un mode de jeux contre ordinateur
@@ -48,9 +48,9 @@ Rétrospective de l'avancée du projet chaque jour.
 ![dino.png](.github/images/dino.png)
 - Création des pages de connexion / création de compte
 
-| Création de compte | Connexion |
-| --- |-----------|
-|![img.png](.github/images/createAcc.png) | ![img.png](.github/images/login.png)          |
+| Création de compte                       | Connexion                            |
+|------------------------------------------|--------------------------------------|
+| ![img.png](.github/images/createAcc.png) | ![img.png](.github/images/login.png) |
 
 - Commencement du jeu du juste prix
 ![img.png](.github/images/justeprix.png)
@@ -62,6 +62,36 @@ Rétrospective de l'avancée du projet chaque jour.
 ![retroplanning.png](.github/images/retroplanning.png)
 
 ## Lundi 8 décembre
-à faire
+
+- Commencement de la migration vers Flask
+- Continuation OSU! & dino
+- Nouvelles images pour PFC
+
 ## Mercredi 11 décembre 
-à faire
+- Images dino
+- Continuation OSU!
+- Continuation dino
+
+## À la maison (11 décembre - 16 Décembre)
+
+- Explications dans le README pour la sécurité des comptes
+- Migration des ressources pour flask
+
+![img.png](.github/images/structure_flask.png)
+
+- Commencement de l'authentification: hashage de mots de passe & récupération des données du formulaire en python
+
+| Hashage des mots de passes             | Code python de la création de compte |
+|----------------------------------------|--------------------------------------|
+| ![img.png](.github/images/hashing.png) |                                      |
+
+- Mise en place de la base de données
+```sql
+CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL)
+CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL)
+```
+_Schéma de la BDD_
+
+- Mise en place d'une page de profil
+
+![img.png](.github/images/profile.png)

@@ -17,23 +17,25 @@
   {% endblock %}
   <p>Chargement...</p>
 </div>
+{% if noMenu is not defined %}
 <header class="menu">
     <div class="menuContent">
-        <div class="start">
+        <div class="start" onclick="goTo('/')">
             <img alt="Born d'arcade" src="/static/img/arcade.png"/>
             <h2>Mini-jeux rétro</h2>
         </div>
         <div class="buttons">
           {% if logged_in %}
-            <button><img src="/static/img/trophée" alt=""></button>
-            <button><img src="/static/img/profil.png" alt=""> Mon profil</button>
+            <button onclick="goTo('/leaderboard')" class="image"><img src="/static/img/trophée" alt=""></button>
+            <button onclick="goTo('/me')" class="image"><img src="/static/img/profil.png" alt=""></button>
           {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
-            <button onclick="goTo('/createAccount')">S'inscrire</but>
+            <button onclick="goTo('/createAccount')">S'inscrire</button>
           {% endif %}
         </div>
     </div>
 </header>
+{% endif %}
 {% block content %}
 
 {% endblock %}

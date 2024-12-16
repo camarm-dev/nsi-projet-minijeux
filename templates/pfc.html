@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Pierre Feuille Ciseaux{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="/static/css/pfc.css">
+{% endblock %}
+
+{% block loader_image %}
+<img alt="Loader image" src="/static/img/pfc.png">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Pierre Feuille Ciseaux</h1>
+</header>
+
+<div id="playing" class="board">
+    <div class="items">
+        <div class="item" data-item="rock">
+            <img src="/static/img/rock.png">
+            <p>Pierre</p>
+        </div>
+        <div class="item" data-item="paper">
+            <img src="/static/img/paper.png">
+            <p>Feuille</p>
+        </div>
+        <div class="item" data-item="scissors">
+            <img src="/static/img/scissors.png">
+            <p>Ciseaux</p>
+        </div>
+    </div>
+    <p class="light">Choisissez pierre, feuille ou ciseaux</p>
+</div>
+
+<div id="results" class="results hidden">
+    <div class="element">
+        <div class="roulette small">
+            <img class="userRoulette" src="/static/img/rock.png" alt="">
+            <img id="user" src="/static/img/rock.png" alt="">
+            <img class="userRoulette" src="/static/img/rock.png" alt="">
+        </div>
+    </div>
+    <div class="element text">
+        <p id="winner">Pierre !</p>
+    </div>
+    <div class="element">
+        <div class="roulette">
+            <img src="/static/img/scissors.png" alt="">
+            <img src="/static/img/paper.png" alt="">
+            <img id="computer" src="/static/img/rock.png" alt="">
+            <img src="/static/img/scissors.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div id="menu" class="hidden">
+    <button id="play">Rejouer</button>
+    <button onclick="goTo('/', '/static/img/arcade.png')">Retour à l'accueil</button>
+</div>
+
+<script src="/static/js/pfc.js"></script>
+{% endblock %}

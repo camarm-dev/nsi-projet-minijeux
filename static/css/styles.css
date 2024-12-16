@@ -10,7 +10,7 @@ body {
 }
 
 .mt {
-    margin-top: 2.5em;
+    margin-top: 2.5em !important;
 }
 
 .menu {
@@ -37,6 +37,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 
 .menu img {
@@ -74,21 +75,47 @@ body {
 }
 
 button {
-    margin-top: .5em;
-    background: var(--primary);
     outline: none;
     border: none;
-    color: var(--color) !important;
-    padding: .1em 1em;
     cursor: pointer;
-    font-family: var(--font);
-    box-shadow: 3px 3px 0 0 var(--primary-black);
+    font-family: var(--font), sans-serif;
 }
 
-button:hover {
+.menu button {
+    margin-top: 0 !important;
+}
+
+button:not(.image) {
+    margin-top: .5em;
+    background: var(--primary);
+    box-shadow: 3px 3px 0 0 var(--primary-black);
+    padding: .1em 1em;
+    color: var(--color) !important;
+}
+
+button:not(.image):hover {
     background: var(--hover);
     color: var(--background) !important;
     box-shadow: 3px 3px 0 0 var(--hover-black);
+}
+
+button.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    background: transparent;
+    transition: .1s ease-in-out;
+}
+
+button.image:hover {
+    scale: 1.1;
+}
+
+button.image img {
+    max-height: 3em;
+    height: 100%;
+    margin: 0 !important;
 }
 
 a {
@@ -246,7 +273,7 @@ form {
     border: var(--color) 2px solid;
     padding: 2em;
     width: 312px;
-    margin: auto;
+    margin: 2em auto auto;
     display: flex;
     flex-direction: column;
     max-width: 312px;
@@ -305,4 +332,79 @@ input:focus, input:active {
 .box.danger {
     border-color: var(--danger);
     background: var(--danger-black);
+}
+
+.box.success {
+    border-color: var(--success);
+    background: var(--success-black);
+}
+
+.user {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2em auto auto;
+}
+
+.user img {
+    max-width: 150px;
+}
+
+.user h2 {
+    margin-bottom: 0;
+}
+
+.user p {
+    margin: 0;
+    color: var(--grey)
+}
+
+.history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 35%;
+    max-width: 500px;
+    min-width: 350px;
+    margin: auto;
+}
+
+.gameResults {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5em;
+    border: 1px solid var(--border);
+}
+
+.gameResults img {
+    transition: .1s ease-in-out;
+}
+
+.gameResults h2 {
+    margin: 0;
+}
+
+.gameResults p {
+    color: var(--grey);
+    margin: .5em 0 0;
+}
+
+.gameResults.points0 {
+    border: 1px solid var(--danger);
+    background: var(--danger-black);
+}
+
+.gameResults.morpion:not(.points0), .gameResults.pfc:not(.points0) {
+    border: 1px solid var(--success);
+    background: var(--success-black);
+}
+
+.gameResults:hover img {
+    transform: translate(0, -.5em);
 }

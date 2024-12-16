@@ -18,7 +18,7 @@ function sendScore(score, game) {
         .then(response => {
             if (!response.success) {
                 // Session expired
-                if (response.code == 401) goTo('./login.html')
+                if (response.code == 401) goTo('/')
                 errorBox.innerText = response.message
                 errorBox.classList.remove('hidden')
                 return

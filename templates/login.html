@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Mon compte</h1>
+    <p class="center">Connecte-toi pour continuer</p>
+</header>
+{% if error %}
+<div class="box danger mt">
+    {{ message }}
+</div>
+{% endif %}
+<form action="/login" method="post" enctype="multipart/form-data">
+    <h2>Se connecter</h2>
+    <p class="grey">Pas encore inscrit ? <a onclick="goTo('/createAccount')" class="grey">S'inscrire</a></p>
+    <div class="field">
+        <label for="email">Email</label>
+        <input required type="email" name="email" id="email" placeholder="toi@email.com">
+    </div>
+    <div class="field">
+        <label for="password">Mot de passe</label>
+        <input required type="password" name="password" id="password" placeholder="*******">
+    </div>
+    <div class="field">
+        <button type="submit">Me connecter</button>
+    </div>
+</form>
+{% endblock %}

@@ -7,7 +7,7 @@
 #dino {
     height: 60px;
     width: 55.8px;
-    transform: translate(60px, 420px);
+    transform: translate(60px, 419px);
     position: relative;
 }
 
@@ -17,11 +17,13 @@
 }
 
 #dino.jumping {
-    animation: jump ease-in-out .5s;
+    animation: jump linear .5s;
+    /*transition: ease-in-out;*/
+    /*animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)*/
 }
 
-#dino.jumping img, .arcade.disabled #dino.jumping img {
-    content: url("/static/img/dino.png")
+#dino.jumping img, .arcade.disabled #dino img {
+    content: url("/static/img/dino_sprite.png")
 }
 
 .arcade.disabled #bird img {
@@ -31,38 +33,32 @@
 /* TODO utiliser des transform pour les transitions (c'est plus opti) */
 
 #cactus1 {
-    animation: cactus linear 3s infinite;
+    animation: cactus linear 2s infinite;
     background-image: url("/static/img/cactus1.png");
-    background-size: 47px 56.6px;
-    height: 56.6px;
-    width: 47px;
-    top: 393px;
-    left: 800px;
+    background-size: 30px 50.6px;
+    height: 50.6px;
+    width: 30px;
+    transform: translate(800px, 368px);
     position: relative;
 }
 
 #cactus2 {
-    animation: cactus1 linear 3s infinite;
+    animation: cactus1 linear 2s infinite;
     animation-delay: 7.5s;
-    background-image: url("/static/img/cactus1.png");
-    background-size: 47px 56.6px;
-    height: 56.6px;
-    width: 47px;
-    top: 336px;
-    left: 800px;
+    background-image: url("/static/img/cactus2.png");
+    background-size: 50px 39.13px;
+    height: 39.13px;
+    width: 50px;
+    transform: translate(800px, 330px);
     position: relative;
 }
 
 #bird {
-    animation: bird linear 4s infinite;
-    animation-delay: 20s;
-    background-image: url("/static/img/bird.png");
-    background: #fff;
-    background-size: 29.6px 29.5px;
-    height: 29.5px;
-    width: 29.6px;
-    top: 70px;
-    left: 800px;
+    animation: bird linear 3s infinite;
+    animation-delay: 10s;
+    height: 32px;
+    width: 50px;
+    transform: translate(800px, 10px);
     position: relative;
 }
 
@@ -73,41 +69,40 @@
 
 @keyframes jump {
     from {
-        transform: translate(60px, 420px);
+        transform: translate(60px, 419px);
+        animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1)
     }
-    50% {
+    69.0893% {
         transform: translate(60px, 120px);
-    }
-    60% {
-        transform: translate(60px, 120px);
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
     }
 }
 
 
 @keyframes cactus {
     from {
-        left: 800px;
+        transform: translate(800px, 368px);
     }
     to {
-        left: -47px;
+        transform: translate(-50px, 368px);
     }
 }
 
 @keyframes cactus1 {
     from {
-        left: 800px;
+        transform: translate(800px, 330px);
     }
     to {
-        left: -47px;
+        transform: translate(-50px, 330px);
     }
 }
 
 
 @keyframes bird {
     from {
-        left: 800px;
+        transform: translate(800px, 10px);
     }
     to {
-        left: -47px;
+        transform: translate(-50px, 10px);
     }
 }

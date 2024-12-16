@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Jeu du juste prix{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="/static/css/justeprix.css">
+{% endblock %}
+
+{% block loader_image %}
+<img alt="Loader image" src="/static/img/cartouche.png">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Jeu du juste prix</h1>
+</header>
+
+<div class="arcade disabled">
+    <div id="menu" class="center">
+        <p id="gameEndStatus">Appuyez sur "Jouer" pour commencer.</p>
+        <div class="buttons">
+            <button id="play">Jouer</button>
+            <button onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
+        </div>
+    </div>
+    <div id="game" class="screen">
+        <div class="history" id="history"></div>
+        <div class="input">
+            <span>invite@justeprix $~</span>
+            <div id="input"></div>
+        </div>
+    </div>
+</div>
+
+<div id="infos" class="center">
+    <p>Entrez un prix dans la console.</p>
+</div>
+
+<script src="/static/js/justeprix.js"></script>
+{% endblock %}

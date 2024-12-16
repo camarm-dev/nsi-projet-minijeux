@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Morpion{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="/static/css/morpion.css">
+{% endblock %}
+
+{% block loader_image %}
+<img alt="Loader image" src="/static/img/morpion.png">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Morpion</h1>
+</header>
+
+<!--menu-->
+<div id="gameMenu">
+    <h2>Choisissez un mode de jeu :</h2>
+    <div class="buttons">
+        <button id="twoPlayers">2 Joueurs</button>
+        <button id="vsRobot">Contre ordinateur</button>
+    </div>
+</div>
+
+<!--tab des cellules-->
+<div class="board">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+</div>
+
+<!--fin du jeu-->
+<div id="game_end">
+    <p class="white" id="end_game_statue">...</p>
+    <div class="buttons">
+        <button id="reload" onclick="realoadGame()">Recommencer</button>
+        <button id="accueil" onclick="goTo('./index.html', 'img/arcade.png')">Retour à l'accueil</button>
+    </div>
+</div>
+
+<!--dubut-->
+<h1 id="gameStatus" class="hidden">Le joueur 1 commence</h1>
+
+<script src="/static/js/morpion.js"></script>
+{% endblock %}
