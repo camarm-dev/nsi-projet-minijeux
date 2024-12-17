@@ -1,82 +1,49 @@
-import * as Tone from "./tone.min.js";
 // Constantes
 const monScore = document.getElementById('monScore');
-const boxBalle = document.getElementById('boxBalle');
 const cursor = document.getElementById("cursor");
 const levelMenu = document.getElementById("levelMenu");
 const levelButtons = document.querySelectorAll(".levelButton");
 const countDown = new Audio("audio/arcade-countdown-7007.mp3");
 const soundUrls = [
-    "/static/audio/click1.mp3",
-    "/static/audio/click2.mp3",
-    "/static/audio/click3.mp3",
-    "/static/audio/click4.mp3"
+    "audio/click1.mp3",
+    "audio/click2.mp3",
+    "audio/click3.mp3",
+    "audio/click4.mp3"
 ];
-const musicUrls = {
-    easy: "/static/audio/easy-level.mp3",
-    medium: "/static/audio/medium-level.mp3",
-    hard: "/static/audio/hard-level.mp3"
+const levelMusic = {
+    easy: "audio/easy-level.mp3",    
+    medium: "audio/medium-level.mp3",
+    hard: "audio/hard-level.mp3"     
 };
 const totalImages = 5;
 const totalSound = 4;
+const maxBalles = 3;  
+let balles = [];  
+let balleID = 0;  
 let soundIndex = 0;
 let score = 0;
 let currentImageIndex = 1;
 let timer;
 let timeRemaining = 60;
-let currentMusic; // Musique courante
+let backgroundMusic;
+let balleInterval;
+let currentBallSize = 140;
 
-// tone.js
-let player; // Lecture
-let meter; // Analyse
-let audioContext = new (window.AudioContext || window.webkitAudioContext)();
-let analyser;
-
-// Initialisation du player (son initial)
-player = new Tone.Player(musicUrls.easy).toDestination();
-
-// Démarrer l'AudioContext au clic
-document.addEventListener('click', function() {
-    console.log("Clique détecté");
-    Tone.start().then(() => {
-        console.log("AudioContext démarré");
-        startGame('easy');
-    }).catch(error => {
-        console.error("Erreur lors du démarrage de l'AudioContext", error);
-    });
-});
-
-// Fonction de préchargement des sons
-const preloadedSounds = soundUrls.map(url => {
-    const audio = new Audio(url);
-    audio.load();
-    return audio;
-});
 
 // Initialisation du menu et du curseur
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("menu-active");
-    cursor.style.display = "none"; // Masquer le curseur
-    document.getElementById("particleContainer").style.display = "none"; // Cacher les particules
+    cursor.style.display = "none"; // masquer le curseur
+    document.getElementById("particleContainer").style.display = "none"; // cache les particules
 });
 
 // Menu de niveau
 levelButtons.forEach(button => {
     button.addEventListener("click", (e) => {
         const selectedLevel = e.target.dataset.level;
-        Tone.start();
         startGame(selectedLevel);
     });
 });
-
-// Fonction pour vérifier si le fichier audio existe
-function checkMusicExists(url) {
-    return new Promise((resolve, reject) => {
-        const audio = new Audio(url);
-        audio.onload = () => resolve(true);
-        audio.onerror = () => reject(false);
-    });
-}
 
 // Fonction pour démarrer le jeu
 function startGame(level) {
@@ -84,66 +51,18 @@ function startGame(level) {
     document.body.classList.remove("menu-active");
     cursor.style.display = "block";
 
-    // Vérifier si la musique existe avant de commencer
-    checkMusicExists(musicUrls[level])
-        .then(() => {
-            startCountdown(() => {
-                document.getElementById("monScore").style.display = "block";
-                document.getElementById("monTimer").style.display = "block";
-                document.getElementById("boxBalle").style.display = "block";
-                document.getElementById("particleContainer").style.display = "block"; // Afficher les particules
 
-                // Mettre en pause la musique actuelle
-                if (currentMusic) {
-                    currentMusic.pause();
-                }
+    startCountdown(() => {    
+        playLevelMusic(level, () => {
+            document.getElementById("monScore").style.display = "block";
+            document.getElementById("monTimer").style.display = "block";
+            document.getElementById("particleContainer").style.display = "block";
 
-                // Charger et démarrer la musique
-                player.load(musicUrls[level]).then(() => {
-                    player.start();
-                    currentMusic = new Audio(musicUrls[level]);
-                    currentMusic.play();
-                }).catch(error => {
-                    console.error("Erreur de lecture de la musique", error);
-                });
-
-                // Initialiser les éléments du jeu
-                syncBallsWithTempo(); // Synchronisation
-                moveBoxBalle(); // Position initiale
-                changeCircleImage(); // Première image
-                startTimer(); // Démarrer le chronomètre
-            });
-        })
-        .catch(() => {
-            console.error("Le fichier audio pour ce niveau est manquant.");
+            startTimer();   
+            balleInterval = setInterval(createNewBalle, 1000);
         });
+    });
 }
-
-// Fonction pour synchroniser les balles avec le tempo
-function syncBallsWithTempo() {
-    analyser = audioContext.createAnalyser();
-    player.connect(analyser);
-    analyser.connect(audioContext.destination);
-
-    const rhythmInterval = 100;
-    const syncInterval = setInterval(() => {
-        const bassData = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(bassData);
-
-        const bass = bassData.slice(0, 10);
-        const bassLevel = bass.reduce((a, b) => a + b) / bass.length;
-
-        if (bassLevel > 100) {
-            moveBoxBalle();
-            changeCircleImage();
-        }
-
-        if (player.state === "stopped") {
-            clearInterval(syncInterval);
-        }
-    }, rhythmInterval);
-}
-
 
 // Fonction de compte à rebours
 function startCountdown(callback) {
@@ -170,13 +89,39 @@ function startCountdown(callback) {
     }, 1000);
 }
 
+// Fonction lance la musique
+function playLevelMusic(level, callback) {
+    if (backgroundMusic) {
+        backgroundMusic.pause(); 
+    }
+
+    const musicUrl = levelMusic[level];
+    backgroundMusic = new Audio(musicUrl);
+
+    backgroundMusic.play().then(() => {
+        console.log("Musique jouée : " + musicUrl);
+
+        
+        timeRemaining = Math.ceil(backgroundMusic.duration); 
+        callback(); 
+
+    }).catch(err => {
+        console.error("Erreur lors de la lecture de la musique :", err);
+    });
+
+   
+    backgroundMusic.addEventListener("ended", () => {
+        endGame();
+    });
+}
+
 // Fonction pour démarrer le chronomètre
 function startTimer() {
     const timerDisplay = document.getElementById("monTimer");
 
     timer = setInterval(() => {
         timeRemaining--;
-        timerDisplay.textContent = `Temps restant : ${timeRemaining}`;
+        timerDisplay.textContent = `Temps restant : ${timeRemaining} sec`;
 
         if (timeRemaining <= 0) {
             clearInterval(timer);
@@ -187,6 +132,12 @@ function startTimer() {
 
 // Fonction de fin de jeu
 function endGame() {
+    if (backgroundMusic) {
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0; // Réinitialise la musique
+    }
+
+    clearInterval(timer);
     document.getElementById("monScore").style.display = "none";
     document.getElementById("monTimer").style.display = "none";
     document.getElementById("boxBalle").style.display = "none";
@@ -207,15 +158,87 @@ function endGame() {
 
     document.body.appendChild(endScreen);
 
+    clearInterval(balleInterval); 
+    balles.forEach(b => document.body.removeChild(b.element)); 
+    balles = [];
     document.getElementById("returnToMenu").addEventListener("click", () => {
         document.body.removeChild(endScreen);
         showMenu();
+
+        
     });
 }
 
 // Fonction pour revenir au menu
 function showMenu() {
     window.location.reload();
+}
+
+// Crée plusieurs balle
+function createNewBalle() {
+    if (balles.length >= maxBalles) return;
+
+    const newBalle = document.createElement("div");
+    const id = ++balleID;
+
+    // Sélectionner l'image dynamique
+    const currentImage = `img/${currentImageIndex}.png`;
+    currentImageIndex = (currentImageIndex % totalImages) + 1; // Passer à l'image suivante
+
+    newBalle.className = "balle";
+    newBalle.dataset.id = id;
+
+    // Positionnement sécurisé des balles
+    const randomX = Math.random() * (window.innerWidth - currentBallSize);
+    const randomY = Math.random() * (window.innerHeight - currentBallSize);
+
+    newBalle.style.cssText = `
+        position: absolute;
+        width: ${currentBallSize}px;
+        height: ${currentBallSize}px;
+        border-radius: 50%;
+        background: url('${currentImage}') no-repeat center/cover;
+        left: ${randomX}px;
+        top: ${randomY}px;
+    `;
+
+    document.body.appendChild(newBalle);
+    balles.push({ element: newBalle, id });
+
+    // Gestion des clics
+    newBalle.addEventListener("click", () => handleBalleClick(id, newBalle));
+
+    // Suppression automatique après 3 secondes
+    setTimeout(() => {
+        removeBalle(id);
+    }, 3000);
+}
+
+// Fonction pour gerer les clique sur les balles
+function handleBalleClick(id, balle) {
+    if (balles.length === 0 || balles[0].id !== id) {
+        
+        score -= 1; 
+        updateScore();
+        return;
+    }
+
+    score += 1; 
+    updateScore();
+    removeBalle(id); 
+}
+
+// Suprimer la balle 
+function removeBalle(id) {
+    const balleIndex = balles.findIndex(b => b.id === id);
+    if (balleIndex !== -1) {
+        document.body.removeChild(balles[balleIndex].element);
+        balles.splice(balleIndex, 1); 
+    }
+}
+
+function updateScore() {
+    monScore.textContent = `Score : ${score}`;
 }
 
 // Curseur personnalisé
@@ -235,39 +258,10 @@ function createParticle(x, y) {
 
     setTimeout(() => {
         particle.remove();
-    }, 1000);
+    }, 1000000
+);
 }
 
-// Fonction pour déplacer la balle
-function moveBoxBalle() {
-    const size = parseInt(getComputedStyle(boxBalle).width, 10);
-    const randomX = Math.random() * (window.innerWidth - size - 100);
-    const randomY = Math.random() * (window.innerHeight - size - 100);
-    
-    boxBalle.style.left = `${randomX}px`;
-    boxBalle.style.top = `${randomY}px`;
-}
-
-// Fonction pour changer l'image de la balle
-function changeCircleImage() {
-    boxBalle.style.backgroundImage = `url('img/${currentImageIndex}.png')`;
-    currentImageIndex = (currentImageIndex % totalImages) + 1;
-}
-
-//Clic sur la balle
-boxBalle.addEventListener("click", () => {
-    score++;
-    const sound_Url = soundUrls[soundIndex];
-    if (sound_Url) {
-        const audio = new Audio(sound_Url);
-        audio.play().catch(err => console.error(`Erreur lors de la lecture du son : ${err.message}`));
-    }
-    soundIndex = (soundIndex + 1) % totalSound;
-    monScore.textContent = `Score : ${score}`;
-
-    moveBoxBalle();
-    changeCircleImage();
-});
 
 
 
