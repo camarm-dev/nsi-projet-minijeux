@@ -207,7 +207,7 @@ def save_score():
         return {
             "success": False,
             "code": 401,
-            "messages": "Impossible de vous authentifier, veuillez vous connectez."
+            "message": "Impossible de vous authentifier, veuillez vous connectez."
         }
     try:
         data = request.json
@@ -220,12 +220,12 @@ def save_score():
             return {
                 "success": True,
                 "code": 200,
-                "messages": "La partie a été sauvegardée !"
+                "message": "La partie a été sauvegardée !"
             }
         return {
             "success": False,
             "code": 400,
-            "messages": "Cette requête a été bloquée par l'anti cheat !"
+            "message": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
         #raise e
@@ -233,7 +233,7 @@ def save_score():
     return {
         "success": False,
         "code": 500,
-        "messages": "Une erreur est survenue, impossible d'enregistrer le score."
+        "message": "Une erreur est survenue, impossible d'enregistrer le score."
     }
 
 
