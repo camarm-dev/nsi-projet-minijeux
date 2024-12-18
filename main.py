@@ -106,11 +106,15 @@ def setup_database():
 
 def anticheat(game: str, points: int, user: dict):
     last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
+    if not last_game:
+        return True, points if points < 25 else False, 0
+    last_game = build_score(last_game)
     match game:
         case 'dino':
-            # TODO
-            # 2s/point
-            ...
+            now = datetime.datetime.now()
+            # 1 point = 2 secondes
+            # Le nombre de secondes de la différences des dates / 2 doit être supérieur au nombre de points
+            return ((now - last_game['date']).seconds / 2) > points, points
         case 'morpion':
             # TODO
             # La partie doit durer 10s
