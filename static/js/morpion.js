@@ -39,6 +39,8 @@ vsRobotBtn.addEventListener('click', () => {
 });
 
 function startGame() {
+    // Cacher les messages d'erreur
+    hideBoxes()
     menu.classList.add('hidden');
     board.style.display = 'flex';
     document.getElementById('gameStatus').classList.remove('hidden');
@@ -162,7 +164,7 @@ function checkdraw(){
 }
 
 function updateGamesStatus(status){
-    let statusTexte;
+    let statusTexte, points, gameEnd;
 
     switch(status){
         case 'X':
@@ -173,13 +175,23 @@ function updateGamesStatus(status){
             break;
         case 'winsX':
             statusTexte = "Le joueur 1(X) a gagné!";
+            points = 5
+            gameEnd = true
             break;
         case 'winsO':
+            points = 0
             statusTexte = isVsRobot ? "Le robot(O) a gagné!" : "Le joueur 2(O) a gagné!";
+            gameEnd = true
             break;
         case 'draw':
+            points = 0
             statusTexte = "Égalité!";
+            gameEnd = true
             break;
+    }
+
+    if (isVsRobot && gameEnd) {
+        sendScore(points, 'morpion')
     }
 
     gamestatus.innerHTML = statusTexte;
