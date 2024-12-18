@@ -228,8 +228,8 @@ def save_score():
             "messages": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
-        raise e
-        #pass
+        #raise e
+        pass
     return {
         "success": False,
         "code": 500,
