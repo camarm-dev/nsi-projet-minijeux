@@ -105,7 +105,7 @@ def setup_database():
 
 
 def anticheat(game: str, points: int, user: dict):
-    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
+    last_game = cursor.execute("SELECT * FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
     # Les parties de la dernière minute
     now = datetime.datetime.now()
     last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['pseudo'], now-datetime.timedelta(minutes=1))).fetchone()
