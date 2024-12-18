@@ -106,23 +106,31 @@ def setup_database():
 
 def anticheat(game: str, points: int, user: dict):
     last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
+    # Les parties de la dernière minute
+    now = datetime.datetime.now()
+    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['username'], now-datetime.timedelta(minutes=1))).fetchone()
     if not last_game:
         return True, points if points < 25 else False, 0
     last_game = build_score(last_game)
     match game:
         case 'dino':
-            now = datetime.datetime.now()
             # 1 point = 2 secondes
-            # Le nombre de secondes de la différences des dates / 2 doit être supérieur au nombre de points
+            # <=> Le nombre de secondes de la différences des dates / 2 doit être supérieur au nombre de points
             return ((now - last_game['date']).seconds / 2) > points, points
         case 'morpion':
-            # TODO
             # La partie doit durer 10s
-            ...
+            # <=> La différence des dates doit être supérieur à 10s
+            # Une partie gagnée = 5 points
+            points = 5 if points >= 5 else 0
+            return (now - last_game['date']).seconds > 10, points
         case 'justeprix':
-            # TODO
             # La partie doit durer 5s
-            ...
+            # <=> La différence des dates doit être supérieur à 5s
+            # Ici points représente le nombre d'essais
+            points = -0.5 * (points ** 2) + 30 if points <= 7 else 5  # Formule pour les points: -0.5x²+30 et à partir de 7 essais, le score est constant à 5
+            # Pas plus de 2 parties à 20 points dans une minute
+            # TODO
+            return (now - last_game['date']).seconds > 5, points
         case 'pfc':
             # TODO
             # La partie doit durer minimum 5s
