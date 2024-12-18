@@ -66,7 +66,7 @@ def get_user(pseudo: str):
 
 
 def get_user_scores(pseudo: str):
-    scores = cursor.execute("SELECT * FROM scores WHERE user=?", (pseudo,)).fetchall()
+    scores = cursor.execute("SELECT * FROM scores WHERE user=? ORDER by date DESC", (pseudo,)).fetchall()
     if scores:
         return list(map(build_score, scores))
     return []
