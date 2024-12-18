@@ -182,7 +182,7 @@ function createNewBalle() {
     const id = ++balleID;
 
     // Sélectionner l'image dynamique
-    const currentImage = `img/${currentImageIndex}.png`;
+    const currentImage = `/static/img/${currentImageIndex}.png`;
     currentImageIndex = (currentImageIndex % totalImages) + 1; // Passer à l'image suivante
 
     newBalle.className = "balle";
