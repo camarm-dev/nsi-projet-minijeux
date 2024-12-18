@@ -55,7 +55,7 @@ def insert_user(name: str, pseudo: str, email: str, password: str, created_at: d
 
 
 def insert_score(game: str, user: str, points: int, created_at: datetime.datetime):
-    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?)", (game, user, points, created_at))
+    cursor.execute("INSERT INTO scores VALUES (?,?,?,?)", (game, user, points, created_at))
     database.commit()
 
 
@@ -105,12 +105,12 @@ def setup_database():
 
 
 def anticheat(game: str, points: int, user: dict):
-    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
+    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
     # Les parties de la dernière minute
     now = datetime.datetime.now()
-    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['username'], now-datetime.timedelta(minutes=1))).fetchone()
+    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['pseudo'], now-datetime.timedelta(minutes=1))).fetchone()
     if not last_game:
-        return True, points if points < 25 else False, 0
+        return (True, points) if points < 25 else (False, 0)
     last_game = build_score(last_game)
     match game:
         case 'dino':
@@ -210,13 +210,13 @@ def save_score():
             "messages": "Impossible de vous authentifier, veuillez vous connectez."
         }
     try:
-        data = json.loads(request.data)
+        data = request.json
         score = data['score']
         game = data['game']
         date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
-            insert_score(game, user['username'], points, date)
+            insert_score(game, user['pseudo'], points, date)
             return {
                 "success": True,
                 "code": 200,
@@ -228,7 +228,8 @@ def save_score():
             "messages": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
-        pass
+        raise e
+        #pass
     return {
         "success": False,
         "code": 500,
