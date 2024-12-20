@@ -24,7 +24,7 @@ function sendScore(score, game) {
                 errorBox.classList.remove('hidden')
                 return
             }
-            successBox.innerText = "Vos score ont bien été enregistrés !"
+            successBox.innerText = "La partie a été sauvegardée !"
             successBox.classList.remove('hidden')
             console.log(response)
         })
