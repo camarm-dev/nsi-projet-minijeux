@@ -66,7 +66,7 @@ def get_user(pseudo: str):
 
 
 def get_user_scores(pseudo: str):
-    scores = cursor.execute("SELECT * FROM scores WHERE user=?", (pseudo,)).fetchall()
+    scores = cursor.execute("SELECT * FROM scores WHERE user=? ORDER by date DESC", (pseudo,)).fetchall()
     if scores:
         return list(map(build_score, scores))
     return []
@@ -112,13 +112,13 @@ def isWin(game, score):
 
 
 def anticheat(game: str, points: int, user: dict):
-    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
+    last_game = cursor.execute("SELECT * FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
     # Les parties de la dernière minute
     now = datetime.datetime.now()
-    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['pseudo'], now - datetime.timedelta(minutes=1))).fetchall()
+    last_minute_games = cursor.execute("SELECT * FROM scores WHERE user=? AND date<=?", (user['pseudo'], now - datetime.timedelta(minutes=1))).fetchall()
     last_minute_games = [build_score(row) for row in last_minute_games]
     if not last_game:
-        return True, points if points < 25 else False
+        return (True, points) if points < 25 else (False, 0)
     last_game = build_score(last_game)
     match game:
         case 'dino':
@@ -220,7 +220,7 @@ def save_score():
         return {
             "success": False,
             "code": 401,
-            "message": "Impossible de vous authentifier, veuillez vous connectez."
+            "messages": "Impossible de vous authentifier, veuillez vous connectez."
         }
     try:
         data = json.loads(request.data)
@@ -229,24 +229,23 @@ def save_score():
         date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
-            win = isWin(game, score)
-            insert_score(game, user['pseudo'], points, date, win)
+            insert_score(game, user['username'], points, date)
             return {
                 "success": True,
                 "code": 200,
-                "message": "La partie a été sauvegardée !"
+                "messages": "La partie a été sauvegardée !"
             }
         return {
             "success": False,
             "code": 400,
-            "message": "Cette requête a été bloquée par l'anti cheat !"
+            "messages": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
-        raise e
+        pass
     return {
         "success": False,
         "code": 500,
-        "message": "Une erreur est survenue, impossible d'enregistrer le score."
+        "messages": "Une erreur est survenue, impossible d'enregistrer le score."
     }
 
 

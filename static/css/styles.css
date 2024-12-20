@@ -343,6 +343,13 @@ input:focus, input:active {
     background: var(--success-black);
 }
 
+.box.small {
+    width: 100%;
+    max-width: 450px;
+    padding: .5em;
+    margin-top: 1em;
+}
+
 .user {
     width: max-content;
     display: flex;

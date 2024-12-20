@@ -184,7 +184,7 @@ function updateGamesStatus(status){
             gameEnd = true
             break;
         case 'draw':
-            points = 0
+            points = 1
             statusTexte = "Égalité!";
             gameEnd = true
             break;
