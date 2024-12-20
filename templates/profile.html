@@ -8,7 +8,9 @@
   <img src="/static/img/profil.png" alt="Photo de profil">
   <h2>{{ user.name }} - @{{ user.pseudo }}</h2>
   <p>Inscrit depuis le {{ user.created_at.strftime("%d %B %Y") }}</p>
-  <p class="center"></p>
+  <p class="center">
+    Classement : arrive bientôt
+  </p>
 </div>
 
 <h2 class="center mt">Historique des parties</h2>
@@ -23,7 +25,7 @@
     <div class="start">
       <h2>{{ game.points }} points</h2>
       <p>sur {{ game.name }}</p>
-<!--      <p>le {{ game.date.strftime("%d %B %Y %H:%m") }}</p>-->
+      <p>le {{ game.date.strftime("%d %B %Y à %H:%m") }}</p>
     </div>
     <img src="/static/img/{{ game.game }}.png" alt="Image de {{ game.name }}">
   </div>

@@ -389,21 +389,26 @@ input:focus, input:active {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 1.5em;
+    padding: 1em;
     border: 1px solid var(--border);
 }
 
 .gameResults img {
     transition: .1s ease-in-out;
+    max-width: 100px;
 }
 
-.gameResults h2 {
+.gameResults h2, .gameResults p:last-child {
     margin: 0;
 }
 
 .gameResults p {
     color: var(--grey);
-    margin: .5em 0 0;
+    margin: .4em 0 0;
+}
+
+.gameResults p:last-child {
+    font-size: .9em;
 }
 
 .gameResults.points0 {
