@@ -93,6 +93,7 @@ function chooseComputer() {
 
 function play() {
     resetAnimation()
+    hideBoxes()
     button.classList.add('hidden')
     menu.classList.add('hidden')
     playingElement.classList.remove('hidden')
