@@ -26,7 +26,6 @@ function sendScore(score, game) {
             }
             successBox.innerText = "La partie a été sauvegardée !"
             successBox.classList.remove('hidden')
-            console.log(response)
         })
         .catch(err => {
             errorBox.innerText = err
