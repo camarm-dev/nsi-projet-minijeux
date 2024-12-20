@@ -1,0 +1,35 @@
+table {
+    table-layout: fixed;
+    width: 80%;
+    margin: 4px auto;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+table thead tr, table, thead td {
+    border-width: 0 0 2px 0 !important;
+}
+
+table tr {
+    margin-left: -2px;
+}
+
+table th,
+table td {
+    position: relative;
+    padding: 0.5rem;
+    word-wrap: break-word;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+}
+
+table th:last-child,
+table td:last-child {
+    border-right-width: 2px;
+}
+
+
+table th:first-child,
+table td:first-child {
+    border-left-width: 2px;
+}
