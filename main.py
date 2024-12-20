@@ -54,8 +54,8 @@ def insert_user(name: str, pseudo: str, email: str, password: str, created_at: d
     database.commit()
 
 
-def insert_score(game: str, user: str, points: int, created_at: datetime.datetime):
-    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?)", (game, user, points, created_at))
+def insert_score(game: str, user: str, points: int, created_at: datetime.datetime, win: bool | None):
+    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?,?)", (game, user, points, created_at, win))
     database.commit()
 
 
@@ -102,6 +102,13 @@ def verify_token(token: str):
 def setup_database():
     cursor.execute("CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL)")
     cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL, win BOOLEAN)")
+
+
+def isWin(game, score):
+    # Les parties de morpion et pfc sont gagnées <=> 5 points marqués
+    if game in ['morpion', 'pfc'] and score != 1:
+        return score == 5
+    return None
 
 
 def anticheat(game: str, points: int, user: dict):
@@ -214,7 +221,7 @@ def save_score():
         return {
             "success": False,
             "code": 401,
-            "messages": "Impossible de vous authentifier, veuillez vous connectez."
+            "message": "Impossible de vous authentifier, veuillez vous connectez."
         }
     try:
         data = json.loads(request.data)
@@ -223,23 +230,24 @@ def save_score():
         date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
-            insert_score(game, user['username'], points, date)
+            win = isWin(game, score)
+            insert_score(game, user['username'], points, date, win)
             return {
                 "success": True,
                 "code": 200,
-                "messages": "La partie a été sauvegardée !"
+                "message": "La partie a été sauvegardée !"
             }
         return {
             "success": False,
             "code": 400,
-            "messages": "Cette requête a été bloquée par l'anti cheat !"
+            "message": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
-        pass
+        raise e
     return {
         "success": False,
         "code": 500,
-        "messages": "Une erreur est survenue, impossible d'enregistrer le score."
+        "message": "Une erreur est survenue, impossible d'enregistrer le score."
     }
 
 
