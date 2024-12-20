@@ -11,6 +11,15 @@
   <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
+{% if logged_in %}
+<script>
+    const logged = true
+</script>
+{% else %}
+<script>
+    const logged = false
+</script>
+{% endif %}
 <div id="loader">
   {% block loader_image %}
     <img alt="Loader image" src="/static/img/arcade.png">
