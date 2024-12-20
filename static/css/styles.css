@@ -381,7 +381,7 @@ input:focus, input:active {
     width: 35%;
     max-width: 500px;
     min-width: 350px;
-    margin: auto;
+    margin: 2em auto auto;
 }
 
 .gameResults {
@@ -411,7 +411,7 @@ input:focus, input:active {
     background: var(--danger-black);
 }
 
-.gameResults.morpion:not(.points0), .gameResults.pfc:not(.points0) {
+.gameResults.morpion.points5, .gameResults.pfc.points5 {
     border: 1px solid var(--success);
     background: var(--success-black);
 }
