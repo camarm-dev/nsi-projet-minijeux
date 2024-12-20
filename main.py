@@ -101,14 +101,15 @@ def verify_token(token: str):
 
 def setup_database():
     cursor.execute("CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL, win BOOLEAN)")
 
 
 def anticheat(game: str, points: int, user: dict):
     last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
     # Les parties de la dernière minute
     now = datetime.datetime.now()
-    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['username'], now-datetime.timedelta(minutes=1))).fetchone()
+    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['username'], now - datetime.timedelta(minutes=1))).fetchall()
+    last_minute_games = [build_score(row) for row in last_minute_games]
     if not last_game:
         return True, points if points < 25 else False, 0
     last_game = build_score(last_game)
@@ -128,8 +129,12 @@ def anticheat(game: str, points: int, user: dict):
             # <=> La différence des dates doit être supérieur à 5s
             # Ici points représente le nombre d'essais
             points = -0.5 * (points ** 2) + 30 if points <= 7 else 5  # Formule pour les points: -0.5x²+30 et à partir de 7 essais, le score est constant à 5
-            # Pas plus de 2 parties à 20 points dans une minute
-            # TODO
+
+            # Pas plus de 1 partie à 30 points dans une minute
+            for game in last_minute_games:
+                if game['game'] == 'justeprix' and game['points'] == 30:
+                    return False, 0
+
             return (now - last_game['date']).seconds > 5, points
         case 'pfc':
             # TODO
