@@ -112,10 +112,10 @@ def isWin(game, score):
 
 
 def anticheat(game: str, points: int, user: dict):
-    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['username'],)).fetchone()
+    last_game = cursor.execute("SELECT date FROM scores WHERE user=? ORDER BY date DESC", (user['pseudo'],)).fetchone()
     # Les parties de la dernière minute
     now = datetime.datetime.now()
-    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['username'], now - datetime.timedelta(minutes=1))).fetchall()
+    last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['pseudo'], now - datetime.timedelta(minutes=1))).fetchall()
     last_minute_games = [build_score(row) for row in last_minute_games]
     if not last_game:
         return True, points if points < 25 else False, 0
@@ -231,7 +231,7 @@ def save_score():
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
             win = isWin(game, score)
-            insert_score(game, user['username'], points, date, win)
+            insert_score(game, user['pseudo'], points, date, win)
             return {
                 "success": True,
                 "code": 200,
