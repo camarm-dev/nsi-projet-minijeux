@@ -17,6 +17,7 @@ let currentGame = {
 }
 
 let winText = ''
+let score = 0
 
 button.addEventListener('click', play)
 choices.forEach(el => {
@@ -42,6 +43,7 @@ choices.forEach(el => {
             computerElement.src = `/static/img/${computerChoice}.png`
             winnerElement.textContent = winText
             menu.classList.remove('hidden')
+            sendScore(score, 'pfc')
         }, 1800)
         setTimeout(() => {
             winnerElement.textContent = 'Feuille !'
@@ -66,10 +68,13 @@ function getWinner(computer, user) {
     const computerIndex = items.indexOf(computer)
     const userIndex = items.indexOf(user)
     if (computerIndex == userIndex) {
+        score = 1
         return null
     } else if ((computerIndex + 1) % 3 == userIndex) {
+        score = 5
         return 'user'
     } else {
+        score = 0
         return 'computer'
     }
 }
@@ -95,7 +100,6 @@ function play() {
 }
 
 function startAnimation() {
-    // TODO
     button.classList.remove('hidden')
     playingElement.classList.add('hidden')
     resultsElement.classList.remove('hidden')
