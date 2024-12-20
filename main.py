@@ -1,6 +1,7 @@
 import datetime
 import json
 import locale
+import math
 import re
 import secrets
 import sys
@@ -109,6 +110,13 @@ def get_ranking(page: int):
                                 """, (page,)).fetchall()
     if results:
         return [build_leaderboard_document(row) for row in results]
+
+
+def get_statistics():
+    total_users = cursor.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+    total_games = cursor.execute("SELECT COUNT(*) FROM scores").fetchone()[0]
+    total_pages = math.ceil(total_users / 20)
+    return total_users, total_games, total_pages
 
 
 def authenticate(email: str, password: str):
@@ -311,12 +319,12 @@ def profile(username: str):
 def leaderboard():
     authenticated, user = get_authentication_status()
     page = request.args.get('page', 1)
+    total_users, total_games, total_pages = get_statistics()
     ranking = get_ranking(page - 1)
     if authenticated:
         user_ranking = get_user_ranking(user['pseudo'])
-        return render_template('leaderboard.html', leaderboard=ranking, logged_in=True, personal_ranking=user_ranking)
-    return render_template('leaderboard.html', leaderboard=ranking, logged_in=False, personal_ranking=None)
-
+        return render_template('leaderboard.html', leaderboard=ranking, logged_in=True, personal_ranking=user_ranking, total_users=total_users, total_games=total_games, total_pages=total_pages, page=page)
+    return render_template('leaderboard.html', leaderboard=ranking, logged_in=False, personal_ranking=None, total_users=total_users, total_games=total_games, total_pages=total_pages, page=page)
 
 
 @app.get('/credits')
