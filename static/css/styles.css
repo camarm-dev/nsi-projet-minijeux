@@ -13,6 +13,10 @@ body {
     margin-top: 2.5em !important;
 }
 
+.mb {
+    margin-bottom: 2.5em !important;
+}
+
 .menu {
     width: 100%;
     padding: 5px 15px;
