@@ -118,7 +118,7 @@ def anticheat(game: str, points: int, user: dict):
     last_minute_games = cursor.execute("SELECT date FROM scores WHERE user=? AND date<=?", (user['pseudo'], now - datetime.timedelta(minutes=1))).fetchall()
     last_minute_games = [build_score(row) for row in last_minute_games]
     if not last_game:
-        return True, points if points < 25 else False, 0
+        return True, points if points < 25 else False
     last_game = build_score(last_game)
     match game:
         case 'dino':
@@ -156,7 +156,6 @@ def anticheat(game: str, points: int, user: dict):
             ...
         case _:
             return False, 0
-    print(last_game)
     return True, points
 
 
