@@ -44,7 +44,8 @@ def build_score(row: list):
         "user": row[1],
         "points": row[2],
         "date": row[3],
-        "name": GAMES[row[0]]
+        "name": GAMES[row[0]],
+        "win": row[4]
     }
 
 
@@ -226,11 +227,10 @@ def save_score():
         data = json.loads(request.data)
         score = data['score']
         game = data['game']
-        date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
             win = isWin(game, score)
-            insert_score(game, user['pseudo'], points, date, win)
+            insert_score(game, user['pseudo'], points, datetime.datetime.now(), win)
             return {
                 "success": True,
                 "code": 200,
