@@ -10,6 +10,7 @@ let tries = 0
 let price = 0
 
 function play() {
+    hideBoxes()
     // Un nombre entre 1 et 1000
     price = Math.floor(Math.random() * 1000)
     menu.classList.add("hidden")
@@ -22,6 +23,7 @@ function endGame() {
     input.classList.add('hidden')
     gameEndStatus.innerText = `Vous avez trouvé en ${tries} essais.`
     playButton.innerText = "Rejouer"
+    sendScore(tries, 'justeprix')
     tries = 0
     menu.classList.remove("hidden")
     arcade.classList.add("disabled")
