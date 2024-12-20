@@ -97,7 +97,27 @@ _Schéma de la BDD_
 ![img.png](.github/images/profile.png)
 
 ## Lundi 16 décembre
+
 - V1 mise en ligne
 - création de compte et connexion fonctionnelle
 - avancement OSU
 - (ajouter image et détailler)
+
+## Mercredi 18 Décembre
+
+- Début de mise en place de l'acquisition des scores
+- Mise en place d'un anticheat
+![img.png](.github/images/img.png)
+
+## À la maison (18 décembre - 6 Janvier)
+
+- Mise en place du classement
+> Pour cette partie, nous avons rencontré un problème : Comment obtenir un classement de chaque joueur, alors que l'on ne dispose que de leurs parties individuelles.
+> Réponse très intéressante : découverte des jointures de table
+```sql
+SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
+FROM users u
+JOIN scores s ON u.pseudo = s.user
+ORDER BY rank
+```
+> On récupère chaque pseudo et nom d'utilisateur dans la table `users`, on joint la table `scores` à `users` par la colonne `user` = `pseudo`, on calcule la somme des points, et on crée un "RANK" sur la somme des points pour obtenir un classement. 
