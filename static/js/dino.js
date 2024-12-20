@@ -47,6 +47,7 @@ function updateScore() {
 }
 
 function play() {
+    hideBoxes()
     // Show game
     menu.classList.add("hidden")
     arcade.classList.remove("disabled")
@@ -66,6 +67,7 @@ function engine() {
         gameEndStatus.innerText = `Votre score est ${score}.`
         scoreElement.innerText = "0"
         playButton.innerText = "Rejouer"
+        sendScore(score, 'dino')
         score = 0
         menu.classList.remove("hidden")
         arcade.classList.add("disabled")
