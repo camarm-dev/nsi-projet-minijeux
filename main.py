@@ -229,7 +229,8 @@ def save_score():
         date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
-            insert_score(game, user['pseudo'], points, date)
+            win = isWin(game, score)
+            insert_score(game, user['pseudo'], points, date, win)
             return {
                 "success": True,
                 "code": 200,
@@ -241,7 +242,7 @@ def save_score():
             "message": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
-        pass
+        raise e
     return {
         "success": False,
         "code": 500,
