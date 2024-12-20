@@ -13,13 +13,17 @@
 <table>
   <thead class="grey noLine">
     <tr>
-      <td>inscrits</td>
-      <td>jouées</td>
-      <td>Page 1/20</td>
+      <td>{{ total_users }} inscrits</td>
+      <td>{{ total_games }} parties jouées</td>
+      <td>Page {{ page }}/{{ total_pages }}</td>
       <td>
         <div class="buttons">
-          <button>Précédant</button>
-          <button>Suivant</button>
+          {% if page > 1 %}
+            <a href="/leaderboard?page={{ page - 1 }}">&leftarrow; Précédant</a>/
+          {% endif %}
+          {% if page < total_pages %}
+          <a href="/leaderboard?page={{ page + 1 }}">Suivant &rightarrow;</a>
+          {% endif %}
         </div>
       </td>
     </tr>
@@ -35,73 +39,15 @@
   <tbody>
     {% for profile in leaderboard %}
       <tr>
-        <td>#{{ profile.rank }}</td>
+        <td><span class="tag">#{{ profile.rank }}</span></td>
         <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-    {% endfor %}{% for profile in leaderboard %}
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-    {% endfor %}{% for profile in leaderboard %}
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-    {% endfor %}{% for profile in leaderboard %}
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-    {% endfor %}{% for profile in leaderboard %}
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
-        <td>{{ profile.score }}</td>
-      </tr>
-      <tr>
-        <td>#{{ profile.rank }}</td>
-        <td>{{ profile.name }}</td>
-        <td>@{{ profile.pseudo }}</td>
+        <td><a href="/@{{ profile.pseudo }}">@{{ profile.pseudo }}</a></td>
         <td>{{ profile.score }}</td>
       </tr>
     {% endfor %}
     {% if personal_ranking %}
       <tr class="grey">
-        <td><span class="tag">Toi</span> #{{ personal_ranking.rank }}</td>
+        <td><span class="tag secondary">Toi</span> #{{ personal_ranking.rank }}</td>
         <td>{{ personal_ranking.name }}</td>
         <td>@{{ personal_ranking.pseudo }}</td>
         <td>{{ personal_ranking.score }}</td>
