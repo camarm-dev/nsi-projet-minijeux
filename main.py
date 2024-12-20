@@ -49,6 +49,15 @@ def build_score(row: list):
     }
 
 
+def build_leaderboard_document(row: list):
+    return {
+        "pseudo": row[0],
+        "name": row[1],
+        "score": row[2],
+        "rank": row[3]
+    }
+
+
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
     password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
@@ -71,6 +80,35 @@ def get_user_scores(pseudo: str):
     if scores:
         return list(map(build_score, scores))
     return []
+
+
+def get_user_ranking(username: str):
+    ranking = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
+                                    FROM users u 
+                                    JOIN scores s ON u.pseudo = s.user
+                                    WHERE pseudo=?
+                                    GROUP BY u.pseudo, u.name
+                                """, (username,)).fetchone()
+    if ranking:
+        return build_leaderboard_document(ranking)
+
+
+def get_ranking(page: int):
+    # On sélectionne le pseudo de l'utilisateur et son nom depuis la table users (alias u)
+    # On joint la table scores (alias s): u.pseudo et s.user
+    # Cela nous permet de sélectionner la somme des points (SUM(s.points), alias score)
+    # On établit un classement avec la fonction RANK, dans la colonne rank, avec la somme des points, dans l'ordre décroissant
+    # On limite le nombre de résultats à 20 (LIMIT) et on récupère les profils à afficher sur la page demandée
+    results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
+                                    FROM users u 
+                                    JOIN scores s ON u.pseudo = s.user
+                                    -- GROUP BY u.pseudo, u.name
+                                    ORDER BY rank
+                                    LIMIT 20
+                                    OFFSET 20*?;
+                                """, (page,)).fetchall()
+    if results:
+        return [build_leaderboard_document(row) for row in results]
 
 
 def authenticate(email: str, password: str):
@@ -267,6 +305,18 @@ def profile(username: str):
         return render_template('error.html', logged_in=authenticated, message='Utilisateur introuvable')
     games = get_user_scores(username)
     return render_template('profile.html', logged_in=authenticated, user=user, games=games)
+
+
+@app.get('/leaderboard')
+def leaderboard():
+    authenticated, user = get_authentication_status()
+    page = request.args.get('page', 1)
+    ranking = get_ranking(page - 1)
+    if authenticated:
+        user_ranking = get_user_ranking(user['pseudo'])
+        return render_template('leaderboard.html', leaderboard=ranking, logged_in=True, personal_ranking=user_ranking)
+    return render_template('leaderboard.html', leaderboard=ranking, logged_in=False, personal_ranking=None)
+
 
 
 @app.get('/credits')
