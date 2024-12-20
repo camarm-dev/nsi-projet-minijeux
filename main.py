@@ -121,8 +121,8 @@ def anticheat(game: str, points: int, user: dict):
         case 'morpion':
             # La partie doit durer 10s
             # <=> La différence des dates doit être supérieur à 10s
-            # Une partie gagnée = 5 points
-            points = 5 if points >= 5 else 0
+            # Une partie gagnée = 5 points, une partie égalité = 1, une partie perdue = 0
+            points = points if points in [5, 1, 0] else 0
             return (now - last_game['date']).seconds > 10, points
         case 'justeprix':
             # La partie doit durer 5s
@@ -139,8 +139,8 @@ def anticheat(game: str, points: int, user: dict):
         case 'pfc':
             # La partie doit durer 5s
             # <=> La différence des dates doit être supérieur à 5s
-            # Une partie gagnée = 5 points
-            points = 5 if points >= 5 else 0
+            # Une partie gagnée = 5 points, une partie égalité = 1, une partie perdue = 0
+            points = points if points in [5, 1, 0] else 0
             return (now - last_game['date']).seconds > 5, points
         case 'osu':
             # TODO
