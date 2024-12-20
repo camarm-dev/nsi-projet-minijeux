@@ -55,7 +55,7 @@ def insert_user(name: str, pseudo: str, email: str, password: str, created_at: d
 
 
 def insert_score(game: str, user: str, points: int, created_at: datetime.datetime, win: bool | None):
-    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?,?)", (game, user, points, created_at, win))
+    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?)", (game, user, points, created_at, win))
     database.commit()
 
 
