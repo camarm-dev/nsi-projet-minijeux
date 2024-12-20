@@ -220,7 +220,7 @@ def save_score():
         return {
             "success": False,
             "code": 401,
-            "messages": "Impossible de vous authentifier, veuillez vous connectez."
+            "message": "Impossible de vous authentifier, veuillez vous connectez."
         }
     try:
         data = json.loads(request.data)
@@ -229,23 +229,23 @@ def save_score():
         date = datetime.datetime.now()
         anticheat_ok, points = anticheat(game, int(score), user)
         if anticheat_ok:
-            insert_score(game, user['username'], points, date)
+            insert_score(game, user['pseudo'], points, date)
             return {
                 "success": True,
                 "code": 200,
-                "messages": "La partie a été sauvegardée !"
+                "message": "La partie a été sauvegardée !"
             }
         return {
             "success": False,
             "code": 400,
-            "messages": "Cette requête a été bloquée par l'anti cheat !"
+            "message": "Cette requête a été bloquée par l'anti cheat !"
         }
     except Exception as e:
         pass
     return {
         "success": False,
         "code": 500,
-        "messages": "Une erreur est survenue, impossible d'enregistrer le score."
+        "message": "Une erreur est survenue, impossible d'enregistrer le score."
     }
 
 
