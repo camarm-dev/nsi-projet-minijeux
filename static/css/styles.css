@@ -17,6 +17,12 @@ body {
     margin-bottom: 2.5em !important;
 }
 
+.tag {
+    padding: 0 .3em;
+    background: var(--primary);
+    color: var(--color);
+}
+
 .menu {
     width: 100%;
     padding: 5px 15px;
