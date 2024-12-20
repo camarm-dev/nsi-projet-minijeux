@@ -2,6 +2,7 @@ const errorBox = document.getElementById('error')
 const successBox = document.getElementById('message')
 
 function sendScore(score, game) {
+    if (!logged) return
     const data = {
         score: score,
         game: game
