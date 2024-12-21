@@ -80,6 +80,10 @@ def get_user(pseudo: str):
         return build_user(user)
 
 
+def update_user(pseudo: str, name: str, primary: str, secondary: str):
+    cursor.execute("UPDATE users SET name=?, color_primary=?, color_secondary=? WHERE pseudo=?", (name, primary, secondary, pseudo))
+
+
 def get_user_scores(pseudo: str):
     scores = cursor.execute("SELECT * FROM scores WHERE user=? ORDER by date DESC", (pseudo,)).fetchall()
     if scores:
@@ -264,6 +268,21 @@ def signup():
     return render_template('create_account.html', error=False, noMenu=True)
 
 
+@app.post('/updateProfile')
+def update_profile():
+    authenticated, user = get_authentication_status()
+    if not authenticated:
+        return render_template('login.html', error=True, message="Votre session a expirée, merci de vous reconnecter.",
+                               noMenu=True)
+    data = request.form
+    name = data.get('name', None)
+    primary = data.get('colorPrimary', None)
+    secondary = data.get('colorSecondary', None)
+    if name and primary and secondary:
+        update_user(user['pseudo'], name, primary, secondary)
+    return redirect('/me')
+
+
 @app.post('/sendScore')
 def save_score():
     authenticated, user = get_authentication_status()
@@ -307,7 +326,7 @@ def my_profile():
         total_users, _, _ = get_statistics()
         ranking = get_user_ranking(user['pseudo'])
         games = get_user_scores(user['pseudo'])
-        return render_template('profile.html', logged_in=True, user=user, games=games, total_users=total_users, rank=ranking['rank'])
+        return render_template('profile.html', logged_in=True, user=user, games=games, total_users=total_users, rank=ranking['rank'], can_modify=True)
     return redirect('/login')
 
 
