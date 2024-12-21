@@ -35,7 +35,9 @@ def build_user(row: list):
         "pseudo": row[0],
         "name": row[1],
         "email": row[3],
-        "created_at": row[4]
+        "created_at": row[4],
+        "color_primary": row[5],
+        "color_secondary": row[6]
     }
 
 
@@ -61,7 +63,7 @@ def build_leaderboard_document(row: list):
 
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
     password = hash_password(password)
-    cursor.execute("INSERT INTO users VALUES (?,?,?,?,?)", (pseudo, name, password, email, created_at))
+    cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?,?)", (pseudo, name, password, email, created_at, '#f2f2f2', '#0e0e0e'))
     database.commit()
 
 
@@ -122,7 +124,7 @@ def get_statistics():
 def authenticate(email: str, password: str):
     user = cursor.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
     if user is not None:
-        pseudo, name, hashed_password, email, created_at = user
+        _, _, hashed_password, _, _, _, _ = user
         return verify_password(password, hashed_password), build_user(user)
     return False, {}
 
@@ -147,7 +149,7 @@ def verify_token(token: str):
 
 
 def setup_database():
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL, color_primary TEXT NOT NULL, color_secondary TEXT NOT NULL)")
     cursor.execute("CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL, win BOOLEAN)")
 
 
