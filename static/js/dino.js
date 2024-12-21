@@ -1,6 +1,7 @@
 const scoreElement = document.getElementById('score')
 const gameEndStatus = document.getElementById('gameEndStatus')
 const arcade = document.querySelector('.arcade')
+const game = document.getElementById('game')
 const menu = document.getElementById('menu')
 const dino = document.getElementById('dino')
 const cactus1 = document.getElementById('cactus1')
@@ -54,7 +55,9 @@ function play() {
 
     // Reset animations
     arcade.classList.add("reset")
-    setTimeout(() => { arcade.classList.remove("reset") }, 200)
+    setTimeout(() => {
+        arcade.classList.remove("reset")
+    }, 200)
 
     // Start game
     scoreInterval = setInterval(updateScore, 2000)
@@ -77,10 +80,10 @@ function engine() {
 }
 
 window.addEventListener('keydown', (event) => {
-    console.log(event.code)
-    if (event.code === "Space") {
+    if (event.code === "Space" || event.code === "ArrowUp") {
         event.preventDefault()
         jump()
     }
 })
+game.addEventListener('click', jump)
 playButton.addEventListener('click', play)

@@ -30,10 +30,8 @@
     content: url("/static/img/bird.png")
 }
 
-/* TODO utiliser des transform pour les transitions (c'est plus opti) */
-
 #cactus1 {
-    animation: cactus linear 2s infinite;
+    animation: cactus linear 3s infinite;
     background-image: url("/static/img/cactus1.png");
     background-size: 30px 50.6px;
     height: 50.6px;
@@ -43,7 +41,7 @@
 }
 
 #cactus2 {
-    animation: cactus1 linear 2s infinite;
+    animation: cactus1 linear 3s infinite;
     animation-delay: 7.5s;
     background-image: url("/static/img/cactus2.png");
     background-size: 50px 39.13px;
@@ -54,7 +52,7 @@
 }
 
 #bird {
-    animation: bird linear 3s infinite;
+    animation: bird linear 4s infinite;
     animation-delay: 10s;
     height: 32px;
     width: 50px;
@@ -86,8 +84,15 @@
     from {
         transform: translate(800px, 368px);
     }
-    to {
+    66% {
         transform: translate(-50px, 368px);
+    }
+    66.1% {
+        display: none;
+        transform: translate(800px, 368px);
+    }
+    to {
+        display: none;
     }
 }
 
@@ -95,8 +100,15 @@
     from {
         transform: translate(800px, 330px);
     }
-    to {
+    66% {
         transform: translate(-50px, 330px);
+    }
+    66.1% {
+        display: none;
+        transform: translate(800px, 330px);
+    }
+    to {
+        display: none;
     }
 }
 
@@ -105,7 +117,14 @@
     from {
         transform: translate(800px, 10px);
     }
-    to {
+    75% {
         transform: translate(-50px, 10px);
+    }
+    75.1% {
+        display: none;
+        transform: translate(800px, 10px);
+    }
+    to {
+        display: none;
     }
 }
