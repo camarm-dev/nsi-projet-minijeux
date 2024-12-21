@@ -57,7 +57,9 @@ def build_leaderboard_document(row: list):
         "pseudo": row[0],
         "name": row[1],
         "score": row[2],
-        "rank": row[3]
+        "rank": row[3],
+        "color_primary": row[4],
+        "color_secondary": row[5]
     }
 
 
@@ -86,7 +88,7 @@ def get_user_scores(pseudo: str):
 
 
 def get_user_ranking(username: str):
-    ranking = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
+    ranking = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
                                     FROM users u 
                                     JOIN scores s ON u.pseudo = s.user
                                     WHERE pseudo=?
@@ -102,7 +104,7 @@ def get_ranking(page: int):
     # Cela nous permet de sélectionner la somme des points (SUM(s.points), alias score)
     # On établit un classement avec la fonction RANK, dans la colonne rank, avec la somme des points, dans l'ordre décroissant
     # On limite le nombre de résultats à 20 (LIMIT) et on récupère les profils à afficher sur la page demandée
-    results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
+    results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
                                     FROM users u 
                                     JOIN scores s ON u.pseudo = s.user
                                     -- GROUP BY u.pseudo, u.name
