@@ -389,6 +389,12 @@ def pfc():
     return render_template('pfc.html', pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
+@app.errorhandler(Exception)
+def error(error):
+    authenticated, user = get_authentication_status()
+    return render_template('error.html', message=error, pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
+
+
 if __name__ == '__main__':
     SECRET = secrets.token_urlsafe(512)
     database = sqlite3.connect('database.db', detect_types=sqlite3.PARSE_DECLTYPES, check_same_thread=False)

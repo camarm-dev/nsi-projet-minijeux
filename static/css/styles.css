@@ -354,6 +354,10 @@ input:focus, input:active {
     max-width: 312px;
 }
 
+.box.large {
+    max-width: 600px;
+}
+
 .box.danger {
     border-color: var(--danger);
     background: var(--danger-black);
