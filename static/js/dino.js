@@ -62,6 +62,8 @@ function play() {
     // Start game
     scoreInterval = setInterval(updateScore, 2000)
     gameInterval = setInterval(engine, 50)
+
+    // TODO: ajouter de l'aléatoire: bouger de 50px devant / derrière les éléments aléatoirement
 }
 
 function engine() {
