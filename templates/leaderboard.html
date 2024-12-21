@@ -15,14 +15,16 @@
     <tr>
       <td>{{ total_users }} inscrits</td>
       <td>{{ total_games }} parties jouées</td>
-      <td>Page {{ page }}/{{ total_pages }}</td>
-      <td>
+      <td class="flex between">
+        <span>Page {{ page }}/{{ total_pages }}</span>
         <div class="buttons">
+          <a href="/leaderboard?page={{ page - 1 }}">&leftarrow; Précédant</a>/
+          <a href="/leaderboard?page={{ page + 1 }}">Suivant &rightarrow;</a>
           {% if page > 1 %}
             <a href="/leaderboard?page={{ page - 1 }}">&leftarrow; Précédant</a>/
           {% endif %}
           {% if page < total_pages %}
-          <a href="/leaderboard?page={{ page + 1 }}">Suivant &rightarrow;</a>
+            <a href="/leaderboard?page={{ page + 1 }}">Suivant &rightarrow;</a>
           {% endif %}
         </div>
       </td>
@@ -31,8 +33,7 @@
   <thead>
     <tr>
       <td>Position</td>
-      <td>Nom</td>
-      <td>Pseudo</td>
+      <td>Joueur</td>
       <td>Score total</td>
     </tr>
   </thead>
@@ -40,16 +41,78 @@
     {% for profile in leaderboard %}
       <tr>
         <td><span class="tag">#{{ profile.rank }}</span></td>
-        <td>{{ profile.name }}</td>
-        <td><a href="/@{{ profile.pseudo }}">@{{ profile.pseudo }}</a></td>
+        <td class="flex">
+          <svg style="--color: {{ profile.color_primary }}; --background: {{ profile.color_secondary }}" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10H22V14V20V22H24H30H32V10H30Z" fill="currentColor"/>
+            <path d="M22 0H10V2H12V4H20V2H22V0Z" fill="currentColor"/>
+            <path d="M22 4H20V6H22H26V4V2H22V4Z" fill="currentColor"/>
+            <path d="M20 4H22V2H20V4Z" fill="currentColor"/>
+            <path d="M26 4V6H28V4H26Z" fill="currentColor"/>
+            <path d="M26 6H22V10H30V6H28H26Z" fill="currentColor"/>
+            <path d="M10 6H6H4H2V10H10V6Z" fill="currentColor"/>
+            <path d="M12 4H10V2H6V4V6H10H12V4Z" fill="currentColor"/>
+            <path d="M10 4H12V2H10V4Z" fill="currentColor"/>
+            <path d="M6 6V4H4V6H6Z" fill="currentColor"/>
+            <path d="M12 16V20H16V16H12Z" fill="currentColor"/>
+            <path d="M20 20V16H16V20H20Z" fill="currentColor"/>
+            <path d="M22 20V14H20V16V20H22Z" fill="currentColor"/>
+            <path d="M10 14V20H12V16V14H10Z" fill="currentColor"/>
+            <path d="M10 10H2H0V22H2H8H10V20V14V10Z" fill="currentColor"/>
+            <path d="M30 22H24V24H26H30V22Z" fill="currentColor"/>
+            <path d="M30 24H26V26H28H30V24Z" fill="currentColor"/>
+            <path d="M28 26H26V28H28V26Z" fill="currentColor"/>
+            <path d="M26 28H24V30H26V28Z" fill="currentColor"/>
+            <path d="M8 22H2V24H6H8V22Z" fill="currentColor"/>
+            <path d="M6 24H2V26H4H6V24Z" fill="currentColor"/>
+            <path d="M6 26H4V28H6V26Z" fill="currentColor"/>
+            <path d="M8 28H6V30H8V28Z" fill="currentColor"/>
+            <path d="M16 32V30H8V32H16Z" fill="currentColor"/>
+            <path d="M24 30H16V32H24V30Z" fill="currentColor"/>
+            <path d="M10 14H12V16H20V14H22V10V6H20V4H12V6H10V10V14Z" class="secondary" fill="currentColor"/>
+            <path d="M24 30V28H26V24H24V22H22V20H20H12H10V22H8V24H6V28H8V30H24Z" class="secondary" fill="currentColor"/>
+          </svg>
+          <span>{{ profile.name }}</span>
+          <a href="/@{{ profile.pseudo }}">@{{ profile.pseudo }}</a>
+        </td>
         <td>{{ profile.score }}</td>
       </tr>
     {% endfor %}
     {% if personal_ranking %}
       <tr class="grey">
         <td><span class="tag secondary">Toi</span> #{{ personal_ranking.rank }}</td>
-        <td>{{ personal_ranking.name }}</td>
-        <td>@{{ personal_ranking.pseudo }}</td>
+        <td class="flex">
+          <svg style="--color: {{ personal_ranking.color_primary }}; --background: {{ personal_ranking.color_secondary }}" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10H22V14V20V22H24H30H32V10H30Z" fill="currentColor"/>
+            <path d="M22 0H10V2H12V4H20V2H22V0Z" fill="currentColor"/>
+            <path d="M22 4H20V6H22H26V4V2H22V4Z" fill="currentColor"/>
+            <path d="M20 4H22V2H20V4Z" fill="currentColor"/>
+            <path d="M26 4V6H28V4H26Z" fill="currentColor"/>
+            <path d="M26 6H22V10H30V6H28H26Z" fill="currentColor"/>
+            <path d="M10 6H6H4H2V10H10V6Z" fill="currentColor"/>
+            <path d="M12 4H10V2H6V4V6H10H12V4Z" fill="currentColor"/>
+            <path d="M10 4H12V2H10V4Z" fill="currentColor"/>
+            <path d="M6 6V4H4V6H6Z" fill="currentColor"/>
+            <path d="M12 16V20H16V16H12Z" fill="currentColor"/>
+            <path d="M20 20V16H16V20H20Z" fill="currentColor"/>
+            <path d="M22 20V14H20V16V20H22Z" fill="currentColor"/>
+            <path d="M10 14V20H12V16V14H10Z" fill="currentColor"/>
+            <path d="M10 10H2H0V22H2H8H10V20V14V10Z" fill="currentColor"/>
+            <path d="M30 22H24V24H26H30V22Z" fill="currentColor"/>
+            <path d="M30 24H26V26H28H30V24Z" fill="currentColor"/>
+            <path d="M28 26H26V28H28V26Z" fill="currentColor"/>
+            <path d="M26 28H24V30H26V28Z" fill="currentColor"/>
+            <path d="M8 22H2V24H6H8V22Z" fill="currentColor"/>
+            <path d="M6 24H2V26H4H6V24Z" fill="currentColor"/>
+            <path d="M6 26H4V28H6V26Z" fill="currentColor"/>
+            <path d="M8 28H6V30H8V28Z" fill="currentColor"/>
+            <path d="M16 32V30H8V32H16Z" fill="currentColor"/>
+            <path d="M24 30H16V32H24V30Z" fill="currentColor"/>
+            <path d="M10 14H12V16H20V14H22V10V6H20V4H12V6H10V10V14Z" class="secondary" fill="currentColor"/>
+            <path d="M24 30V28H26V24H24V22H22V20H20H12H10V22H8V24H6V28H8V30H24Z" class="secondary" fill="currentColor"/>
+          </svg>
+          <span>{{ personal_ranking.name }}</span>
+          <span>@{{ personal_ranking.pseudo }}</span>
+        </td>
         <td>{{ personal_ranking.score }}</td>
       </tr>
     {% endif %}
