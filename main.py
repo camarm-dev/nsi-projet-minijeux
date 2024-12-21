@@ -121,10 +121,10 @@ def get_statistics():
 
 def authenticate(email: str, password: str):
     user = cursor.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
-    if user:
+    if user is not None:
         pseudo, name, hashed_password, email, created_at = user
         return verify_password(password, hashed_password), build_user(user)
-    return False
+    return False, {}
 
 
 def get_authentication_status():
