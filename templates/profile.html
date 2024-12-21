@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="user">
-  <svg style="--color: {{ user.color_primary }}; --background: {{ user.secondary }}" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg style="--color: {{ user.color_primary }}; --background: {{ user.color_secondary }}" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path class="secondary" d="M119 106H81V100H75V94H69V87H63V56H69V50H75V44H81V37H119V44H125V50H131V56H137V87H131V94H125V100H119V106Z" fill="currentColor"/>
     <path class="secondary" d="M75 194H125V187H144V181H156V175H162V162H156V150H150V144H144V137H137V131H125V125H75V131H63V137H56V144H50V150H44V162H38V175H44V181H56V187H75V194Z" fill="currentColor"/>
     <path d="M125 19H162V50H125V19Z" fill="currentColor"/>
@@ -65,6 +65,27 @@
     Classement : #{{ rank }}/{{ total_users }}
   </p>
 </div>
+
+{% if can_modify %}
+<form class="large" action="/updateProfile" method="post" enctype="multipart/form-data">
+  <h2>Modifier mon profil</h2>
+  <div class="field">
+    <label for="name">Nom complet</label>
+    <input required type="text" name="name" id="name" placeholder="Jean Dupont" value="{{ user.name }}">
+  </div>
+  <div class="field">
+    <label for="colorPrimary">Couleur principale</label>
+    <input required type="color" name="colorPrimary" id="colorPrimary" value="{{ user.color_primary }}">
+  </div>
+  <div class="field">
+    <label for="colorPrimary">Couleur secondaire</label>
+    <input required type="color" name="colorSecondary" id="colorSecondary" value="{{ user.color_secondary }}">
+  </div>
+  <div class="field">
+    <button type="submit">Sauvegarder</button>
+  </div>
+</form>
+{% endif %}
 
 <h2 class="center mt">Historique des parties</h2>
 {% if games|length == 0 %}
