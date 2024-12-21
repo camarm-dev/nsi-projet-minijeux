@@ -26,7 +26,17 @@ table td {
 
 table td.flex {
     display: flex;
+    justify-content: left;
+    align-items: center;
     gap: 1em;
+}
+
+table td.between {
+    justify-content: space-between;
+}
+
+table td:last-child {
+    text-align: right;
 }
 
 .noLine td, .noLine tr {
