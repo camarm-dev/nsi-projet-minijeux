@@ -299,6 +299,11 @@ form {
     max-width: 312px;
 }
 
+form.large {
+    max-width: calc(500px - 2em);
+    width: calc(500px - 2em);
+}
+
 form h2 {
     margin-top: 0;
     margin-bottom: 0;
