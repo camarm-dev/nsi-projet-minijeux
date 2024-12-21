@@ -172,6 +172,7 @@ a.grey {
     opacity: 1;
     transition: .2s ease-in-out;
     z-index: 100;
+    top: 0;
 }
 
 #loader.hidden {
