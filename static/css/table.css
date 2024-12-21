@@ -24,6 +24,11 @@ table td {
     border-width: 0 0 1px 0;
 }
 
+table td.flex {
+    display: flex;
+    gap: 1em;
+}
+
 .noLine td, .noLine tr {
     border: none;
 }
