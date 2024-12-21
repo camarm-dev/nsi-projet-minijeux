@@ -5,7 +5,60 @@
 {% block content %}
 
 <div class="user">
-  <img src="/static/img/profil.png" alt="Photo de profil">
+  <svg style="--color: {{ user.color_primary }}; --background: {{ user.secondary }}" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="secondary" d="M119 106H81V100H75V94H69V87H63V56H69V50H75V44H81V37H119V44H125V50H131V56H137V87H131V94H125V100H119V106Z" fill="currentColor"/>
+    <path class="secondary" d="M75 194H125V187H144V181H156V175H162V162H156V150H150V144H144V137H137V131H125V125H75V131H63V137H56V144H50V150H44V162H38V175H44V181H56V187H75V194Z" fill="currentColor"/>
+    <path d="M125 19H162V50H125V19Z" fill="currentColor"/>
+    <path d="M131 25H169V56H131V25Z" fill="currentColor"/>
+    <path d="M137 75H200V125H137V75Z" fill="currentColor"/>
+    <path d="M63 75H0V125H63V75Z" fill="currentColor"/>
+    <path d="M137 56H194V75H137V56Z" fill="currentColor"/>
+    <path d="M63 56H6V75H63V56Z" fill="currentColor"/>
+    <path d="M75 0H125V37H75V0Z" fill="currentColor"/>
+    <path d="M102 6H144V37H102V6Z" fill="currentColor"/>
+    <path d="M119 12H156V44H119V12Z" fill="currentColor"/>
+    <path d="M169 31H175V56H169V31Z" fill="currentColor"/>
+    <path d="M31 31H25V56H31V31Z" fill="currentColor"/>
+    <path d="M175 37H181V56H175V37Z" fill="currentColor"/>
+    <path d="M25 37H19V56H25V37Z" fill="currentColor"/>
+    <path d="M181 44H187V56H181V44Z" fill="currentColor"/>
+    <path d="M19 44H12V56H19V44Z" fill="currentColor"/>
+    <path d="M63 106H137V125H63V106Z" fill="currentColor"/>
+    <path d="M119 100H137V106H119V100Z" fill="currentColor"/>
+    <path d="M81 100H63V106H81V100Z" fill="currentColor"/>
+    <path d="M125 94H137V100H125V94Z" fill="currentColor"/>
+    <path d="M75 94H63V100H75V94Z" fill="currentColor"/>
+    <path d="M131 87H137V94H131V87Z" fill="currentColor"/>
+    <path d="M69 87H63V94H69V87Z" fill="currentColor"/>
+    <path d="M75 194H125V200H75V194Z" fill="currentColor"/>
+    <path d="M125 187H144V194H125V187Z" fill="currentColor"/>
+    <path d="M75 187H56V194H75V187Z" fill="currentColor"/>
+    <path d="M144 181H156V187H144V181Z" fill="currentColor"/>
+    <path d="M56 181H44V187H56V181Z" fill="currentColor"/>
+    <path d="M156 175H162V181H156V175Z" fill="currentColor"/>
+    <path d="M44 175H38V181H44V175Z" fill="currentColor"/>
+    <path d="M162 169H169V175H162V169Z" fill="currentColor"/>
+    <path d="M38 169H31V175H38V169Z" fill="currentColor"/>
+    <path d="M162 162H175V169H162V162Z" fill="currentColor"/>
+    <path d="M38 162H25V169H38V162Z" fill="currentColor"/>
+    <path d="M156 150H181V162H156V150Z" fill="currentColor"/>
+    <path d="M44 150H19V162H44V150Z" fill="currentColor"/>
+    <path d="M156 125H187V156H156V125Z" fill="currentColor"/>
+    <path d="M44 125H13V156H44V125Z" fill="currentColor"/>
+    <path d="M187 125H194V144H187V125Z" fill="currentColor"/>
+    <path d="M13 125H6V144H13V125Z" fill="currentColor"/>
+    <path d="M125 125H156V131H125V125Z" fill="currentColor"/>
+    <path d="M75 125H44V131H75V125Z" fill="currentColor"/>
+    <path d="M137 131H156V137H137V131Z" fill="currentColor"/>
+    <path d="M63 131H44V137H63V131Z" fill="currentColor"/>
+    <path d="M144 137H156V144H144V137Z" fill="currentColor"/>
+    <path d="M56 137H44V144H56V137Z" fill="currentColor"/>
+    <path d="M150 144H156V150H150V144Z" fill="currentColor"/>
+    <path d="M50 144H44V150H50V144Z" fill="currentColor"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M96 6H56V12H44V19H38V25H31V56H69V50H75V44H81V37H96V6ZM56 25H69V37H56V25Z" fill="currentColor"/>
+    <path d="M69 25H56V37H69V25Z" fill="currentColor"/>
+  </svg>
+
   <h2>{{ user.name }} - @{{ user.pseudo }}</h2>
   <p>Inscrit depuis le {{ user.created_at.strftime("%d %B %Y") }}</p>
   <p class="center">

@@ -440,3 +440,13 @@ input:focus, input:active {
 .gameResults:hover img {
     transform: translate(0, -.5em);
 }
+
+svg path {
+    fill: var(--color);
+    color: var(--color);
+}
+
+svg path.secondary {
+    fill: var(--background);
+    color: var(--background);
+}
