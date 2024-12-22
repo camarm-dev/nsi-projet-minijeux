@@ -111,7 +111,7 @@ def get_ranking(page: int):
     results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
                                     FROM users u 
                                     JOIN scores s ON u.pseudo = s.user
-                                    -- GROUP BY u.pseudo, u.name
+                                    GROUP BY u.pseudo, u.name
                                     ORDER BY rank
                                     LIMIT 20
                                     OFFSET 20*?;
