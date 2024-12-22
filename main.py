@@ -82,6 +82,7 @@ def get_user(pseudo: str):
 
 def update_user(pseudo: str, name: str, primary: str, secondary: str):
     cursor.execute("UPDATE users SET name=?, color_primary=?, color_secondary=? WHERE pseudo=?", (name, primary, secondary, pseudo))
+    database.commit()
 
 
 def get_user_scores(pseudo: str):
