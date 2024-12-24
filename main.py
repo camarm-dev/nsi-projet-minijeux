@@ -180,7 +180,7 @@ def anticheat(game: str, points: int, user: dict):
         case 'dino':
             # 1 point = 2 secondes
             # <=> Le nombre de secondes de la différences des dates / 2 doit être supérieur au nombre de points
-            return ((now - last_game['date']).seconds / 2) > points, points
+            return ((now - last_game['date']).seconds / 2) > points and points < 40, points
         case 'morpion':
             # La partie doit durer 7s
             # <=> La différence des dates doit être supérieur à 7s
