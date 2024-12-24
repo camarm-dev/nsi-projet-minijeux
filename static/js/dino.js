@@ -15,6 +15,7 @@ let playing = true;
 // Pour stopper les fonctions à intervals de temps
 let scoreInterval = 0
 let gameInterval = 0
+let randomizationInterval = []
 
 function isCollide(object1, object2) {
     // Check if TODO documenter la fonction
@@ -29,8 +30,8 @@ function isCollide(object1, object2) {
 }
 
 function isDead() {
-    return isCollide(dino, cactus1) || isCollide(dino, cactus2) || isCollide(dino, bird)
-    // return false
+    // return isCollide(dino, cactus1) || isCollide(dino, cactus2) || isCollide(dino, bird)
+    return false
 }
 
 function jump() {
@@ -62,8 +63,15 @@ function play() {
     // Start game
     scoreInterval = setInterval(updateScore, 2000)
     gameInterval = setInterval(engine, 50)
-
-    // TODO: ajouter de l'aléatoire: bouger de 50px devant / derrière les éléments aléatoirement
+    setTimeout(() => {
+        randomizationInterval.push(setInterval(() => cactus1.style.left = (Math.random() * 100) + 'px', 3000))
+    }, 2500)
+    setTimeout(() => {
+        randomizationInterval.push(setInterval(() => cactus2.style.left = (Math.random() * 100) + 'px', 3000))
+    }, 7500 + 2500)
+    setTimeout(() => {
+        randomizationInterval.push(setInterval(() => bird.style.left = (Math.random() * 100) + 'px', 4000))
+    }, 10000 + 3500)
 }
 
 function engine() {
@@ -76,8 +84,11 @@ function engine() {
         score = 0
         menu.classList.remove("hidden")
         arcade.classList.add("disabled")
-        clearTimeout(scoreInterval)
-        clearTimeout(gameInterval)
+        clearInterval(scoreInterval)
+        clearInterval(gameInterval)
+        for (const interval of randomizationInterval) {
+            clearInterval(interval)
+        }
     }
 }
 
