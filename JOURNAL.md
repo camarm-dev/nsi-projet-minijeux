@@ -119,6 +119,7 @@ _Schéma de la BDD_
 ## À la maison (18 décembre - 6 Janvier)
 
 - Mise en place du classement
+![img_1.png](.github/images/img_1.png)
 > Pour cette partie, nous avons rencontré un problème : Comment obtenir un classement de chaque joueur, alors que l'on ne dispose que de leurs parties individuelles.
 > Réponse très intéressante : découverte des jointures de table
 ```sql
@@ -129,3 +130,8 @@ GROUP BY u.pseudo, u.name
 ORDER BY rank
 ```
 > On récupère chaque pseudo et nom d'utilisateur dans la table `users`, on joint la table `scores` à `users` par la colonne `user` = `pseudo`, on calcule la somme des points, et on crée un "RANK" sur la somme des points pour obtenir un classement. 
+- Résolutions de bugs (erreur à la connexion si l'utilisateur n'existait pas)
+- Ajout d'une page d'erreur
+![img.png](.github/images/img_3.png)
+- Mise en place d'une personnalisation du profil
+![img_2.png](.github/images/img_2.png)
