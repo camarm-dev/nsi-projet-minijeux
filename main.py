@@ -97,8 +97,17 @@ def get_user_scores(pseudo: str):
     return []
 
 
-def get_user_ranking(username: str):
-    ranking = cursor.execute("""SELECT * FROM 
+def get_user_ranking(username: str, game: None | str = None):
+    if game:
+        ranking = cursor.execute("""SELECT * FROM 
+                                        (SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
+                                        FROM users u                                     
+                                        JOIN scores s ON u.pseudo = s.user
+                                        WHERE game=?                                    
+                                        GROUP BY u.pseudo, u.name)
+                                     WHERE pseudo=?""", (game, username)).fetchone()
+    else:
+        ranking = cursor.execute("""SELECT * FROM 
                                         (SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
                                         FROM users u                                     
                                         JOIN scores s ON u.pseudo = s.user                                    
@@ -108,13 +117,24 @@ def get_user_ranking(username: str):
         return build_leaderboard_document(ranking)
 
 
-def get_ranking(page: int):
+def get_ranking(page: int, game: None | str = None):
     # On sélectionne le pseudo de l'utilisateur et son nom depuis la table users (alias u)
     # On joint la table scores (alias s): u.pseudo et s.user
     # Cela nous permet de sélectionner la somme des points (SUM(s.points), alias score)
     # On établit un classement avec la fonction RANK, dans la colonne rank, avec la somme des points, dans l'ordre décroissant
     # On limite le nombre de résultats à 20 (LIMIT) et on récupère les profils à afficher sur la page demandée
-    results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
+    if game:
+        results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
+                                    FROM users u 
+                                    JOIN scores s ON u.pseudo = s.user
+                                    WHERE game=?
+                                    GROUP BY u.pseudo, u.name
+                                    ORDER BY rank
+                                    LIMIT 20
+                                    OFFSET 20*?;
+                                """, (game,page)).fetchall()
+    else:
+        results = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
                                     FROM users u 
                                     JOIN scores s ON u.pseudo = s.user
                                     GROUP BY u.pseudo, u.name
@@ -352,10 +372,14 @@ def profile(username: str):
 def leaderboard():
     authenticated, user = get_authentication_status()
     page = request.args.get('page', 1)
+    game = request.args.get('game', 'all')
     total_users, total_games, total_pages = get_statistics()
-    ranking = get_ranking(page - 1)
+    if game == 'all':
+        ranking = get_ranking(page - 1)
+    else:
+        ranking = get_ranking(page - 1, game)
     if authenticated:
-        user_ranking = get_user_ranking(user['pseudo'])
+        user_ranking = get_user_ranking(user['pseudo'], game) if game else get_user_ranking(user['pseudo'])
         return render_template('leaderboard.html', leaderboard=ranking, logged_in=True, personal_ranking=user_ranking, total_users=total_users, total_games=total_games, total_pages=total_pages, page=page)
     return render_template('leaderboard.html', leaderboard=ranking, logged_in=False, personal_ranking=None, total_users=total_users, total_games=total_games, total_pages=total_pages, page=page)
 
