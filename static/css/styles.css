@@ -210,6 +210,7 @@ header h1 {
 }
 
 .grid {
+    justify-items: center;
     margin: 3em auto auto;
     display: grid;
     max-width: calc(128px * 3 + 3em);
@@ -461,6 +462,13 @@ svg path.secondary {
 }
 
 @media (max-width: 1400px) {
+    .center {
+        max-width: 90%;
+    }
+    .grid {
+        max-width: calc(128px * 2 + 3em);
+        grid-template-columns: 1fr 1fr;
+    }
     .menu {
         max-width: 85%;
         padding: 5px 0;
