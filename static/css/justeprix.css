@@ -32,7 +32,7 @@
 
 @media (max-width: 1400px) {
     .number-input {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         width: max-content;
         max-width: 80%;
