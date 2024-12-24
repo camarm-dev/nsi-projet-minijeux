@@ -33,8 +33,42 @@
 </div>
 
 <div id="infos" class="center">
-    <p>Entrez un prix dans la console.</p>
+    <p class="hidden-mobile">Entrez un prix dans la console.</p>
+    <p class="only-mobile">Entrez un prix ci-dessous.</p>
 </div>
 
+<div class="number-input only-mobile mt">
+    <div class="row">
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+    </div>
+    <div class="row">
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+    </div>
+    <div class="row">
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+    </div>
+    <div class="row">
+        <div class="number backspace">⌫</div>
+        <div class="number">0</div>
+        <div class="number enter">↩</div>
+    </div>
+</div>
+
+<script>
+    const inputNumbers = document.querySelectorAll('.number:not(.enter)')
+    const inputEnter = document.querySelector('.number.enter')
+    const inputBackspace = document.querySelector('.number.backspace')
+    for (const inputNumber of inputNumbers) {
+        inputNumber.addEventListener('click', () => window.dispatchEvent(new KeyboardEvent('keyup', { key: inputNumber.textContent })))
+    }
+    inputEnter.addEventListener('click', () => window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' })))
+    inputBackspace.addEventListener('click', () => window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Backspace' })))
+</script>
 <script src="/static/js/justeprix.js"></script>
 {% endblock %}
