@@ -125,6 +125,7 @@ _Schéma de la BDD_
 SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank
 FROM users u
 JOIN scores s ON u.pseudo = s.user
+GROUP BY u.pseudo, u.name
 ORDER BY rank
 ```
 > On récupère chaque pseudo et nom d'utilisateur dans la table `users`, on joint la table `scores` à `users` par la colonne `user` = `pseudo`, on calcule la somme des points, et on crée un "RANK" sur la somme des points pour obtenir un classement. 
