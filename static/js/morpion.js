@@ -202,5 +202,20 @@ function updateGamesStatus(status){
 function endGame() {
     document.getElementById('game_end').style.display = "flex"
     gamestatus.classList.add('hidden')
+    replayCooldown()
 }
-function realoadGame(){window.location.reload()}
+
+function replayCooldown() {
+    const button = document.getElementById('reload')
+    button.disabled = true
+    button.textContent = 'Rejouer dans 3...'
+    setTimeout(() => button.textContent = 'Rejouer dans 2...', 1000)
+    setTimeout(() => button.textContent = 'Rejouer dans 1...', 2000)
+    setTimeout(() => button.textContent = 'Rejouer dans 0...', 3000)
+    setTimeout(() => {
+        button.removeAttribute('disabled')
+        button.textContent = 'Rejouer'
+    }, 4000)
+}
+
+function reloadGame(){window.location.reload()}
