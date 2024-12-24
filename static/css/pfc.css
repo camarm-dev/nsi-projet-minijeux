@@ -84,7 +84,6 @@ header {
 .results .element:not(.text):before {
     content: "";
     display: block;
-    width: 50%;
     height: 136px;
     width: 150px;
     background: transparent;
@@ -128,5 +127,51 @@ header {
     }
     to {
         transform: translate(0, 0);
+    }
+}
+
+@media (max-width: 1400px) {
+    .board, .results, #menu {
+        max-width: 90%;
+    }
+    .results .element, .results .element img, .items img {
+        height: 68px;
+        width: 75px;
+    }
+    .results .element:not(.text):before {
+        height: 68px;
+        width: 75px;
+    }
+
+    .results.animated .element .roulette, .results .element .roulette {
+        transform: translate(0, -204px);
+    }
+
+    .results.animated .element .roulette.small, .results .element .roulette.small {
+        transform: translate(0, -68px);
+    }
+
+    @keyframes roulette {
+        from {
+            transform: translate(0, -68px);
+        }
+        99% {
+            transform: translate(0, -272px);
+        }
+        to {
+            transform: translate(0, 0);
+        }
+    }
+
+    @keyframes smallRoulette {
+        from {
+            transform: translate(0, -68px);
+        }
+        99% {
+            transform: translate(0, -136px);
+        }
+        to {
+            transform: translate(0, 0);
+        }
     }
 }
