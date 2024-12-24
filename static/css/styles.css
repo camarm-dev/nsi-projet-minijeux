@@ -100,6 +100,10 @@ button {
     margin-top: 0 !important;
 }
 
+button:disabled {
+    opacity: 0.5;
+}
+
 button:not(.image) {
     margin-top: .5em;
     background: var(--primary);
