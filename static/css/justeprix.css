@@ -30,35 +30,36 @@
     transform: translate(-50%, 100px) !important;
 }
 
-.number-input {
-    display: flex !important;
-    flex-direction: column;
-    width: max-content;
-    max-width: 80%;
-    margin: auto;
-    gap: .5em;
-}
+@media (max-width: 1400px) {
+    .number-input {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        max-width: 80%;
+        margin: auto;
+        gap: .5em;
+    }
 
-.number-input .row {
-    width: 100%;
-    display: flex;
-    gap: .5em;
-}
+    .number-input .row {
+        width: 100%;
+        display: flex;
+        gap: .5em;
+    }
 
-.number-input .row .number {
-    user-select: none;
-    font-size: 2em;
-    width: 35px;
-    height: 35px;
-    padding: 3px;
-    text-align: center;
-    background: var(--border);
-}
+    .number-input .row .number {
+        user-select: none;
+        font-size: 2em;
+        width: 35px;
+        height: 35px;
+        padding: 3px;
+        text-align: center;
+        background: var(--border);
+    }
 
-.number-input .row .number.empty {
-    background: none;
+    .number-input .row .number.empty {
+        background: none;
+    }
 }
-
 @keyframes blink {
     from {
         opacity: 1;
