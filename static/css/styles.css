@@ -464,6 +464,7 @@ svg path.secondary {
 @media (max-width: 1400px) {
     .center {
         max-width: 90%;
+        text-align: center;
     }
     .grid {
         max-width: calc(128px * 2 + 3em);
@@ -498,5 +499,19 @@ svg path.secondary {
     }
     .box {
         max-width: 95%;
+    }
+    table {
+        width: 99%;
+        max-width: 99%;
+    }
+    table td:nth-child(2) {
+        min-width: max-content;
+    }
+    table td.flex:nth-child(2) svg {
+        width: 20px;
+        height: 20px;
+    }
+    table td.flex:nth-child(2) span:not(.mobile) {
+        display: none;
     }
 }
