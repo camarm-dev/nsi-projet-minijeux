@@ -459,3 +459,33 @@ svg path.secondary {
     fill: var(--background);
     color: var(--background);
 }
+
+@media (max-width: 1400px) {
+    .menu {
+        max-width: 85%;
+        padding: 5px 0;
+    }
+    .menuContent {
+        max-width: 95%;
+    }
+    .menuContent .start img {
+        height: 2em;
+    }
+    .menuContent .start h2 {
+        font-size: .8em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .history {
+        max-width: 85%;
+        min-width: 85%;
+    }
+    .user {
+        max-width: 90%;
+    }
+    .user svg {
+        width: 100px;
+        height: 100px;
+    }
+}
