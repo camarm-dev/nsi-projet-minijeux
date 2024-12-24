@@ -335,7 +335,11 @@ form h2 {
     font-size: .7em;
 }
 
-input {
+select {
+    cursor: pointer;
+}
+
+input, select {
     outline: none;
     padding: 4px;
     border: 1px solid var(--color);
