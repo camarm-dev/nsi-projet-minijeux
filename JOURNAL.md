@@ -137,3 +137,4 @@ ORDER BY rank
 ![img_2.png](.github/images/img_2.png)
 - Ajout cooldown pour éviter les requêtes bloquées par l'anticheat
 ![img.png](.github/images/img_4.png)
+- Responsive du site (pour qu'il soit au moins fonctionnel sur mobile)
