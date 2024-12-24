@@ -8,8 +8,15 @@
 
 {% block content %}
 <h2 class="center mt">Classement</h2>
-<p class="center grey mb">Retrouve le classement des joueurs inscrits ci-dessous.</p>
-<!-- Mettre classement perso et total inscrits. Suivant / précédant -->
+<p class="center grey">Retrouve le classement des joueurs inscrits ci-dessous.</p>
+<select class="center mb mt" style="display: block" oninput="goTo(`/leaderboard?game=${this.value}`)" id="selectedGame">
+  <option value="all">Tous les jeux</option>
+  <option value="morpion">Morpion</option>
+  <option value="pfc">Pierre, feuille, ciseaux</option>
+  <option value="dino">Dino</option>
+  <option value="osu">OSU!</option>
+  <option value="justeprix">Juste prix</option>
+</select>
 <table>
   <thead class="grey noLine">
     <tr class="flex-mobile">
@@ -119,4 +126,9 @@
     {% endif %}
   </tbody>
 </table>
+
+<script>
+  const select = document.getElementById('selectedGame')
+  select.value = (new URLSearchParams(location.search)).get('game') || 'all'
+</script>
 {% endblock %}
