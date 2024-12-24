@@ -56,6 +56,7 @@ function guess(value) {
 
 playButton.addEventListener('click', play)
 window.addEventListener('keyup', (event) => {
+    if (arcade.classList.contains('disabled')) return
     if (acceptedKeys.includes(event.key)) {
         input.innerText += event.key
     }
