@@ -496,4 +496,7 @@ svg path.secondary {
         width: 100px;
         height: 100px;
     }
+    .box {
+        max-width: 95%;
+    }
 }
