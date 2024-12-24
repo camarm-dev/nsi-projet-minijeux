@@ -501,7 +501,7 @@ svg path.secondary {
         height: 100px;
     }
     .box {
-        max-width: 95%;
+        max-width: 95% !important;
     }
     table {
         width: 99%;
