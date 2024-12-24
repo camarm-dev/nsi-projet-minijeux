@@ -546,4 +546,15 @@ svg path.secondary {
     form.large {
         max-width: 300px;
     }
+    .screen {
+        height: 500px;
+        width: 350px;
+    }
+    #menu {
+        transform: translate(-50%, 200px);
+    }
+    #menu p {
+        max-width: 100%;
+        text-align: center;
+    }
 }
