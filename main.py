@@ -93,12 +93,12 @@ def get_user_scores(pseudo: str):
 
 
 def get_user_ranking(username: str):
-    ranking = cursor.execute("""SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
-                                    FROM users u 
-                                    JOIN scores s ON u.pseudo = s.user
-                                    WHERE pseudo=?
-                                    GROUP BY u.pseudo, u.name
-                                """, (username,)).fetchone()
+    ranking = cursor.execute("""SELECT * FROM 
+                                        (SELECT u.pseudo, u.name, SUM(s.points) AS score, RANK() OVER (ORDER BY SUM(s.points) DESC) AS rank, u.color_primary, u.color_secondary
+                                        FROM users u                                     
+                                        JOIN scores s ON u.pseudo = s.user                                    
+                                        GROUP BY u.pseudo, u.name)
+                                     WHERE pseudo=?""", (username,)).fetchone()
     if ranking:
         return build_leaderboard_document(ranking)
 
