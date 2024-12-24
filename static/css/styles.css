@@ -533,4 +533,10 @@ svg path.secondary {
     tr.flex-mobile td.flex.between .buttons span {
         display: none;
     }
+    .box.large {
+        max-width: 300px;
+    }
+    form.large {
+        max-width: 300px;
+    }
 }
