@@ -135,3 +135,5 @@ ORDER BY rank
 ![img.png](.github/images/img_3.png)
 - Mise en place d'une personnalisation du profil
 ![img_2.png](.github/images/img_2.png)
+- Ajout cooldown pour éviter les requêtes bloquées par l'anticheat
+![img.png](.github/images/img_4.png)
