@@ -30,8 +30,8 @@ function isCollide(object1, object2) {
 }
 
 function isDead() {
-    // return isCollide(dino, cactus1) || isCollide(dino, cactus2) || isCollide(dino, bird)
-    return false
+    return isCollide(dino, cactus1) || isCollide(dino, cactus2) || isCollide(dino, bird)
+    // return false
 }
 
 function jump() {
