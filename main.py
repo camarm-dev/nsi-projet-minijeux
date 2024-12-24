@@ -188,8 +188,8 @@ def anticheat(game: str, points: int, user: dict):
             points = points if points in [5, 1, 0] else 0
             return (now - last_game['date']).seconds > 7, points
         case 'justeprix':
-            # La partie doit durer 5s
-            # <=> La différence des dates doit être supérieur à 5s
+            # La partie doit durer 10s
+            # <=> La différence des dates doit être supérieur à 10s
             # Ici points représente le nombre d'essais
             points = -0.5 * (points ** 2) + 30 if points <= 7 else 5  # Formule pour les points: -0.5x²+30 et à partir de 7 essais, le score est constant à 5
 
@@ -198,7 +198,7 @@ def anticheat(game: str, points: int, user: dict):
                 if game['game'] == 'justeprix' and game['points'] == 30:
                     return False, 0
 
-            return (now - last_game['date']).seconds > 5, points
+            return (now - last_game['date']).seconds > 10, points
         case 'pfc':
             # La partie doit durer 5s
             # <=> La différence des dates doit être supérieur à 5s
