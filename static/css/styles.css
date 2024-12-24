@@ -469,7 +469,17 @@ svg path.secondary {
     color: var(--background);
 }
 
+.only-mobile {
+    display: none;
+}
+
 @media (max-width: 1400px) {
+    .hidden-mobile {
+        display: none;
+    }
+    .only-mobile {
+        display: block;
+    }
     .center {
         max-width: 90%;
         text-align: center;
