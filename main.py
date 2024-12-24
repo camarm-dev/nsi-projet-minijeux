@@ -9,6 +9,7 @@ import sys
 import waitress
 from flask import Flask, render_template, request, redirect, make_response
 import sqlite3
+from sqlite3 import IntegrityError
 from pbkdf2 import hash_password, verify_password
 import jwt
 
@@ -64,6 +65,8 @@ def build_leaderboard_document(row: list):
 
 
 def insert_user(name: str, pseudo: str, email: str, password: str, created_at: datetime.datetime):
+    if len(name) > 50 or len(pseudo) > 50 or len(email) > 50 or len(password) > 50:
+        raise IntegrityError("Vos informations de profil ne peuvent pas dépasser 50 caractères.")
     password = hash_password(password)
     cursor.execute("INSERT INTO users VALUES (?,?,?,?,?,?,?)", (pseudo, name, password, email, created_at, '#f2f2f2', '#0e0e0e'))
     database.commit()
@@ -81,6 +84,8 @@ def get_user(pseudo: str):
 
 
 def update_user(pseudo: str, name: str, primary: str, secondary: str):
+    if len(pseudo) > 50 or len(name) > 50 or len(primary) > 7 or len(secondary) > 7:
+        raise IntegrityError("Vos informations de profil ne peuvent pas dépasser 50 caractères. La couleure doit être au format hexadécimal (#ffffff)")
     cursor.execute("UPDATE users SET name=?, color_primary=?, color_secondary=? WHERE pseudo=?", (name, primary, secondary, pseudo))
     database.commit()
 
