@@ -398,7 +398,7 @@ def pfc():
 @app.errorhandler(Exception)
 def error(error):
     authenticated, user = get_authentication_status()
-    return render_template('error.html', message=error, pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
+    return render_template('error.html', message=f"{error}: {error.args}", pseudo=user['pseudo'] if authenticated else 'invité', user=user, logged_in=authenticated)
 
 
 if __name__ == '__main__':
