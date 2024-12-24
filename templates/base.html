@@ -38,7 +38,7 @@
             <button onclick="goTo('/me')" class="image"><img src="/static/img/profil_mini.png" alt=""></button>
           {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
-            <button onclick="goTo('/createAccount')">S'inscrire</button>
+            <button class="hidden-mobile" onclick="goTo('/createAccount')">S'inscrire</button>
           {% endif %}
           <button onclick="goTo('/leaderboard')" class="image"><img src="/static/img/trophy.png" alt=""></button>
         </div>
