@@ -43,6 +43,7 @@ choices.forEach(el => {
             computerElement.src = `/static/img/${computerChoice}.png`
             winnerElement.textContent = winText
             menu.classList.remove('hidden')
+            replayCooldown()
             sendScore(score, 'pfc')
         }, 1800)
         setTimeout(() => {
@@ -98,6 +99,18 @@ function play() {
     menu.classList.add('hidden')
     playingElement.classList.remove('hidden')
     resultsElement.classList.add('hidden')
+}
+
+function replayCooldown() {
+    button.disabled = true
+    button.textContent = 'Rejouer dans 3...'
+    setTimeout(() => button.textContent = 'Rejouer dans 2...', 1000)
+    setTimeout(() => button.textContent = 'Rejouer dans 1...', 2000)
+    setTimeout(() => button.textContent = 'Rejouer dans 0...', 3000)
+    setTimeout(() => {
+        button.removeAttribute('disabled')
+        button.textContent = 'Rejouer'
+    }, 4000)
 }
 
 function startAnimation() {
