@@ -174,4 +174,8 @@ header {
             transform: translate(0, 0);
         }
     }
+
+    #menu {
+        width: 100% !important;
+    }
 }
