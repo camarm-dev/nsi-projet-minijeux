@@ -85,7 +85,7 @@
         transform: translate(800px, 368px);
     }
     66% {
-        transform: translate(-50px, 368px);
+        transform: translate(-150px, 368px);
         display: none;
     }
     66.1% {
@@ -102,7 +102,7 @@
         transform: translate(800px, 330px);
     }
     66% {
-        transform: translate(-50px, 330px);
+        transform: translate(-150px, 330px);
         display: none;
     }
     66.1% {
@@ -120,7 +120,7 @@
         transform: translate(800px, 10px);
     }
     75% {
-        transform: translate(-50px, 10px);
+        transform: translate(-150px, 10px);
         display: none;
     }
     75.1% {
