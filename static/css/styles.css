@@ -514,4 +514,23 @@ svg path.secondary {
     table td.flex:nth-child(2) span:not(.mobile) {
         display: none;
     }
+    tr.flex-mobile {
+        display: flex;
+        flex-wrap: wrap;
+        width: 99vw;
+    }
+    tr.flex-mobile td:first-child,
+    tr.flex-mobile td:nth-child(2) {
+        flex: .5;
+    }
+    tr.flex-mobile td:nth-child(3) {
+        flex: 1;
+    }
+    tr.flex-mobile td.flex.between span {
+        text-align: left;
+        font-size: .9em;
+    }
+    tr.flex-mobile td.flex.between .buttons span {
+        display: none;
+    }
 }

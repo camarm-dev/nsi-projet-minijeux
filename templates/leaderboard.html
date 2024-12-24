@@ -12,14 +12,17 @@
 <!-- Mettre classement perso et total inscrits. Suivant / précédant -->
 <table>
   <thead class="grey noLine">
-    <tr>
+    <tr class="flex-mobile">
       <td>{{ total_users }} inscrits</td>
       <td>{{ total_games }} parties jouées</td>
       <td class="flex between">
         <span>Page {{ page }}/{{ total_pages }}</span>
         <div class="buttons">
           {% if page > 1 %}
-            <a href="/leaderboard?page={{ page - 1 }}">&leftarrow; Précédant</a>/
+            <a href="/leaderboard?page={{ page - 1 }}">&leftarrow; Précédant</a>
+          {% endif %}
+          {% if page > 1 and page < total_pages %}
+          <span>/</span>
           {% endif %}
           {% if page < total_pages %}
             <a href="/leaderboard?page={{ page + 1 }}">Suivant &rightarrow;</a>
