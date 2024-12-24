@@ -200,11 +200,11 @@ def anticheat(game: str, points: int, user: dict):
 
             return (now - last_game['date']).seconds > 10, points
         case 'pfc':
-            # La partie doit durer 5s
-            # <=> La différence des dates doit être supérieur à 5s
+            # La partie doit durer 4s
+            # <=> La différence des dates doit être supérieur à 4s
             # Une partie gagnée = 5 points, une partie égalité = 1, une partie perdue = 0
             points = points if points in [5, 1, 0] else 0
-            return (now - last_game['date']).seconds > 5, points
+            return (now - last_game['date']).seconds > 4, points
         case 'osu':
             # TODO
             # 30s min
