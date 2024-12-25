@@ -21,7 +21,7 @@ const winningpaterns = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-    ]
+]
 
 
 // menu depart
@@ -134,36 +134,60 @@ function getBoard() {
 
 function getPossibleMoves(boardObject) {
     // On renvoie les index des cases vides
-    return boardObject.filter(cell => cell === '').map(cell => boardObject.indexOf(cell))
+    const possibleMoves = []
+    let index = 0
+    for (const cell of boardObject) {
+        if (cell === '') {
+            possibleMoves.push(index)
+        }
+        index += 1
+    }
+    return possibleMoves
 }
 
-function winBoardSimulation(simulationBoard) {
+function winBoardSimulation(simulationBoard, player = 'O') {
     // On regarde si il y a une victoire dans la simulation de jeu donnée
-    return winningpaterns.some(combination => combination.every(index => simulationBoard[index] == playerturn))
+    return winningpaterns.some(combination => combination.every(index => simulationBoard[index] == player ))
 }
 
 function botPlay() {
     const boardStatus = getBoard() // On récupère le tableau de jeu (liste avec le contenu des cellules)
     const possibleMoves = getPossibleMoves(boardStatus) // On récupère les moves possibles (coord cases vides)
 
-    // On parcours les cases vides, on simule un déplacement, et on regarde si il y a victoire
-    // Si il n'y a pas de victoire possible en un mouvement, on répète l'opération
+    let dangerPosition= false // On garde en mémoire si l'adversaire peut gagner au prochain tour
     let boardCopy
     let cellNumber = possibleMoves[0]
-    let secondLayerPossibleMoves
+    const enemyPlayer = playerturn === 'O' ? 'X': 'O'
+    // D'abord, on regarde si l'adversaire peut gagner en un mouvement, pour le bloquer (haha 😈)
     for (const move of possibleMoves) {
         boardCopy = [...boardStatus]
-        boardCopy[move] = playerturn
-        if (winBoardSimulation(boardCopy)) {
+        // On simule un mouvement de l'adversaire
+        boardCopy[move] = enemyPlayer
+        if (winBoardSimulation(boardCopy, enemyPlayer)) {
+            dangerPosition = true
             cellNumber = move
             break
         }
-        secondLayerPossibleMoves = getPossibleMoves(boardCopy)
-        for (const secondLayerMove of secondLayerPossibleMoves) {
+    }
+
+    if (!dangerPosition) {
+        // On parcours les cases vides, on simule un déplacement, et on regarde si il y a victoire
+        // Si il n'y a pas de victoire possible en un mouvement, on répète l'opération
+        let secondLayerPossibleMoves
+        for (const move of possibleMoves) {
+            boardCopy = [...boardStatus]
             boardCopy[move] = playerturn
             if (winBoardSimulation(boardCopy)) {
                 cellNumber = move
                 break
+            }
+            secondLayerPossibleMoves = getPossibleMoves(boardCopy)
+            for (const secondLayerMove of secondLayerPossibleMoves) {
+                boardCopy[move] = playerturn
+                if (winBoardSimulation(boardCopy)) {
+                    cellNumber = move
+                    break
+                }
             }
         }
     }
