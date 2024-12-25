@@ -22,10 +22,6 @@
     animation: .5s ease-in-out infinite blink;
 }
 
-.screen {
-    height: 300px !important;
-}
-
 #menu {
     transform: translate(-50%, 100px) !important;
 }
@@ -38,6 +34,10 @@
         max-width: 80%;
         margin: auto;
         gap: .5em;
+    }
+
+    .screen {
+        height: 300px !important;
     }
 
     .number-input .row {
