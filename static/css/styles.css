@@ -477,6 +477,9 @@ svg path.secondary {
     .hidden-mobile {
         display: none;
     }
+    .block {
+        display: block;
+    }
     .center {
         max-width: 90%;
         text-align: center;
