@@ -127,12 +127,50 @@ function playGame(e) {
     }
 }
 
-function botPlay() {
-    const emptyCells = [...cells].filter(cell => cell.innerHTML === '');
-    const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+function getBoard() {
+    // On renvoie la partie sous forme de liste: [[]]
+    return [...cells].map(cell => cell.innerHTML)
+}
 
-    if (randomCell) {
-        randomCell.innerHTML = playerturn;
+function getPossibleMoves(boardObject) {
+    // On renvoie les index des cases vides
+    return boardObject.filter(cell => cell === '').map(cell => boardObject.indexOf(cell))
+}
+
+function winBoardSimulation(simulationBoard) {
+    // On regarde si il y a une victoire dans la simulation de jeu donnée
+    return winningpaterns.some(combination => combination.every(index => simulationBoard[index] == playerturn))
+}
+
+function botPlay() {
+    const boardStatus = getBoard() // On récupère le tableau de jeu (liste avec le contenu des cellules)
+    const possibleMoves = getPossibleMoves(boardStatus) // On récupère les moves possibles (coord cases vides)
+
+    // On parcours les cases vides, on simule un déplacement, et on regarde si il y a victoire
+    // Si il n'y a pas de victoire possible en un mouvement, on répète l'opération
+    let boardCopy
+    let cellNumber = possibleMoves[0]
+    let secondLayerPossibleMoves
+    for (const move of possibleMoves) {
+        boardCopy = [...boardStatus]
+        boardCopy[move] = playerturn
+        if (winBoardSimulation(boardCopy)) {
+            cellNumber = move
+            break
+        }
+        secondLayerPossibleMoves = getPossibleMoves(boardCopy)
+        for (const secondLayerMove of secondLayerPossibleMoves) {
+            boardCopy[move] = playerturn
+            if (winBoardSimulation(boardCopy)) {
+                cellNumber = move
+                break
+            }
+        }
+    }
+
+    const cell = cells[cellNumber];
+    if (cell) {
+        cell.innerHTML = playerturn;
 
         if (checkWin(playerturn)) {
             updateGamesStatus("wins" + playerturn);
