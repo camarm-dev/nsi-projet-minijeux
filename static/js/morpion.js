@@ -11,6 +11,7 @@ const vsRobotBtn = document.getElementById('vsRobot');
 const emptyCells = [...cells].filter(cell => cell.innerHTML === '');
 let isVsRobot = false;
 let playerturn = playerOne ;
+let canPlay = true
 
 const winningpaterns = [
     [0, 1, 2],
@@ -101,8 +102,8 @@ cells.forEach(cell =>{
 
 
 function playGame(e) {
-    // verif case deja occuper
-    if (e.target.innerHTML !== '') {
+    // verif case deja occuper ou bot entrain de jouer
+    if (e.target.innerHTML !== '' || !canPlay) {
         return;
     }
 
@@ -123,7 +124,11 @@ function playGame(e) {
 
     // mode Robot
     if (isVsRobot && playerturn === playerTwo) {
-        setTimeout(botPlay, 500); // paus pour simuler le temps d un humain mdr
+        canPlay = false
+        setTimeout(() => {
+            botPlay()
+            canPlay = true
+        }, 500); // paus pour simuler le temps d un humain mdr
     }
 }
 
