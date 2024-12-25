@@ -157,25 +157,30 @@ function winBoardSimulation(simulationBoard, player = 'O') {
 
 function botPlay() {
     const boardStatus = getBoard() // On récupère le tableau de jeu (liste avec le contenu des cellules)
-    const possibleMoves = getPossibleMoves(boardStatus) // On récupère les moves possibles (coord cases vides)
+    const possibleMoves = getPossibleMoves(boardStatus) // On récupère les moves possibles (cases vides)
 
+    // Si c'est le premier tour, on joue aléatoirement pour éviter de faire le même mouvement à chaque partie
+    const firstTurn = possibleMoves.length === 8
     let dangerPosition= false // On garde en mémoire si l'adversaire peut gagner au prochain tour
     let boardCopy
     let cellNumber = possibleMoves[0]
-    const enemyPlayer = playerturn === 'O' ? 'X': 'O'
-    // D'abord, on regarde si l'adversaire peut gagner en un mouvement, pour le bloquer (haha 😈)
-    for (const move of possibleMoves) {
-        boardCopy = [...boardStatus]
-        // On simule un mouvement de l'adversaire
-        boardCopy[move] = enemyPlayer
-        if (winBoardSimulation(boardCopy, enemyPlayer)) {
-            dangerPosition = true
-            cellNumber = move
-            break
+    if (!firstTurn) {
+        const enemyPlayer = playerturn === 'O' ? 'X': 'O'
+        // D'abord, on regarde si l'adversaire peut gagner en un mouvement, pour le bloquer (haha 😈)
+        for (const move of possibleMoves) {
+            boardCopy = [...boardStatus]
+            // On simule un mouvement de l'adversaire
+            boardCopy[move] = enemyPlayer
+            if (winBoardSimulation(boardCopy, enemyPlayer)) {
+                dangerPosition = true
+                cellNumber = move
+                break
+            }
         }
     }
 
-    if (!dangerPosition) {
+
+    if (!dangerPosition && !firstTurn) {
         // On parcours les cases vides, on simule un déplacement, et on regarde si il y a victoire
         // Si il n'y a pas de victoire possible en un mouvement, on répète l'opération
         let secondLayerPossibleMoves
@@ -195,6 +200,10 @@ function botPlay() {
                 }
             }
         }
+    }
+
+    if (firstTurn) {
+        cellNumber = possibleMoves[Math.round(Math.random() * possibleMoves.length)]
     }
 
     const cell = cells[cellNumber];
