@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "nsi-projet-minijeux"
+version = "0.1.0"
+description = "A simple Flask application manage users and save their scores"
+authors = ["Julien Grandvoynet <jgrandvoynet@gmail.com>", "Gaspard Carré <gaspardcarre@gmail.com>", "Armand CAMPONOVO <contact@camarm.dev>"]
+license = "CECILL-2.1"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+werkzeug = "2.2.0"
+flask = ">=2.0.3,<2.1.0"
+pyjwt = ">=2.6.0,<2.7.0"
+waitress = ">=3.0.2,<3.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
