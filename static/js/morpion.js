@@ -172,17 +172,13 @@ function botPlay() {
             // On simule un mouvement de l'adversaire
             boardCopy[move] = enemyPlayer
             if (winBoardSimulation(boardCopy, enemyPlayer)) {
-                dangerPosition = true
+                dangerPosition = true // Si l'adversaire peut gagner au prochain tour
                 cellNumber = move
                 break
             }
         }
-    }
-
-
-    if (!dangerPosition && !firstTurn) {
-        // On parcours les cases vides, on simule un déplacement, et on regarde si il y a victoire
-        // Si il n'y a pas de victoire possible en un mouvement, on répète l'opération
+        // Puis on parcourt les cases vides, on simule un déplacement, et on regarde s'il y a victoire
+        // Si il n'y a pas de victoire possible en un mouvement, on va simuler le coup encore après
         let secondLayerPossibleMoves
         for (const move of possibleMoves) {
             boardCopy = [...boardStatus]
@@ -191,12 +187,16 @@ function botPlay() {
                 cellNumber = move
                 break
             }
-            secondLayerPossibleMoves = getPossibleMoves(boardCopy)
-            for (const secondLayerMove of secondLayerPossibleMoves) {
-                boardCopy[move] = playerturn
-                if (winBoardSimulation(boardCopy)) {
-                    cellNumber = move
-                    break
+            // Pour assurer la victoire :
+            // On rentre dans la simulation du coup encore après seulement si l'adversaire n'est pas assuré de gagner...
+            if (!dangerPosition) {
+                secondLayerPossibleMoves = getPossibleMoves(boardCopy)
+                for (const secondLayerMove of secondLayerPossibleMoves) {
+                    boardCopy[move] = playerturn
+                    if (winBoardSimulation(boardCopy)) {
+                        cellNumber = move
+                        break
+                    }
                 }
             }
         }
