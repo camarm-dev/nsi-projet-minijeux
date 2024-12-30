@@ -36,7 +36,7 @@
         <div class="buttons">
           {% if logged_in %}
             <button onclick="goTo('/me')" class="image"><img src="/static/img/profil_mini.png" alt=""></button>
-<!--            <button onclick="document.cookie = ''; goTo('/')" class="image"><img src="/static/img/logout.png" alt=""></button>-->
+            <button onclick="logout()" class="image"><img src="/static/img/logout.png" alt=""></button>
           {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
             <button class="hidden-mobile" onclick="goTo('/createAccount')">S'inscrire</button>
@@ -45,6 +45,13 @@
         </div>
     </div>
 </header>
+<script>
+  // Supprime le cookie token
+  function logout() {
+      document.cookie = `token=;path=/;domain=${location.hostname};expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+      goTo('/')
+  }
+</script>
 {% endif %}
 {% block content %}
 
