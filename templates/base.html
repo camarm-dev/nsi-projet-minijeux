@@ -36,7 +36,7 @@
         <div class="buttons">
           {% if logged_in %}
             <button onclick="goTo('/me')" class="image"><img src="/static/img/profil_mini.png" alt=""></button>
-            <button onclick="logout()" class="image"><img src="/static/img/logout.png" alt=""></button>
+            <button style="padding-left: 10px;" onclick="logout()" class="image"><img src="/static/img/logout.png" alt=""></button>
           {% else %}
             <button onclick="goTo('/login')">Se connecter</button>
             <button class="hidden-mobile" onclick="goTo('/createAccount')">S'inscrire</button>
