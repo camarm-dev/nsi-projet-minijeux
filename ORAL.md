@@ -174,6 +174,31 @@ TODO: image JWT
 > Le cross-site scripting (abrégé XSS) est un type de faille de sécurité des sites web permettant d'injecter du contenu (javascript) dans une page, qui s'exécute sur les navigateurs web des utilisateurs visitant la page.
 > [wikipedia.com](https://fr.wikipedia.org/wiki/Cross-site_scripting)
 
+Ce type d'attaque consiste donc à entrer du code HTML (dont Javascript) dans un champ de texte affiché sur la page.
+
+```html
+<p>
+    {nom d'utilisateur}
+</p>
+```
+
+Donc si le nom d'utilisateur est `<script>alert('Vulnérabilité')</script>` :
+
+```html
+<p>
+    <script>alert('Vulnérabilité')</script>
+</p>
+```
+
+Et donc au chargement de la page, ce code sera exécuté sur le navigatur du visiteur.
+
+Heureusement, nous utilisions Jinja, qui protège de ces attaques, en échappant les tags HTML: c'est à dire qu'elle affiche que tu texte.
+
+`<script>alert('Vulnérabilité')</script>` -> `&lt;script&gt;alert('Vuln&eacute;rabilit&eacute;')&lt;/script&gt;`
+
+Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'utilisateur directement dans du Javascript (ou attributs `onclick` ect).
+
+
 ## DA/design
 
 
