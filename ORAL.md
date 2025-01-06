@@ -8,6 +8,7 @@
     - Cahier des charges
     - Journal
     - DA / design
+    - Jeux: OSU, Bot morpion
     - Chronologie
 - Expliquer fonctionnalités avancées
     - Flask ? concept + comment on s'en sert + Jinja
