@@ -5,7 +5,7 @@
 - Intro
 - Présentation site (montrer les fonctionnalités en direct)
 - Présentation projet
-    - Rôles
+    - Rôles + outils utilisés (github, gestion des taches, vscode, piksel)
     - Cahier des charges
     - Journal
     - DA / design
@@ -123,3 +123,53 @@ def anticheat(game: str, points: int, user: dict):
             return False, 0
     return True, points
 ```
+
+### Sécurité BDD / mots de passes
+
+Au début la BDD était publiée sur le dépôt de code (par soucis de collaboration).
+Cela pose des problèmes de sécurité (et de vie privée) puisque les données des utilisateurs sont donc publiques.
+
+C'est pour cela que la base de "production" n'est pas publiée sur le dépôt.
+
+#### Mots de passes
+
+Comme décrit dans le cahier des charges, la sécurité des mots de passe est une couche de sécurité attendue.
+Nous utilisons l'algorithme [PBKDF2](https://fr.wikipedia.org/wiki/PBKDF2): Password Based Key Derivation Function 2.
+
+> Une fonction de hachage cryptographique est une fonction qui, à une donnée arbitraire, associe une image fixe, pratiquement impossible à inverser.
+> [wikipedia.com](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)
+
+Son fonctionnement est itératif : 
+- il _hash_ le mot de passe avec un algorithme donné un certain nombre de fois (SHA-256, 260 000 fois dans notre cas)
+- en plus ce hashage, cet algorithme rajoute un sel ; une chaine de caractères aléatoires qui complique le cassage par force brute
+
+Cet algorithme permet donc de hasher des mots de passes et de comparer leur hash mais rend presque impossible le cassage de ceux-ci, car il est lent...
+
+L'implémentation python de cet algorithme est à `pbkdf2.py` et provient de [Password hashing in Python with pbkdf2 - Simon Willison](https://til.simonwillison.net/python/password-hashing-with-pbkdf2)
+
+### Sécurité jetons
+
+Notre système utilise les Json Web Token ([JWT](https://fr.wikipedia.org/wiki/JSON_Web_Token)). Ces jetons uniques permettent d'identifier les utilisateurs.
+
+Ils possèdent : 
+- une charge utile, avec le pseudo unique de l'utilisateur
+- une date d'expiration
+- une signature, qui permet de vérifier leur authenticité (si le jeton a bien été généré par notre site)
+
+La signature ne peut être émise qu'a l'aide une clé secrète: n'importe quel personne ayant connaissance de la clé secrète peut générer des jetons qui font autorité (valides).
+
+Cette clé, est générée aléatoirement^1 au lancement du site. Si elle venait à être compromise, le site doit donc "seulement" être relancé.
+
+```python
+SECRET = secrets.token_urlsafe(512)
+```
+
+TODO: image JWT
+
+[^1] à l'aide d'un RNG conçu pour la cryptographie [docs.python.org](https://docs.python.org/3/library/secrets.html)
+
+
+### Protection des attaques XSS
+
+> Le cross-site scripting (abrégé XSS) est un type de faille de sécurité des sites web permettant d'injecter du contenu (javascript) dans une page, qui s'exécute sur les navigateurs web des utilisateurs visitant la page.
+> [wikipedia.com](https://fr.wikipedia.org/wiki/Cross-site_scripting)
