@@ -15,6 +15,11 @@ const levelMusic = {
     medium: "/static/audio/medium-level.mp3",
     hard: "/static/audio/hard-level.mp3"     
 };
+const levelInterval = {
+    easy: 1000,    
+    medium: 750,
+    hard: 500    
+};
 const totalImages = 5;
 const totalSound = 4;
 const maxBalles = 3;  
@@ -59,7 +64,7 @@ function startGame(level) {
             document.getElementById("particleContainer").style.display = "block";
 
             startTimer();   
-            balleInterval = setInterval(createNewBalle, 1000);
+            balleInterval = setInterval(createNewBalle, levelInterval[level]);
         });
     });
 }
@@ -147,7 +152,7 @@ function endGame() {
 
     endScreen.innerHTML = `
         <h1>Temps écoulé !</h1>
-        <p>Votre score : ${score / 7}</p>
+        <p>Votre score : ${Math.round(score / 3)}</p>
         <button id="returnToMenu">Retour au menu</button>
         <style>#returnToMenu{cursor:none;}</style>`;
 
