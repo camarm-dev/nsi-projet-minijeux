@@ -147,7 +147,7 @@ function endGame() {
 
     endScreen.innerHTML = `
         <h1>Temps écoulé !</h1>
-        <p>Votre score : ${score}</p>
+        <p>Votre score : ${score / 7}</p>
         <button id="returnToMenu">Retour au menu</button>
         <style>#returnToMenu{cursor:none;}</style>`;
 
@@ -160,7 +160,10 @@ function endGame() {
         document.body.removeChild(endScreen);
         showMenu();
     });
-    backgroundMusic.stop();
+    backgroundMusic.pause();
+    if (logged) {
+        sendScore(score, 'osu');
+    }
 }
 
 // Fonction pour revenir au menu
