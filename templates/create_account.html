@@ -28,7 +28,8 @@
     </div>
     <div class="field">
         <label for="password">Mot de passe</label>
-        <input required type="password" name="password" id="password" placeholder="*******">
+        <input required type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^A-Za-z0-9]).{8,}$" name="password" id="password" placeholder="*******">
+        <p class="grey help">Doit contenir au moins une majuscule, une minuscule, un caractère spécial et faire au moins 8 carctères.</p>
     </div>
     <div class="field">
         <button type="submit">Créer mon compte</button>

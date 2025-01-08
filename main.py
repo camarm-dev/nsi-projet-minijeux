@@ -283,6 +283,11 @@ def signup():
             return render_template('create_account.html', error=True, noMenu=True,
                                    message="Le nom d'utilisateur ne respecte pas le format demandé.")
 
+        # Le mot de passe ne respecte pas les règles de sécurité 
+        if not re.match(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^A-Za-z0-9]).{8,}$", password):
+            return render_template('create_account.html', error=True, noMenu=True,
+                                   message="Le mot de passe ne respecte pas les normes de sécurités demandées.")
+
         try:
             insert_user(fullname, pseudo, email, password, created_at)
         except sqlite3.IntegrityError:
