@@ -234,7 +234,8 @@ def anticheat(game: str, points: int, user: dict):
             # TODO
             # 30s min
             # 15pt max
-            ...
+            points = points / 7 if points <= 250 else 0
+            return (now - last_game['date']).seconds > 30, points
         case _:
             return False, 0
     return True, points
