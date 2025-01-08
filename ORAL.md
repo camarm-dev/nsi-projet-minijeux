@@ -16,6 +16,7 @@
     - Authentification (jeton)
     - Acquisition scores
     - Base de données
+    - Infrastructure serveur
 - Sécurité
     - Anticheat
     - Sécurité BDD / mot de passes
@@ -199,7 +200,7 @@ Heureusement, nous utilisions Jinja, qui protège de ces attaques, en échappant
 Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'utilisateur directement dans du Javascript (ou attributs `onclick` ect).
 
 
-## DA/design
+### DA/design
 
 
 - DA style 8-bit/borne d'arcade
@@ -220,5 +221,13 @@ Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'
         - pour s'aider utiliser l'ia pour s'inspirer ou convertir des images en pixel art
         - juste prix version console -> rentre dans le theme
         - OSU :
-            - bande son dans le theme borne d'arcade       
+            - bande son dans le theme borne d'arcade
+               
+### outil utilisé
+- Github  | Partage des fichiers de design, code    
+- VScode  | Editeur de code en ligne et a la maison 
+- Piskel  | OUtil pour la création de l'entiereté des design en pixel art
+- Proxmox | Gestion serveur
+- Github projet | assignation des taches et deadline
+
 
