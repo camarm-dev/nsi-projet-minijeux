@@ -102,16 +102,11 @@ function playLevelMusic(level, callback) {
         console.log("Musique jouée : " + musicUrl);
 
         
-        timeRemaining = Math.ceil(backgroundMusic.duration); 
+        timeRemaining = 60; 
         callback(); 
 
     }).catch(err => {
         console.error("Erreur lors de la lecture de la musique :", err);
-    });
-
-   
-    backgroundMusic.addEventListener("ended", () => {
-        endGame();
     });
 }
 
@@ -164,9 +159,8 @@ function endGame() {
     document.getElementById("returnToMenu").addEventListener("click", () => {
         document.body.removeChild(endScreen);
         showMenu();
-
-        
     });
+    backgroundMusic.stop();
 }
 
 // Fonction pour revenir au menu
