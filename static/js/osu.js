@@ -201,7 +201,7 @@ function createNewBalle() {
         border-radius: 50%;
         background: url('${currentImage}') no-repeat center/cover;
         left: ${randomX}px;
-        top: ${randomY}px;
+        top: ${randomY < 100 ? randomY + 100 : randomY}px;
         z-index: ${1000 - balleID};
     `;
 
@@ -209,7 +209,7 @@ function createNewBalle() {
     balles.push({ element: newBalle, id });
 
     // Gestion des clics
-    newBalle.addEventListener("click", () => handleBalleClick(id, newBalle));
+    newBalle.addEventListener("click", () => handleBalleClick(id));
 
     // Suppression automatique après 3 secondes
     setTimeout(() => {
@@ -218,9 +218,8 @@ function createNewBalle() {
 }
 
 // Fonction pour gerer les clique sur les balles
-function handleBalleClick(id, balle) {
+function handleBalleClick(id) {
     if (balles.length === 0 || balles[0].id !== id) {
-
         score -= 1;
         updateScore();
         return;
