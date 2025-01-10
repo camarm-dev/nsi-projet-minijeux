@@ -200,7 +200,40 @@ Heureusement, nous utilisions Jinja, qui protège de ces attaques, en échappant
 Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'utilisateur directement dans du Javascript (ou attributs `onclick` ect).
 
 
-### DA/design
+### Injections SQL
+
+SQL est un langage qui permet de faire des requêtes à une base de données.
+```sql
+SELECT * FROM users WHERE pseudo='unpseudo'
+```
+_Récupère toutes les colonnes des lignes dont le pseudo est "unpseudo"_
+
+Cette requête peut être utile pour récupérer les informations enregistrées d'un utilisateur. Dans ce cas c'est avec une variable que l'on définira notre filtre `WHERE pseudo=`
+
+```python
+pseudo = "unpseudo" # Exemple, on prend une valeur rentrée par l'utilisateur en situation réelle
+database.execute('SELECT * FROM users WHERE pseudo=\'' + pseudo + '\'')
+```
+
+Le problème est que cette valeur est une valeur renseignée par l'utilisateur, qui peut donc essayer d'échapper la chaine de caractère et faire sa propre requête à la base; c'est critique: il peut tout supprimer ou accéder aux informations des autres utilisateurs.
+
+```python
+pseudo = "'; DROP TABLE users; --" # Exemple, d'exploitation de la faille
+database.execute('SELECT * FROM users WHERE pseudo=\'' + pseudo + '\'')
+```
+```sql
+SELECT * FROM users WHERE pseudo=''; DROP TABLE users; -- '
+```
+_Supprime la base des utilisateurs !!!_
+
+**La solution du problème : utiliser la fonctionnalité du module `sqlite` de Python, qui empêche toute possibilité d'injection.** (et est maintenu régulièrement, au cas où une nouvelle faille serait découverte)
+
+```python
+database.execute('SELECT * FROM users WHERE pseudo=?', (pseudo,))
+```
+_Plus de problèmes; le module sqlite s'assurera que la chaine pseudo sera bien interprétée comme du texte._
+
+# DA/design
 
 
 - DA style 8-bit/borne d'arcade
@@ -223,7 +256,7 @@ Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'
         - OSU :
             - bande son dans le theme borne d'arcade
                
-### outil utilisé
+### Outil utilisé
 - Github  | Partage des fichiers de design, code    
 - VScode  | Editeur de code en ligne et a la maison 
 - Piskel  | OUtil pour la création de l'entiereté des design en pixel art
