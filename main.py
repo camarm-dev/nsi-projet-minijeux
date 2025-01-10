@@ -283,7 +283,7 @@ def signup():
             return render_template('create_account.html', error=True, noMenu=True,
                                    message="Le nom d'utilisateur ne respecte pas le format demandé.")
 
-        # Le mot de passe ne respecte pas les règles de sécurité 
+        # Le mot de passe ne respecte pas les règles de sécurité
         if not re.match(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^A-Za-z0-9]).{8,}$", password):
             return render_template('create_account.html', error=True, noMenu=True,
                                    message="Le mot de passe ne respecte pas les normes de sécurités demandées.")
@@ -357,6 +357,8 @@ def my_profile():
     if authenticated:
         total_users, _, _ = get_statistics()
         ranking = get_user_ranking(user['pseudo'])
+        if not ranking:
+            ranking = {"rank": "Non classé"}
         games = get_user_scores(user['pseudo'])
         return render_template('profile.html', logged_in=True, user=user, games=games, total_users=total_users, rank=ranking['rank'], can_modify=True)
     return redirect('/login')
@@ -371,6 +373,8 @@ def profile(username: str):
         return render_template('error.html', logged_in=authenticated, message='Utilisateur introuvable')
     games = get_user_scores(username)
     ranking = get_user_ranking(user['pseudo'])
+    if not ranking:
+        ranking = {"rank": "Non classé"}
     return render_template('profile.html', logged_in=authenticated, user=user, games=games, total_users=total_users, rank=ranking['rank'])
 
 
