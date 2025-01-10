@@ -18,11 +18,11 @@
     - Base de données
     - Infrastructure serveur
 - Sécurité
-    - Anticheat
-    - Sécurité BDD / mot de passes
-    - Sécurité jetons
-    - Attaques XSS (impossibles: jinja)
-    - Injections SQL
+    - [x] Anticheat
+    - [x] Sécurité BDD / mot de passes
+    - [x] Sécurité jetons
+    - [x] Attaques XSS (impossibles: jinja)
+    - [x] Injections SQL
 
 ## Sécurité
 
@@ -198,7 +198,6 @@ Heureusement, nous utilisions Jinja, qui protège de ces attaques, en échappant
 `<script>alert('Vulnérabilité')</script>` -> `&lt;script&gt;alert('Vuln&eacute;rabilit&eacute;')&lt;/script&gt;`
 
 Aussi, nous avons fait attention de ne pas utiliser des valeurs rentrées par l'utilisateur directement dans du Javascript (ou attributs `onclick` ect).
-
 
 ### Injections SQL
 
