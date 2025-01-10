@@ -11,9 +11,9 @@
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
     - [ ] [Chronologie](#chronologie)
-- Expliquer fonctionnalités avancées
-    - [ ] Flask ? concept + comment on s'en sert + Jinja
-    - [ ] Authentification (jeton)
+- Fonctionnalités avancées
+    - [ ] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
+    - [ ] [Authentification](#authentification) (jeton)
     - [ ] Acquisition scores
     - [ ] Base de données
     - [ ] Infrastructure serveur
@@ -74,6 +74,98 @@ TODO
 
 ### Chronologie
 TODO
+
+## Fonctionnalités avancées
+
+### Le "backend", avec Flask
+
+#### Introduction à Flask
+
+> Flask est un micro framework open-source de développement web en Python.
+> [wikipedia.org](https://fr.wikipedia.org/wiki/Flask_(framework))
+
+Flask va nous permettre de :
+- Renvoyer des fichiers HTML à l'utilisateur (en y injectant des variable Python, avec Jinja)
+- Intercepter les formulaires envoyés
+
+=> Lier la logique d'authentification, et la gestion de la base à l'interface utilisateur
+
+> Jinja est un moteur de template open-source utilisé par le langage Python.
+> [wikipedia.org](https://fr.wikipedia.org/wiki/Jinja_(moteur_de_template))
+
+Jinja prend donc un fichier HTML, et le rempli des variables Python qu'on lui donne. On peut aussi faire des boucles for, et des conditions if:
+```html
+<div>
+  {% if logged_in %}
+    <p>Connecté</p>
+  {% else %}
+    <p>Pas connecté</p>
+  {% endif %}
+</div>
+```
+
+```python
+render_template('example.html', logged_in=True)
+```
+_Exemple simple d'utilisation de Jinja_
+
+
+#### Comment on s'en sert ?
+
+Gestion de la requête pour la page d'accueil
+```python
+from flask import Flask
+
+app = Flask('Site de minijeux')
+
+@app.get('/')
+def home():
+    return render_template('index.html', pseudo='pseudo', logged_in=True)
+```
+
+#### Schéma de fonctionnement
+
+[![](https://mermaid.ink/img/pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA?type=png)](https://mermaid.live/edit#pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA)
+
+
+<details>
+
+<summary>Code mermaid</summary>
+
+
+```mermaid
+flowchart LR
+    U("Utilisateur") -->|Interagie| Navigator
+    subgraph Navigator["Partie navigateur (Frontend; HTML, CSS, JS)"]
+        direction TB
+        D["Page de connexion"]
+        A["Page HTML du jeu"]
+        C(["sendScore.js"])
+        F(["Formulaire envoyé"])
+    end
+    subgraph Server["Partie serveur (Backend) main.py"]
+        direction TB
+        J("Servir les fichiers HTML, CSS, JS et images")
+        E("Authentification")
+        H("Enregistrement scores")
+    end
+    D --> F
+    F --> E
+    E .-> |Cookie avec jeton| Navigator
+    C --> |Sauvegarder| H
+    A -->|Gagne une partie| C
+    E & H <--> BDD[("Base de données Sqlite")]
+```
+
+
+</details>
+
+### Authentification
+
+L'authentification, c'est un système de contrôle d'accès à des ressources. Ici, un utilisateur connecté peut sauvegarder ses scores.
+
+TODO
+
 
 ## Sécurité
 
