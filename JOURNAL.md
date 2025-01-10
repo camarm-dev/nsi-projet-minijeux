@@ -93,7 +93,9 @@ Rien de particulier.
 **Tâches effectuées**
 
 - Commencement du jeu du dino
+
 ![dino.png](.github/images/dino.png)
+
 - Création des pages de connexion / création de compte
 
 | Création de compte                       | Connexion                            |
@@ -112,9 +114,26 @@ Rien de particulier.
 
 ![retroplanning.png](.github/images/retroplanning.png)
 
+- Continuation du morpion
+- Commencement du design de plusieurs cartouches
+- Commencement du développement du OSU
+
 > Grands objectifs associés : "Page d'accueil avec sélection du jeu" & "Comptes (connexion)"
 
 ## Lundi 8 décembre
+
+**Réunion du jour :**
+
+Armand : présentation du système de rétroplanning, de la nouvelle page d'accueil, du juste prix et des pages de connexion / création de compte.
+
+Julien : présentation des nouveautés et amélioration sur le morpion, et du OSU.
+
+Gaspard : présentation des esquisses de cartouches et des différentes assets.
+
+Répartition de nouvelles tâche et vérification de l'avancement du projet, en fonction des fonctionnalités attendues : migration du site statique vers Flask, développement OSU...
+Et vérification des images manquantes pour que Gaspard puisse les créer.
+
+**Tâches effectuées ce jour**
 
 - Commencement de la migration vers Flask
 - Continuation OSU! & dino
@@ -122,23 +141,31 @@ Rien de particulier.
 
 > Grands objectifs associés : "Site dynamique avec Flask"
 
-## Mercredi 11 décembre 
+## Mercredi 11 décembre
+**Réunion du jour :**
+
+Mise au point rétroplanning. Continuation des tâches du Lundi. 
+
+**Tâches effectuées ce jour**
+
 - Images dino
 - Continuation OSU!
 - Continuation dino
 
 ## À la maison (11 décembre - 16 Décembre)
 
+**Tâches effectuées**
+
 - Explications dans le README pour la sécurité des comptes
 - Migration des ressources pour flask
 
 ![img.png](.github/images/structure_flask.png)
 
-- Commencement de l'authentification: hashage de mots de passe & récupération des données du formulaire en python
+- Commencement de l'authentification : hashage de mots de passe & récupération des données du formulaire en python
 
 | Hashage des mots de passes             | Code python de la création de compte |
 |----------------------------------------|--------------------------------------|
-| ![img.png](.github/images/hashing.png) |                                      |
+| ![img.png](.github/images/hashing.png) | ![img.png](.github/images/img_6.png) | 
 
 - Mise en place de la base de données
 ```sql
