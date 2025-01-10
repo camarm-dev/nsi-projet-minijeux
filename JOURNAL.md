@@ -48,11 +48,23 @@ Nous avons défini les rôles, l'organisation du projet, sa DA...
 
 ## Lundi 2 Décembre
 
+**Réunion du jour :**
+
+Présentation de nos travaux du weekend : le début de page d'accueil, du morpion et l'écran de chargement.
+
+Nous avons aussi décidé de mettre en place un système de gestion de tâches.
+
+**Tâches effectuées ce jour**
+
 - Paramétrage d'outils pour la gestion des tâches
+
 ![Capture d'écran du projet Github](.github/images/project.png)
+
+
 - Rédaction Cahier des Charges
 - Finalisation Morpion
 - Design: cartouche morpion, PFC & borne arcade
+
 ![icone morpion](static/img/morpion.png)
 
 ## Mercredi 4 Décembre
