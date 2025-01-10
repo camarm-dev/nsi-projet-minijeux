@@ -178,9 +178,21 @@ _Schéma de la BDD_
 
 ![img.png](.github/images/profile.png)
 
+- Continuation OSU
+
 > Grands objectifs associés : "Site dynamique avec Flask" & "Comptes (gestion d'une base d'utilisateurs)"
 
 ## Lundi 16 décembre
+
+**Réunion du jour :**
+
+Présentation des tâches effectuées ce weekend : mise en place de la base de données, et de la page de profil.
+
+Explications du fonctionnement de l'authentification, pour que tout le groupe comprenne le fonctionnement du site.
+
+Planification des tâches de la semaine : continuation OSU, designs des cartouches OSU, Dino et Juste Prix, finalisation de l'authentification, se pencher sur l'acquisition des scores et mettre en place un anticheat.
+
+**Tâches effectuées ce jour**
 
 - V1 mise en ligne
 - Création de compte et connexion fonctionnelle
@@ -190,6 +202,14 @@ _Schéma de la BDD_
 ![osu](static/img/osu.png)
 
 ## Mercredi 18 Décembre
+
+**Réunion du jour :**
+
+Debrief des tâches effectuées le lundi.
+
+Continuation des tâches fixées le lundi.
+
+**Tâches effectuées ce jour**
 
 - Continuation OSU!
 - Création cartouche dino et juste prix
