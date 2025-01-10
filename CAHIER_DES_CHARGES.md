@@ -17,6 +17,7 @@ Voici une liste non exhaustive des objectifs de ce projet, dressée au début de
 - Direction artistique "8-bit"
 - Page d'accueil avec sélection du jeu
 - 5 jeux: Osu, Pierre Feuille Ciseaux, Morpion, Jeu du Dino, Juste prix
+- Site dynamique avec Flask
 - Comptes (gestion d'une base d'utilisateurs)
 - Page de classement
 
