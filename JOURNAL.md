@@ -298,6 +298,7 @@ Point sur le planning prévisionnel : catégorisation plus précise des tâches,
 **Tâches effectuées**
 - Rafraichissement du journal de bord
 - Continuation et finalisation de l'oral (principalement des textes)
+- Résolution bugs OSU (balles qui apparaissent trop haut, ou les unes sur les autres)
 - Renseignement sur la conformité RGPD du site
 
 ## Lundi 13 Janvier
