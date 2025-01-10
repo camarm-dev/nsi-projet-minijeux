@@ -4,25 +4,76 @@
 
 - Intro
 - Présentation site (montrer les fonctionnalités en direct)
-- Présentation projet
-    - Rôles + outils utilisés (github, gestion des taches, vscode, piksel)
-    - Cahier des charges
-    - Journal
-    - DA / design
-    - Jeux: OSU, Bot morpion
-    - Chronologie
+- [Présentation projet](#présentation-projet)
+    - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outil-utilisés) (github, gestion des taches, vscode, piksel)
+    - [ ] [Cahier des charges](#cahier-des-charges)
+    - [ ] [Journal](#journal)
+    - [x] [DA / design](#da--design)
+    - [ ] [Jeux: OSU, Bot morpion](#jeux)
+    - [ ] [Chronologie](#chronologie)
 - Expliquer fonctionnalités avancées
-    - Flask ? concept + comment on s'en sert + Jinja
-    - Authentification (jeton)
-    - Acquisition scores
-    - Base de données
-    - Infrastructure serveur
+    - [ ] Flask ? concept + comment on s'en sert + Jinja
+    - [ ] Authentification (jeton)
+    - [ ] Acquisition scores
+    - [ ] Base de données
+    - [ ] Infrastructure serveur
 - Sécurité
     - [x] Anticheat
     - [x] Sécurité BDD / mot de passes
     - [x] Sécurité jetons
     - [x] Attaques XSS (impossibles: jinja)
     - [x] Injections SQL
+
+## Présentation projet
+
+### Répartition des rôles
+
+| Personne | Rôle                                       |
+|----------|--------------------------------------------|
+| Gaspard  | Designer & Co-directeur                    |
+| Julien   | Développeur & Co-directeur                 |
+| Armand   | Coordination, développement & Co-directeur |
+
+### Outils utilisés
+- Github  | Partage des fichiers de design, code
+- VScode  | Editeur de code en ligne et a la maison
+- Piskel  | OUtil pour la création de l'entiereté des design en pixel art
+- Proxmox | Gestion serveur
+- Github projet | assignation des taches et deadline
+
+### Cahier des charges
+TODO
+
+### Journal
+TODO
+
+### DA / design
+
+- DA style 8-bit/borne d'arcade
+    - inspi DA borne d'arcade jeux "style" street fighter
+    - inspi cartouche Super Nintendo (inspi cartouche.png dans design)
+      -version final
+    - inspi logo borne d'arcade
+        - inspi d'un jouet (inspi grande arcade.png dans design)
+        - inspi chat gpt pour des version pixel art (inspi borne1 et 2 dans design)
+        - version final
+    - Font
+        - libre de droit, pixel art (utiliser dans le morpion pour X et O)
+    - Bouton et design general ( page de connexion etc..)
+        - Design simple rentrant dans le theme
+    - Couleur rétro (fluo, rose, jaune etc...)
+    - Pour les jeux :
+        - Conversion de tout les design classique en pixel art grace au site piskel
+        - pour s'aider utiliser l'ia pour s'inspirer ou convertir des images en pixel art
+        - juste prix version console -> rentre dans le theme
+        - OSU :
+            - bande son dans le theme borne d'arcade
+
+### Jeux
+TODO
+
+### Chronologie
+TODO
 
 ## Sécurité
 
@@ -231,35 +282,3 @@ _Supprime la base des utilisateurs !!!_
 database.execute('SELECT * FROM users WHERE pseudo=?', (pseudo,))
 ```
 _Plus de problèmes; le module sqlite s'assurera que la chaine pseudo sera bien interprétée comme du texte._
-
-# DA/design
-
-
-- DA style 8-bit/borne d'arcade
-    - inspi DA borne d'arcade jeux "style" street fighter
-    - inspi cartouche Super Nintendo (inspi cartouche.png dans design)
-        -version final 
-    - inspi logo borne d'arcade
-        - inspi d'un jouet (inspi grande arcade.png dans design)
-        - inspi chat gpt pour des version pixel art (inspi borne1 et 2 dans design)
-        - version final
-    - Font
-        - libre de droit, pixel art (utiliser dans le morpion pour X et O)
-    - Bouton et design general ( page de connexion etc..)
-        - Design simple rentrant dans le theme
-    - Couleur rétro (fluo, rose, jaune etc...)
-    - Pour les jeux :
-        - Conversion de tout les design classique en pixel art grace au site piskel
-        - pour s'aider utiliser l'ia pour s'inspirer ou convertir des images en pixel art
-        - juste prix version console -> rentre dans le theme
-        - OSU :
-            - bande son dans le theme borne d'arcade
-               
-### Outil utilisé
-- Github  | Partage des fichiers de design, code    
-- VScode  | Editeur de code en ligne et a la maison 
-- Piskel  | OUtil pour la création de l'entiereté des design en pixel art
-- Proxmox | Gestion serveur
-- Github projet | assignation des taches et deadline
-
-
