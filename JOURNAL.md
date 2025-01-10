@@ -4,12 +4,17 @@ Rétrospective de l'avancée du projet chaque jour.
 
 ## Mercredi 27 Novembre
 
+**Discussion de l'organisation du projet :**
+
 - Création du dépôt Github
 ![Capture d'écran du dépot Github](.github/images/repo.png)
 - Définition de notre direction artistique
   - 8-bit
   - arcade
+  - rétro
 - Création des fichiers HTML de base
+
+> Grands objectifs associés : "Direction artistique "8-bit""
 
 ## À la maison (27 Novembre - 2 Décembre)
 
@@ -53,19 +58,26 @@ Rétrospective de l'avancée du projet chaque jour.
 | ![img.png](.github/images/createAcc.png) | ![img.png](.github/images/login.png) |
 
 - Commencement du jeu du juste prix
+
 ![img.png](.github/images/justeprix.png)
 
 - Restylisation de la page d'accueil
+
 ![img.png](.github/images/homepage.png)
 
 - Configuration d'un rétroplanning
+
 ![retroplanning.png](.github/images/retroplanning.png)
+
+> Grands objectifs associés : "Page d'accueil avec sélection du jeu" & "Comptes (connexion)"
 
 ## Lundi 8 décembre
 
 - Commencement de la migration vers Flask
 - Continuation OSU! & dino
 - Nouvelles images pour PFC
+
+> Grands objectifs associés : "Site dynamique avec Flask"
 
 ## Mercredi 11 décembre 
 - Images dino
@@ -96,6 +108,8 @@ _Schéma de la BDD_
 
 ![img.png](.github/images/profile.png)
 
+> Grands objectifs associés : "Site dynamique avec Flask" & "Comptes (gestion d'une base d'utilisateurs)"
+
 ## Lundi 16 décembre
 
 - V1 mise en ligne
@@ -109,11 +123,15 @@ _Schéma de la BDD_
 
 - Continuation OSU!
 - Création cartouche dino et juste prix
+
 ![osu](static/img/dino.png)
+
+
 ![osu](static/img/justeprix.png)
 
 - Début de mise en place de l'acquisition des scores
 - Mise en place d'un anticheat
+
 ![img.png](.github/images/img.png)
 
 ## À la maison (18 décembre - 6 Janvier)
@@ -132,9 +150,25 @@ ORDER BY rank
 > On récupère chaque pseudo et nom d'utilisateur dans la table `users`, on joint la table `scores` à `users` par la colonne `user` = `pseudo`, on calcule la somme des points, et on crée un "RANK" sur la somme des points pour obtenir un classement. 
 - Résolutions de bugs (erreur à la connexion si l'utilisateur n'existait pas)
 - Ajout d'une page d'erreur
+
 ![img.png](.github/images/img_3.png)
+
+
 - Mise en place d'une personnalisation du profil
+
 ![img_2.png](.github/images/img_2.png)
+
 - Ajout cooldown pour éviter les requêtes bloquées par l'anticheat
+
 ![img.png](.github/images/img_4.png)
+
+
 - Responsive du site (pour qu'il soit au moins fonctionnel sur mobile)
+
+> Grands objectifs associés : "Page de classement"
+
+
+## Lundi 6 Janvier
+
+Julien absent; il était responsable du développement du OSU!.
+Nous avons donc pris la décision d'utiliser une version fonctionnelle suffisante de OSU! pour pouvoir rendre le site dans les temps.
