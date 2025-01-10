@@ -68,14 +68,30 @@ Nous avons aussi décidé de mettre en place un système de gestion de tâches.
 ![icone morpion](static/img/morpion.png)
 
 ## Mercredi 4 Décembre
+
+**Réunion du jour :**
+
+Rien de particulier.
+
+**Tâches effectuées ce jour**
+
 - Amélioration du morpion : ajout d'un mode de jeux contre ordinateur
+
 ![img.png](.github/images/morpion_avancement.png)
+
 - Styles des boutons
+
 ![Boutons](.github/images/bouton.png)
+
+
 - Ajout d'une page de crédits
+
 ![crédits](.github/images/credits.png)
 
 ## À la maison (4 Décembre - 8 Décembre)
+
+**Tâches effectuées**
+
 - Commencement du jeu du dino
 ![dino.png](.github/images/dino.png)
 - Création des pages de connexion / création de compte
