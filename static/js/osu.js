@@ -11,20 +11,20 @@ const soundUrls = [
     "/static/audio/click4.mp3"
 ];
 const levelMusic = {
-    easy: "/static/audio/easy-level.mp3",    
+    easy: "/static/audio/easy-level.mp3",
     medium: "/static/audio/medium-level.mp3",
-    hard: "/static/audio/hard-level.mp3"     
+    hard: "/static/audio/hard-level.mp3"
 };
 const levelInterval = {
-    easy: 1000,    
+    easy: 1000,
     medium: 750,
-    hard: 500    
+    hard: 500
 };
 const totalImages = 5;
 const totalSound = 4;
-const maxBalles = 3;  
-let balles = [];  
-let balleID = 0;  
+const maxBalles = 3;
+let balles = [];
+let balleID = 0;
 let soundIndex = 0;
 let score = 0;
 let currentImageIndex = 1;
@@ -57,13 +57,13 @@ function startGame(level) {
     cursor.style.display = "block";
 
 
-    startCountdown(() => {    
+    startCountdown(() => {
         playLevelMusic(level, () => {
             document.getElementById("monScore").style.display = "block";
             document.getElementById("monTimer").style.display = "block";
             document.getElementById("particleContainer").style.display = "block";
 
-            startTimer();   
+            startTimer();
             balleInterval = setInterval(createNewBalle, levelInterval[level]);
         });
     });
@@ -97,7 +97,7 @@ function startCountdown(callback) {
 // Fonction lance la musique
 function playLevelMusic(level, callback) {
     if (backgroundMusic) {
-        backgroundMusic.pause(); 
+        backgroundMusic.pause();
     }
 
     const musicUrl = levelMusic[level];
@@ -106,9 +106,9 @@ function playLevelMusic(level, callback) {
     backgroundMusic.play().then(() => {
         console.log("Musique jouée : " + musicUrl);
 
-        
-        timeRemaining = 60; 
-        callback(); 
+
+        timeRemaining = 60;
+        callback();
 
     }).catch(err => {
         console.error("Erreur lors de la lecture de la musique :", err);
@@ -158,8 +158,8 @@ function endGame() {
 
     document.body.appendChild(endScreen);
 
-    clearInterval(balleInterval); 
-    balles.forEach(b => document.body.removeChild(b.element)); 
+    clearInterval(balleInterval);
+    balles.forEach(b => document.body.removeChild(b.element));
     balles = [];
     document.getElementById("returnToMenu").addEventListener("click", () => {
         document.body.removeChild(endScreen);
@@ -202,6 +202,7 @@ function createNewBalle() {
         background: url('${currentImage}') no-repeat center/cover;
         left: ${randomX}px;
         top: ${randomY}px;
+        z-index: ${1000 - balleID};
     `;
 
     document.body.appendChild(newBalle);
@@ -219,23 +220,23 @@ function createNewBalle() {
 // Fonction pour gerer les clique sur les balles
 function handleBalleClick(id, balle) {
     if (balles.length === 0 || balles[0].id !== id) {
-        
-        score -= 1; 
+
+        score -= 1;
         updateScore();
         return;
     }
 
-    score += 1; 
+    score += 1;
     updateScore();
-    removeBalle(id); 
+    removeBalle(id);
 }
 
-// Suprimer la balle 
+// Suprimer la balle
 function removeBalle(id) {
     const balleIndex = balles.findIndex(b => b.id === id);
     if (balleIndex !== -1) {
         document.body.removeChild(balles[balleIndex].element);
-        balles.splice(balleIndex, 1); 
+        balles.splice(balleIndex, 1);
     }
 }
 
