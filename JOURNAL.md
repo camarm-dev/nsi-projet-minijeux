@@ -136,8 +136,13 @@ _Schéma de la BDD_
 
 ## À la maison (18 décembre - 6 Janvier)
 
+**Tâches effectuées**
+
 - Mise en place du classement
+
 ![img_1.png](.github/images/img_1.png)
+
+
 > Pour cette partie, nous avons rencontré un problème : Comment obtenir un classement de chaque joueur, alors que l'on ne dispose que de leurs parties individuelles.
 > Réponse très intéressante : découverte des jointures de table
 ```sql
@@ -170,5 +175,46 @@ ORDER BY rank
 
 ## Lundi 6 Janvier
 
+**Réunion du jour :**
+
 Julien absent; il était responsable du développement du OSU!.
 Nous avons donc pris la décision d'utiliser une version fonctionnelle suffisante de OSU! pour pouvoir rendre le site dans les temps.
+
+Prévision du planning jusqu'au lundi 13 janvier : définition des tâches importantes pour rendre le site.
+Notamment à propos de la sécurité des mots de passes
+
+**Tâches effectuées ce jour**
+
+- Commencement d'un plan pour l'oral
+- Trouver un diaporama dans le style 8-bit / retro du site 
+
+
+## Mercredi 8 Janvier
+
+**Réunion du jour :**
+
+Julien encore absent. On a donc vérifié que le OSU fonctionnait et des bugs ont été trouvés : les balles à cliquer peuvent apparaître trop haut.
+
+Point sur le planning prévisionnel : catégorisation plus précise des tâches, et définition de tâches à réaliser le weekend.
+
+**Tâches effectuées ce jour**
+
+- Mise en place d'un minimum de caractère et de normes de sécurité sur les mots de passes
+- Ajout des différents niveaux du OSU!
+- Continuation de l'oral : rédaction de textes 
+
+## À la maison (8 - 13 Janvier)
+
+**Tâches effectuées**
+- Rafraichissement du journal de bord
+- Continuation et finalisation de l'oral (principalement des textes)
+- Renseignement sur la conformité RGPD du site
+
+## Lundi 13 Janvier
+
+**Réunion du jour :**
+
+
+**Tâches effectuées ce jour**
+
+- Finalisation de l'oral
