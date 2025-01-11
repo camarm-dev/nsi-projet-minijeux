@@ -15,7 +15,7 @@
     - [ ] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
     - [ ] [Authentification](#authentification) (jeton)
     - [ ] [Acquisition scores](#à-propos-de-lacquisition-des-scores)
-    - [ ] Base de données
+    - [ ] [Base de données](#base-de-données)
     - [ ] Infrastructure serveur
 - Sécurité
     - [x] Anticheat
@@ -310,6 +310,72 @@ def save_score():
 ```
 
 ### Base de données
+
+Nous utilisons une base de données **Sqlite**. Les avantages de cette base sont
+- qu'elle ne nécessite pas de serveur : la base de données est stockée dans un seul fichier
+- qu'elle utilise le langage SQL : un langage répandu de requêtage à des bases de données
+- qu'elle possède une librairie native (directement incluse dans Python) est disponible
+
+Dans `main.py`, pour se connecter à la base :
+```python
+import sqlite3
+
+database = sqlite3.connect('database.db')
+cursor = database.cursor()
+cursor.execute("SELECT * FROM users") # Une requête SQL
+```
+
+La définition de notre base :
+```sql
+CREATE TABLE IF NOT EXISTS users (pseudo TEXT NOT NULL UNIQUE, name TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL UNIQUE, created_at TIME NOT NULL, color_primary TEXT NOT NULL, color_secondary TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, points INT NOT NULL, date TIME NOT NULL, win BOOLEAN);
+```
+
+Exemple de requête pour ajouter un utilisateur :
+```sql
+INSERT INTO users VALUES ('pseudo', 'Nom Complet', '******', 'mon@email.com', 1000000000, '#fff', '#000')
+```
+
+Problème : comment stocker une date ?
+
+> En informatique, la méthode la plus simple pour stocker une date est d'utiliser de l'horodatage (le timestamp) : on va parler ici de Unix timestamp
+> 
+> C'est le nombre de secondes écoulées depuis le 1er janvier 1970 00:00:00 UTC. C'est donc un nombre.
+
+Sauf que en Python, manipuler une date c'est plus simple : il existe un objet appelé `datetime`.
+
+```python
+import datetime
+
+date = datetime.datetime.now() # Date précise du moment de l'exécution
+one_minute = datetime.timedelta(minutes=1) # Un durée : une minute
+now_minus_one_minute = date - one_minute # La date précise, d'une minute en arrière
+
+# on peut aussi faire des comparaisons ect....
+```
+
+Quand on va insérer de nouveau utilisateur, nous allons passer un objet appelé `datetime` en argument, qui représente une date.
+Sauf que Sqlite ne connait pas cet objet...
+
+Solution : définir un type personnalisé pour Sqlite, dans Python.
+- Le principe est qu'à chaque fois que Sqlite va insérer une valeur avec le type `datetime`, il va appeler une fonction Python pour transformer cet objet, en un type reconnu par Sqlite (ici un nombre).
+- Et à chaque fois que Sqlite va récupérer une valeur avec le type `TIME` dans la base, il va appeler une fonction pour transformer le nombre en objet `datetime`.
+
+```python
+import datetime
+import sqlite3
+
+def convertir_datetime_nombre(date):
+    return date.timestamp()
+
+def convertir_nombre_datetime(nombre):
+    return datetime.datetime.fromtimestamp(float(nombre.decode()))
+
+# Convertir un objet datetime en texte à l'insertion
+sqlite3.register_adapter(datetime.datetime, convertir_datetime_nombre)
+# Convertir du texte en objet datetime
+sqlite3.register_converter("TIME", convertir_nombre_datetime)
+```
 
 ### Schéma de fonctionnement
 
