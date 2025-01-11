@@ -35,11 +35,12 @@
 | Armand   | Coordination, développement & Co-directeur |
 
 ### Outils utilisés
-- Github  | Partage des fichiers de design, code
+- Git  | Git est un logiciel de gestion de versions décentralisé.
+- Github  | Hébergeur du git; espace de collaboration.
 - VScode  | Editeur de code en ligne et a la maison
 - Piskel  | OUtil pour la création de l'entiereté des design en pixel art
 - Proxmox | Gestion serveur
-- Github projet | assignation des taches et deadline
+- Github Project | assignation des taches et deadline
 
 ### Cahier des charges
 TODO
