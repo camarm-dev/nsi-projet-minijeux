@@ -14,7 +14,7 @@
 - Fonctionnalités avancées
     - [ ] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
     - [ ] [Authentification](#authentification) (jeton)
-    - [ ] Acquisition scores
+    - [ ] [Acquisition scores](#à-propos-de-lacquisition-des-scores)
     - [ ] Base de données
     - [ ] Infrastructure serveur
 - Sécurité
@@ -85,7 +85,7 @@ TODO
 > [wikipedia.org](https://fr.wikipedia.org/wiki/Flask_(framework))
 
 Flask va nous permettre de :
-- Renvoyer des fichiers HTML à l'utilisateur (en y injectant des variable Python, avec Jinja)
+- Renvoyer des fichiers HTML à l'utilisateur (en y injectant des variables Python, avec Jinja)
 - Intercepter les formulaires envoyés
 
 => Lier la logique d'authentification, et la gestion de la base à l'interface utilisateur
@@ -108,7 +108,6 @@ Jinja prend donc un fichier HTML, et le rempli des variables Python qu'on lui do
 render_template('example.html', logged_in=True)
 ```
 _Exemple simple d'utilisation de Jinja_
-
 
 #### Comment on s'en sert ?
 
@@ -164,8 +163,74 @@ flowchart LR
 
 L'authentification, c'est un système de contrôle d'accès à des ressources. Ici, un utilisateur connecté peut sauvegarder ses scores.
 
-TODO
+**Comment ça fonctionne ?**
+1. Un utilisateur se connecte
+2. Ses informations de connexion sont vérifiées par le backend : donc dans notre fichier Python
+3. Si ses informations font autorité (sont valides), un jeton unique est donné à l'utilisateur : ce jeton va permettre de reconnaître l'utilisateur, et de savoir qu'il est connecté.
+4. Quand l'utilisateur accède à des ressources privées, son jeton de connexion est vérifié
 
+**Notre système d'authentification**
+
+Nous utilisons des jetons Json Web Token : ces jetons ont l'avantage de contenir une charge utile, et d'être facilement utilisables, car c'est uyn système populaire : c'est facile de trouver une librairie Python qui implémente les JWT.
+
+Information importante : les mots de passes ne sont pas stockés "en clair", ils sont "hashés".
+
+_Nous allons revenir sur les jetons et les mots de passes dans la partie sécurité_
+
+```html
+<form action="/login" method="post" enctype="multipart/form-data">
+    <h2>Se connecter</h2>
+    <p class="grey">Pas encore inscrit ? <a onclick="goTo('/createAccount')" class="grey">S'inscrire</a></p>
+    <div class="field">
+        <label for="email">Email</label>
+        <input required type="email" name="email" id="email" placeholder="toi@email.com">
+    </div>
+    <div class="field">
+        <label for="password">Mot de passe</label>
+        <input required type="password" name="password" id="password" placeholder="*******">
+    </div>
+    <div class="field">
+        <button type="submit">Me connecter</button>
+    </div>
+</form>
+```
+```python
+def authenticate(email: str, password: str):
+    """
+    Vérifie que l'utiliateur a rentré les bonnes informations de connexion : email / mot de passe
+    """
+    user = cursor.execute("SELECT * FROM users WHERE email=?", (email,)).fetchone()
+    if user is not None:
+        _, _, hashed_password, _, _, _, _ = user
+        return verify_password(password, hashed_password), build_user(user)
+    return False, {}
+
+
+def generate_token(username: str):
+    """
+    Utilise le librairie jwt pour générer un jeton
+    """
+    return jwt.encode({"pseudo": username, "exp": datetime.datetime.now() + datetime.timedelta(days=30)}, SECRET, algorithm="HS256")
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    """
+    Ce code est exécuté quand le formulaire de connexion est envoyé
+    """
+    data = request.form
+    email = data.get('email', None)
+    password = data.get('password', None)
+    authenticated, user = authenticate(email, password) # On vérifie les informations de connexion
+    if authenticated:
+        response = make_response(redirect('/'))
+        response.set_cookie('token', generate_token(user["pseudo"])) # On génère un token, et on le place dans un cookie
+        return response
+```
+
+### À propos de l'acquisition des scores
+
+TODO
 
 ## Sécurité
 
