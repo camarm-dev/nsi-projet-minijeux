@@ -79,6 +79,43 @@ TODO
 
 ### Le "backend", avec Flask
 
+#### Schéma de fonctionnement
+
+[![](https://mermaid.ink/img/pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA?type=png)](https://mermaid.live/edit#pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA)
+
+
+<details>
+
+<summary>Code mermaid</summary>
+
+
+```mermaid
+flowchart LR
+    U("Utilisateur") -->|Interagie| Navigator
+    subgraph Navigator["Partie navigateur (Frontend; HTML, CSS, JS)"]
+        direction TB
+        D["Page de connexion"]
+        A["Page HTML du jeu"]
+        C(["sendScore.js"])
+        F(["Formulaire envoyé"])
+    end
+    subgraph Server["Partie serveur (Backend) main.py"]
+        direction TB
+        J("Servir les fichiers HTML, CSS, JS et images")
+        E("Authentification")
+        H("Enregistrement scores")
+    end
+    D --> F
+    F --> E
+    E .-> |Cookie avec jeton| Navigator
+    C --> |Sauvegarder| H
+    A -->|Gagne une partie| C
+    E & H <--> BDD[("Base de données Sqlite")]
+```
+
+
+</details>
+
 #### Introduction à Flask
 
 > Flask est un micro framework open-source de développement web en Python.
@@ -121,43 +158,6 @@ app = Flask('Site de minijeux')
 def home():
     return render_template('index.html', pseudo='pseudo', logged_in=True)
 ```
-
-#### Schéma de fonctionnement
-
-[![](https://mermaid.ink/img/pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA?type=png)](https://mermaid.live/edit#pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA)
-
-
-<details>
-
-<summary>Code mermaid</summary>
-
-
-```mermaid
-flowchart LR
-    U("Utilisateur") -->|Interagie| Navigator
-    subgraph Navigator["Partie navigateur (Frontend; HTML, CSS, JS)"]
-        direction TB
-        D["Page de connexion"]
-        A["Page HTML du jeu"]
-        C(["sendScore.js"])
-        F(["Formulaire envoyé"])
-    end
-    subgraph Server["Partie serveur (Backend) main.py"]
-        direction TB
-        J("Servir les fichiers HTML, CSS, JS et images")
-        E("Authentification")
-        H("Enregistrement scores")
-    end
-    D --> F
-    F --> E
-    E .-> |Cookie avec jeton| Navigator
-    C --> |Sauvegarder| H
-    A -->|Gagne une partie| C
-    E & H <--> BDD[("Base de données Sqlite")]
-```
-
-
-</details>
 
 ### Authentification
 
@@ -230,7 +230,123 @@ def login():
 
 ### À propos de l'acquisition des scores
 
-TODO
+L'acquisition des scores permet de sauvegarder les scores des utilisateurs.
+Quand un utilisateur fini une partie, une **requête** est envoyée au serveur web, interceptée par Flask, et une logique Python sauvegarde le score.
+
+Le fichier `sendScore.js` contient la fonction pour envoyer la requête.
+```javascript
+function sendScore(score, game) {
+    if (!logged) return
+    const data = {
+        score: score,
+        game: game
+    }
+    fetch('/sendScore', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(response => {
+            if (!response.success) {
+                // Session expired
+                if (response.code == 401) goTo('/')
+                errorBox.innerText = response.message
+                errorBox.classList.remove('hidden')
+                return
+            }
+            successBox.innerText = "La partie a été sauvegardée !"
+            successBox.classList.remove('hidden')
+        })
+        .catch(err => {
+            errorBox.innerText = err
+            errorBox.classList.remove('hidden')
+        })
+}
+```
+
+Puis dans `main.py`, la logique pour sauvegarder les scores.
+```python
+def insert_score(game: str, user: str, points: int, created_at: datetime.datetime, win: bool | None):
+    cursor.execute("INSERT INTO scores VALUES (?,?,?,?,?)", (game, user, points, created_at, win))
+    database.commit()
+
+    
+def anticheat(game, score, user):
+    """
+    Logique d'anticheat : on verra ça après
+    """
+    
+    
+@app.post('/sendScore')
+def save_score():
+    try:
+        data = json.loads(request.data) # On récupère la charge utile
+        score = data['score']
+        game = data['game']
+        anticheat_ok, points = anticheat(game, int(score), user)
+        if anticheat_ok:
+            win = isWin(game, score)
+            insert_score(game, user['pseudo'], points, datetime.datetime.now(), win)
+            return {
+                "success": True,
+                "code": 200,
+                "message": "La partie a été sauvegardée !"
+            }
+        return {
+            "success": False,
+            "code": 400,
+            "message": "Cette requête a été bloquée par l'anti cheat !"
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "code": 500,
+            "message": "Une erreur est survenue, impossible d'enregistrer le score."
+        }
+```
+
+### Base de données
+
+### Schéma de fonctionnement
+
+[![](https://mermaid.ink/img/pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA?type=png)](https://mermaid.live/edit#pako:eNqNU11u2zAMvgqhhyEB3BwgGwYkdrysaIdhbl9W94G1GFutLXn6yRbUPVDP0YuNttc62V4mwIBJfvxEfqQeRWEkiaXY1eZnUaH1cPEt18DnepaLa69q5dBTsLmYw9nZx-6z9mSxVNTBF9yrEr2xY4ILd6XFtpr8N7n4ypSKQI8u5oFZag1zaPketleXFxHEWRbBeTbPxe1I1B-pLBVeGQ1X68mbDIwlgSQojNb0ixEneatXRM8NMsA9hRNAPGOE4-uzwlha3DuOzqdw2odTY5tQI5cApPfm8PI8gTjzr3Yzsns66tX1dt_oGosHhs-hQaUX7eE_Gjxn0Xs-ZaEmBztVVIqsO1UKyINquEmu_aj0Deeugq9Ie8WJ6AdtjgBbBmy0pVI5b6lhHLhehInmrbmknzWko5EOxmY0NrBgo4uNeeBecU8FS-yN_mcd4iGryzDsqUQryXawHUOrYZM-YakJAn_tIFwH8esV72ALH_r0dZLccNVrdMPMJc_85ZmFyX7UyhPXfSsi0ZBlhSVv8WNPkAvWoOHgkn8l7TDUPhe5fmIoBm-ygy7E0ttAkQit5K1MFPIoG7HcYe3YS1JxG5fjyxgeSCRa1N-NmTDWhLL6Yz39BpjiBlA)
+
+
+<details>
+
+<summary>Code mermaid</summary>
+
+
+```mermaid
+flowchart LR
+    U("Utilisateur") -->|Interagie| Navigator
+    subgraph Navigator["Partie navigateur (Frontend; HTML, CSS, JS)"]
+        direction TB
+        D["Page de connexion"]
+        A["Page HTML du jeu"]
+        C(["sendScore.js"])
+        F(["Formulaire envoyé"])
+    end
+    subgraph Server["Partie serveur (Backend) main.py"]
+        direction TB
+        J("Servir les fichiers HTML, CSS, JS et images")
+        E("Authentification")
+        H("Enregistrement scores")
+    end
+    D --> F
+    F --> E
+    E .-> |Cookie avec jeton| Navigator
+    C --> |Sauvegarder| H
+    A -->|Gagne une partie| C
+    E & H <--> BDD[("Base de données Sqlite")]
+```
+
+
+</details>
 
 ## Sécurité
 
