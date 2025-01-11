@@ -174,6 +174,47 @@ CREATE TABLE IF NOT EXISTS scores (game TEXT NOT NULL, user TEXT NOT NULL, point
 ```
 _Schéma de la BDD_
 
+Problème : comment stocker une date ?
+
+> En informatique, la méthode la plus simple pour stocker une date est d'utiliser de l'horodatage (le timestamp) : on va parler ici de Unix timestamp
+>
+> C'est le nombre de secondes écoulées depuis le 1er janvier 1970 00:00:00 UTC. C'est donc un nombre.
+
+Sauf que en Python, manipuler une date c'est plus simple : il existe un objet appelé `datetime`.
+
+```python
+import datetime
+
+date = datetime.datetime.now() # Date précise du moment de l'exécution
+one_minute = datetime.timedelta(minutes=1) # Un durée : une minute
+now_minus_one_minute = date - one_minute # La date précise, d'une minute en arrière
+
+# on peut aussi faire des comparaisons ect....
+```
+
+Quand on va insérer de nouveau utilisateur, nous allons passer un objet appelé `datetime` en argument, qui représente une date.
+Sauf que Sqlite ne connait pas cet objet...
+
+Solution : définir un type personnalisé pour Sqlite, dans Python.
+- Le principe est qu'à chaque fois que Sqlite va insérer une valeur avec le type `datetime`, il va appeler une fonction Python pour transformer cet objet, en un type reconnu par Sqlite (ici un nombre).
+- Et à chaque fois que Sqlite va récupérer une valeur avec le type `TIME` dans la base, il va appeler une fonction pour transformer le nombre en objet `datetime`.
+
+```python
+import datetime
+import sqlite3
+
+def convertir_datetime_nombre(date):
+    return date.timestamp()
+
+def convertir_nombre_datetime(nombre):
+    return datetime.datetime.fromtimestamp(float(nombre.decode()))
+
+# Convertir un objet datetime en texte à l'insertion
+sqlite3.register_adapter(datetime.datetime, convertir_datetime_nombre)
+# Convertir du texte en objet datetime
+sqlite3.register_converter("TIME", convertir_nombre_datetime)
+```
+
 - Mise en place d'une page de profil
 
 ![img.png](.github/images/profile.png)
