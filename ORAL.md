@@ -11,18 +11,18 @@
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
     - [ ] [Chronologie](#chronologie)
-- Fonctionnalités avancées
-    - [ ] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
-    - [ ] [Authentification](#authentification) (jeton)
-    - [ ] [Acquisition scores](#à-propos-de-lacquisition-des-scores)
-    - [ ] [Base de données](#base-de-données)
+- [Fonctionnalités avancées](#fonctionnalités-avancées)
+    - [x] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
+    - [x] [Authentification](#authentification) (jeton)
+    - [x] [Acquisition scores](#à-propos-de-lacquisition-des-scores)
+    - [x] [Base de données](#base-de-données)
     - [ ] Infrastructure serveur
-- Sécurité
-    - [x] Anticheat
-    - [x] Sécurité BDD / mot de passes
-    - [x] Sécurité jetons
-    - [x] Attaques XSS (impossibles: jinja)
-    - [x] Injections SQL
+- [Sécurité](#sécurité)
+    - [x] [Anticheat](#anticheat)
+    - [x] [Sécurité BDD / mot de passes](#sécurité-bdd--mots-de-passes)
+    - [x] [Sécurité jetons](#sécurité-jetons)
+    - [x] [Attaques XSS (impossibles: jinja)](#protection-des-attaques-xss)
+    - [x] [Injections SQL](#injections-sql)
 
 ## Présentation projet
 
