@@ -117,7 +117,19 @@ TODO
 Parler de commenton a implem
 
 ### Chronologie
-TODO
+
+1. Définition de l'organisation, de la direction artistique
+2. Création d'une page d'accueil de sélection des jeux
+3. Commencement du développement des jeux
+4. Commencement de la partie backend
+5. Authentification fonctionnelle + jeux fonctionnels
+6. Ajout d'un classement + de l'acquisition des scores
+7. Publication du site
+
+TODO: chronologie globale
+
+
+TODO: montrer rétroplanning
 
 ## Fonctionnalités avancées
 
