@@ -112,9 +112,36 @@ TODO : SCREENS
             - bande son dans le theme borne d'arcade
 
 ### Jeux
-TODO
+
+#### Morpion
+
+Julien, à toi...
+
+[![](https://mermaid.ink/img/pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw?type=png)](https://mermaid.live/edit#pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw)
+
+#### Dino
+
+- Mécanique anim css
+- Mécanique mort
+- Mécanique aléatoire
+
+#### OSU
+
+Julien, à toi...
+
+#### Pierre Feuille Ciseaux
+
+- Fonctionnement général
+- Mécanique de l'animation
+
+#### Justeprix
+
+- Fonctionnement classique
+- Fonctionnemnt curseur animé
+- Obfuscation si ça se fait 
 
 Parler de commenton a implem
+
 
 ### Chronologie
 
