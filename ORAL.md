@@ -317,6 +317,35 @@ Nous utilisons une base de données **Sqlite**. Les avantages de cette base sont
 - qu'elle utilise le langage SQL : un langage répandu de requêtage à des bases de données
 - qu'elle possède une librairie native (directement incluse dans Python) est disponible
 
+**Schéma de la base**
+
+| Nom de la table | Description                         |
+|-----------------|-------------------------------------|
+| users           | Stockages des profils utilisateurs  |
+| scores          | Stockages des résultats des parties |
+
+**Table `users`**
+
+| Nom de la colonne (propriété) | Description                         |
+|-------------------------------|-------------------------------------|
+| name                          | Nom complet de l'utilisateur        |
+| pseudo                        | Pseudo de l'utilisateur             |
+| email                         | Email de l'utilisateur              |
+| password                      | Mot de passe hashé de l'utilisateur |
+| created_at                    | Date de création de l'utilisateur   |
+
+
+**Table `scores`**
+
+| Nom de la colonne (propriété) | Description                                                     |
+|-------------------------------|-----------------------------------------------------------------|
+| game                          | Nom du jeu parmis `morpion`, `pfc`, `osu`, `dino`, `justeprix`. |
+| date                          | Date d'enregistrement de la partie                              |
+| user                          | Pseudo de l'utilisateur                                         |
+| points                        | Nombres de points gagnés                                        |
+
+
+
 Dans `main.py`, pour se connecter à la base :
 ```python
 import sqlite3
