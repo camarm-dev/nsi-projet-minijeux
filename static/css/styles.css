@@ -79,9 +79,35 @@ body {
     max-width: 500px;
 }
 
+.mb-0 {
+    margin-bottom: .5em !important;
+}
+
+.credits.classic {
+    cursor: auto;
+}
+
 .credits.paragraph {
     margin-top: 0 !important;
     margin-bottom: 2em;
+}
+
+.tools {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: .3em;
+}
+
+.tools img {
+    width: 24px;
+    height: 24px;
+    filter: grayscale(1);
+    transition: .2s ease-out;
+}
+
+.tools img:hover {
+    filter: grayscale(0);
 }
 
 .buttons {
