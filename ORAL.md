@@ -1,16 +1,29 @@
 # Oral
 
+## Critères d'évaluation
+
+- [ ] Présentez brièvement le contexte du projet
+- [ ] Énoncez les principaux objectifs du projet [1](#cahier-des-charges)
+- [ ] Détaillez les principales fonctionnalités attendues du site [1](#cahier-des-charges)
+- [ ] Mettez l'accent sur la manière dont vous avez implémenté ces
+fonctionnalités [1](#jeux)
+- [ ] Présentez votre projet
+- [ ] Partagez le calendrier détaillé avec les étapes clés et les dates limites [1](#chronologie)
+- [ ] Mettez en évidence les mécanismes de communication au sein de l'équipe [1](#organisation)
+- [ ] Expliquez les difficultés rencontrées et les améliorations possibles [1](#points-à-améliorer)
+
 ## Plan 
 
 - Intro
 - Présentation site (montrer les fonctionnalités en direct)
 - [Présentation projet](#présentation-projet)
-    - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outil-utilisés) (github, gestion des taches, vscode, piksel)
+    - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outils-utilisés) (github, gestion des taches, vscode, piksel)
     - [ ] [Cahier des charges](#cahier-des-charges)
+    - [ ] [Ogranisation](#organisation)
     - [ ] [Journal](#journal)
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
-    - [ ] [Chronologie](#chronologie)
+    - [ ] [Chronologie](#chronologie) / Déroulement du projet
 - [Fonctionnalités avancées](#fonctionnalités-avancées)
     - [x] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
     - [x] [Authentification](#authentification) (jeton)
@@ -23,8 +36,14 @@
     - [x] [Sécurité jetons](#sécurité-jetons)
     - [x] [Attaques XSS (impossibles: jinja)](#protection-des-attaques-xss)
     - [x] [Injections SQL](#injections-sql)
+- Outro: parler des points à améliorer
 
 ## Présentation projet
+
+- Projet NSI
+- Objectif d'avoir qqch rétro
+- D'être organisé
+- De faire pas mal de bonus
 
 ### Répartition des rôles
 
@@ -44,6 +63,15 @@
 
 ### Cahier des charges
 TODO
+
+- Parler des principaux objectifs
+
+## Organisation
+
+TODO: 
+- Discord
+- Github : code / issues
+- Github Project
 
 ### Journal
 TODO
@@ -72,6 +100,8 @@ TODO
 
 ### Jeux
 TODO
+
+Parler de commenton a implem
 
 ### Chronologie
 TODO
@@ -692,3 +722,12 @@ _Supprime la base des utilisateurs !!!_
 database.execute('SELECT * FROM users WHERE pseudo=?', (pseudo,))
 ```
 _Plus de problèmes; le module sqlite s'assurera que la chaine pseudo sera bien interprétée comme du texte._
+
+
+# Points à améliorer
+
+- Jeux peut être buggés (OSU, Morpion)
+- Site mobile parfois pas hyper adapté
+- Accessibilité (pas d'adaptation pour les mal-voyants)
+- Ergonomie peut être trop pour les nerd (moins acessible)
+- Jeux trop classiques: on s'est peut être trop concentré sur les fonctionnalités avancées ?
