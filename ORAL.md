@@ -66,12 +66,20 @@ TODO
 
 - Parler des principaux objectifs
 
-## Organisation
+### Organisation
 
-TODO: 
-- Discord
-- Github : code / issues
-- Github Project
+Pour pouvoir discuter en dehors des séances, nous avons créer un groupe Discord.
+
+À chaque début de séance, nous nous réunissons pour parler des tâches réalisées en dehors des cours (nouvelle fonctionnalités ou même bugs trouvés), prévoir et se distribuer les prochaines tâches à faire, et faire un point sur l'avancement global du projet.
+
+Pour rendre notre code facilement consultable, mais aussi organisé et versionné, nous avons utilisé l'outil git, hébergé avec Github.
+
+Pour la gestion des tâches, nous avons utilisé le système de tâches proposé par Github: les issues (expliquer le fonctionnement + screens).
+
+Pour une prévision et une organisation plus complète, nous avons aussi utilisé Github Project :
+- Tableau Kaban des tâches
+- Rétroplanning (screen + en direct ?)
+
 
 ### Journal
 TODO
