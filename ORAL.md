@@ -82,7 +82,12 @@ Pour une prévision et une organisation plus complète, nous avons aussi utilis�
 
 
 ### Journal
-TODO
+
+Nous avons tenu à jour le journal de bord, pour qu'il soit représentatif de la chronologie du projet.
+
+Les contenus sont datés, et contiennent de photos : pour chaque jour, un résumé de la réunion du jour est présent, ainsi qu'un résumé des tâches réalisées.
+
+TODO : SCREENS
 
 ### DA / design
 
