@@ -139,6 +139,214 @@ Julien, à toi...
 
 #### Dino
 
+**Images**
+
+![](src/images/dino.png)
+
+![](src/images/catcus1.png)
+
+![](src/images/catcus2.png)
+
+![](src/images/bird.png)
+
+**L'HTML**
+
+```html
+<div class="arcade disabled">
+    <div id="menu" class="center">
+        <p id="gameEndStatus">Appuyez sur "Jouer" pour commencer.</p>
+        <div class="buttons">
+        <button id="play">Jouer</button>
+        <button onclick="goTo('/', '/static/img/arcade.png')">Retour à l'accueil</button>
+        </div>
+    </div>
+    <div id="game" class="screen">
+        <div id="status">Score: <span id="score">0</span></div>
+        <div id="dino">
+            <img src="/static/img/dino.gif">
+        </div>
+        <div id="cactus1"></div>
+        <div id="cactus2"></div>
+        <div id="bird">
+            <img src="/static/img/bird.gif">
+        </div>
+    </div>
+</div>
+
+<div id="infos" class="center">
+    <p class="hidden-mobile">Appuyez sur espace pour sauter</p>
+    <p class="only-mobile block">Appuyez pour sauter</p>
+</div>
+```
+
+**Styles et déplacement des dinos**
+```css
+#status {
+    top: 2em;
+    position: relative;
+    left: 2em;
+}
+
+#dino {
+    height: 60px;
+    width: 55.8px;
+    transform: translate(60px, 419px);
+    position: relative;
+}
+
+#dino img, #bird img {
+    width: 100%;
+    height: 100%;
+}
+
+#dino.jumping {
+    animation: jump linear .5s;
+}
+
+.arcade.disabled #bird img {
+    content: url("/static/img/bird.png")
+}
+
+#cactus1 {
+    animation: cactus linear 3s infinite;
+    background-image: url("/static/img/cactus1.png");
+    background-size: 30px 50.6px;
+    height: 50.6px;
+    width: 30px;
+    transform: translate(800px, 368px);
+    position: relative;
+}
+
+#cactus2 {
+    animation: cactus1 linear 3s infinite;
+    animation-delay: 7.5s;
+    background-image: url("/static/img/cactus2.png");
+    background-size: 50px 39.13px;
+    height: 39.13px;
+    width: 50px;
+    transform: translate(800px, 330px);
+    position: relative;
+}
+
+#bird {
+    animation: bird linear 4s infinite;
+    animation-delay: 10s;
+    height: 32px;
+    width: 50px;
+    transform: translate(800px, 10px);
+    position: relative;
+}
+
+@keyframes jump {
+    from {
+        transform: translate(60px, 419px);
+        animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1)
+    }
+    69.0893% {
+        transform: translate(60px, 120px);
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
+    }
+    to {
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
+    }
+}
+
+
+@keyframes cactus {
+    from {
+        transform: translate(800px, 368px);
+    }
+    66% {
+        transform: translate(-150px, 368px);
+        display: none;
+    }
+    66.1% {
+        display: none;
+        transform: translate(800px, 368px);
+    }
+    to {
+        display: none;
+    }
+}
+
+@keyframes cactus1 {
+
+}
+
+
+@keyframes bird {
+}
+```
+
+Les images sont donc déplacées avec le CSS grâce aux animations.
+
+**Logique et condition de défaite: Javascript**
+
+```javascript
+function isCollide(object1, object2) {
+    // Check if two objects collides
+    const object1Rect = object1.getBoundingClientRect()
+    const object2Rect = object2.getBoundingClientRect()
+    return !(
+        ((object1Rect.top + object1Rect.height) < object2Rect.top) ||
+        (object1Rect.top > (object2Rect.top + object2Rect.height)) ||
+        ((object1Rect.left + object1Rect.width) < object2Rect.left) ||
+        (object1Rect.left > (object2Rect.left + object2Rect.width))
+    );
+}
+
+function isDead() {
+    return isCollide(dino, cactus1) || isCollide(dino, cactus2) || isCollide(dino, bird)
+}
+
+function jump() {
+    // Check if not already jumping
+    if (dino.classList.contains("jumping")) return
+    dino.classList.add('jumping')
+    setTimeout(() => {
+        dino.classList.remove('jumping')
+    }, 500)
+}
+
+function engine() {
+    if (isDead()) {
+        playing = false
+        gameEndStatus.innerText = `Votre score est ${score}.`
+        scoreElement.innerText = "0"
+        playButton.innerText = "Rejouer"
+        sendScore(score, 'dino')
+        score = 0
+        menu.classList.remove("hidden")
+        arcade.classList.add("disabled")
+        clearInterval(scoreInterval)
+        clearInterval(gameInterval)
+        for (const interval of randomizationInterval) {
+            clearInterval(interval)
+        }
+    }
+}
+
+window.addEventListener('keydown', (event) => {
+    if (event.code === "Space" || event.code === "ArrowUp") {
+        event.preventDefault()
+        jump()
+    }
+})
+```
+Concernant la randomization des déplacement: on déplace plus ou moins les éléments sur leur axe X :
+```javascript
+setTimeout(() => {
+    randomizationInterval.push(setInterval(() => cactus1.style.left = (Math.random() * 100) + 'px', 3000))
+}, 2500)
+setTimeout(() => {
+    randomizationInterval.push(setInterval(() => cactus2.style.left = (Math.random() * 100) + 'px', 3000))
+}, 7500 + 2500)
+setTimeout(() => {
+    randomizationInterval.push(setInterval(() => bird.style.left = (Math.random() * 100) + 'px', 4000))
+}, 10000 + 3500)
+```
+
+
 - Mécanique anim css
 - Mécanique mort
 - Mécanique aléatoire
