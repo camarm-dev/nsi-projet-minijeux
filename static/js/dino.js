@@ -18,7 +18,7 @@ let gameInterval = 0
 let randomizationInterval = []
 
 function isCollide(object1, object2) {
-    // Check if TODO documenter la fonction
+    // Check if two objects collides
     const object1Rect = object1.getBoundingClientRect()
     const object2Rect = object2.getBoundingClientRect()
     return !(
