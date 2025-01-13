@@ -689,6 +689,8 @@ Nous utilisons l'algorithme [PBKDF2](https://fr.wikipedia.org/wiki/PBKDF2): Pass
 > Une fonction de hachage cryptographique est une fonction qui, à une donnée arbitraire, associe une image fixe, pratiquement impossible à inverser.
 > [wikipedia.com](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)
 
+En gros, pour chaque mot de passe possible il existe un hash; impossible à inverser : c'est comme si le mot de passe "en clair" était une pomme de terre en cuisine : une fois coupée en morceaux, impossible d'inverser le processus.
+
 Son fonctionnement est itératif : 
 - il _hash_ le mot de passe avec un algorithme donné un certain nombre de fois (SHA-256, 260 000 fois dans notre cas)
 - en plus ce hashage, cet algorithme rajoute un sel ; une chaine de caractères aléatoires qui complique le cassage par force brute
