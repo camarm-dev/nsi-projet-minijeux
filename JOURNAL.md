@@ -346,6 +346,7 @@ Point sur le planning prévisionnel : catégorisation plus précise des tâches,
 
 **Réunion du jour :**
 
+Gaspard et Julien absents. J'ai donc du finir le site seul. J'ai aussi continuer les texte pour l'oral.
 
 **Tâches effectuées ce jour**
 
