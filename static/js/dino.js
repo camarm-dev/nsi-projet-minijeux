@@ -64,13 +64,14 @@ function play() {
     gameInterval = setInterval(engine, 50)
     setTimeout(() => {
         randomizationInterval.push(setInterval(() => cactus1.style.left = (Math.random() * 100) + 'px', 3000))
-    }, 2500)
+    }, 2500) // Start after calculate time: the end of cactus animation. Is executed every 3s (cactus animation duration)
     setTimeout(() => {
         randomizationInterval.push(setInterval(() => cactus2.style.left = (Math.random() * 100) + 'px', 3000))
-    }, 7500 + 2500)
+    }, 7500 + 2500) // Start after calculate time: the animation start (7.5s) + duration to reach end of cactus animation. Is executed every 3s (cactus animation duration)
     setTimeout(() => {
         randomizationInterval.push(setInterval(() => bird.style.left = (Math.random() * 100) + 'px', 4000))
-    }, 10000 + 3500)
+    }, 10000 + 3500) // Start after calculate time: the animation start (10s) + duration to reach end of bird animation. Is executed every 4s (bird animation duration)
+    // Time are calculated from animation durantions time, to be sure images are hidden before moving them.
 }
 
 function engine() {
