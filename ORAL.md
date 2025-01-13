@@ -19,7 +19,7 @@ fonctionnalités [1](#jeux)
 - [Présentation projet](#présentation-projet)
     - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outils-utilisés) (github, gestion des taches, vscode, piksel)
     - [ ] [Cahier des charges](#cahier-des-charges)
-    - [ ] [Ogranisation](#organisation)
+    - [ ] [Organisation](#organisation)
     - [ ] [Journal](#journal)
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
@@ -73,16 +73,16 @@ Nous avons rédiger le cahier des charges durant les premières séances. Nous y
 
 Puis nous avons dresser un tableau avec les fonctionnalités détaillées :
 
-TODO: screen
+!Montrer le fichier à l'écran!
 
 Ainsi qu'un tableau des exigences fonctionnelles :
 
-TODO : screen
+!Montrer le fichier à l'écran!
 
-Nous avons aussi rempli un tableau prévisionnel ainsi que le liste des livrables attendus.
+Nous avons aussi rempli un tableau prévisionnel ainsi que la liste des livrables attendus.
 Pour finir, nous avons défini les modalités de suivi de l'avancement du projet.
 
-TODO: screen
+!Montrer le fichier à l'écran!
 
 ### Organisation
 
@@ -105,7 +105,7 @@ Nous avons tenu à jour le journal de bord, pour qu'il soit représentatif de la
 
 Les contenus sont datés, et contiennent de photos : pour chaque jour, un résumé de la réunion du jour est présent, ainsi qu'un résumé des tâches réalisées.
 
-TODO : SCREENS
+!Montrer le fichier en temps réel!
 
 ### DA / design
 
