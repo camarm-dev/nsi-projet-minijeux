@@ -567,7 +567,7 @@ pm2 permet aussi de relancer ces processus au lancement du conteneur.
 
 Enfin, le conteneur est accessible depuis une interface web appelée Proxmox :
 
-TODO : screen
+![](.github/images/servers.png)
 
 **Concernant l'exposition du conteneur sur Internet**
 
