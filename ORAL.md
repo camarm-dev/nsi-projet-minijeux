@@ -62,9 +62,27 @@ fonctionnalités [1](#jeux)
 - Github Project | assignation des taches et deadline
 
 ### Cahier des charges
-TODO
 
-- Parler des principaux objectifs
+Nous avons rédiger le cahier des charges durant les premières séances. Nous y avons dreser une liste des objectifs et fonctionnalités principales attendues de notre projet.
+- Direction artistique "8-bit"
+- Page d'accueil avec sélection du jeu
+- 5 jeux: Osu, Pierre Feuille Ciseaux, Morpion, Jeu du Dino, Juste prix
+- Site dynamique avec Flask
+- Comptes (gestion d'une base d'utilisateurs)
+- Page de classement
+
+Puis nous avons dresser un tableau avec les fonctionnalités détaillées :
+
+TODO: screen
+
+Ainsi qu'un tableau des exigences fonctionnelles :
+
+TODO : screen
+
+Nous avons aussi rempli un tableau prévisionnel ainsi que le liste des livrables attendus.
+Pour finir, nous avons défini les modalités de suivi de l'avancement du projet.
+
+TODO: screen
 
 ### Organisation
 
