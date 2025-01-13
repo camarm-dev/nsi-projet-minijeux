@@ -174,7 +174,7 @@ Parler de commenton a implem
 TODO: chronologie globale
 
 
-TODO: montrer rétroplanning
+!Montrer rétro planning en temps réel!
 
 ## Fonctionnalités avancées
 
