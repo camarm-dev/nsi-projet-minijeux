@@ -231,7 +231,6 @@ def anticheat(game: str, points: int, user: dict):
             points = points if points in [5, 1, 0] else 0
             return (now - last_game['date']).seconds > 5, points
         case 'osu':
-            # TODO
             # 30s min
             # 15pt max
             points = round(points / 3) if points <= 120 else 0
