@@ -127,7 +127,64 @@ Pour finir, nous avons défini les modalités de suivi de l'avancement du projet
 
 #### Morpion
 
-Julien, à toi...
+**Fonctionnement du clique au morpion**
+
+```javascript
+cells.forEach(cell =>{
+    cell.addEventListener('click', playGame, { once: true })
+})
+
+function playGame(e) {
+    // Case déjà occupée
+    if (e.target.innerHTML !== '' || !canPlay) {
+        return;
+    }
+    e.target.innerHTML = playerturn;
+
+    //verif des win
+    if (checkWin(playerturn)) {
+        updateGamesStatus("wins" + playerturn);
+        return endGame();
+    } else if (checkdraw()) {
+        updateGamesStatus("draw");
+        return endGame();
+    }
+    
+    updateGamesStatus(playerturn);
+    playerturn = playerturn === playerOne ? playerTwo : playerOne;
+    
+    if (isVsRobot && playerturn === playerTwo) {
+        canPlay = false
+        setTimeout(() => {
+            botPlay()
+            canPlay = true
+        }, 500);
+    }
+}
+```
+
+**Condition de victoire**
+
+```javascript
+const winningpaterns = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+
+function checkWin(playerturn){
+    return winningpaterns.some(combination =>{
+        return combination.every(index =>{
+            return cells[index].innerHTML == playerturn
+        })
+    })
+}
+```
 
 **Bot plus performant**
 [![](https://mermaid.ink/img/pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw?type=png)](https://mermaid.live/edit#pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw)
@@ -172,7 +229,7 @@ Julien, à toi...
 </div>
 ```
 
-**Styles et déplacement des dinos**
+**Styles et déplacement des sprites**
 ```css
 #status {
     top: 2em;
