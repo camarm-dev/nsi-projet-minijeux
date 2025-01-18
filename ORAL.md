@@ -462,12 +462,59 @@ Les résultats sont annoncés avec une animation de roulette. Voici l'HTML de la
 
 Le reste, c'est plutôt classique, rien de particulier tout le monde à du faire pareil...
 
-#### Justeprix
+#### Juste Prix
 
 - Fonctionnement classique
 - Fonctionnement curseur animé
 
-Parler de commenton a implem
+- On voulait faire qqch dans une sorte de terminal
+
+Le problème, c'est que ça rendait très mal avec un champ de texte; on a donc opté pour intercepter les touches pressées et les ajouter dynamiquement dans le terminal.  
+
+On intercepte, filtre ect...
+```javascript
+const input = document.getElementById('input')
+const acceptedKeys = "0123456789"
+
+window.addEventListener('keyup', (event) => {
+    if (acceptedKeys.includes(event.key)) {
+        input.innerText += event.key
+    }
+    if (event.key == "Enter") {
+        guess(input.innerText)
+    }
+    if (event.key == "Backspace") {
+        input.innerText = input.innerText.slice(0, -1)
+    }
+})
+
+```
+
+Et cela nous permet d'avoir un effet de curseur animé personnalisé :
+```html
+<div class="input">
+    <span>invite@justeprix $~</span>
+    <div id="input"></div>
+</div>
+```
+```css
+#input:after {
+    display: block;
+    content: "";
+    width: 8px;
+    height: 1em;
+    background: #fff;
+    animation: .5s ease-in-out infinite blink;
+}
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+```
 
 ### Chronologie
 
