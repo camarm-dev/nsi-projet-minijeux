@@ -29,13 +29,8 @@ fonctionnalités [1](#jeux)
     - [x] [Authentification](#authentification) (jeton)
     - [x] [Acquisition scores](#à-propos-de-lacquisition-des-scores)
     - [x] [Base de données](#base-de-données)
-    - [x] [Infrastructure serveur](#infrastructure-serveurs)
-- [Sécurité](#sécurité)
-    - [x] [Anticheat](#anticheat)
-    - [x] [Sécurité BDD / mot de passes](#sécurité-bdd--mots-de-passes)
-    - [x] [Sécurité jetons](#sécurité-jetons)
-    - [x] [Attaques XSS (impossibles: jinja)](#protection-des-attaques-xss)
-    - [x] [Injections SQL](#injections-sql)
+    - [x] [`Infrastructure serveur`](INFRASTRUCTURE.md)
+- [`Sécurité`](SECURITY.md)
 - Outro: parler des points à améliorer
 
 ## Présentation projet
