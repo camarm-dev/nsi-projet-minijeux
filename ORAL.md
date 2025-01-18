@@ -18,9 +18,9 @@ fonctionnalités [1](#jeux)
 - Présentation site (montrer les fonctionnalités en direct)
 - [Présentation projet](#présentation-projet)
     - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outils-utilisés) (github, gestion des taches, vscode, piksel)
-    - [x] [Cahier des charges](#cahier-des-charges)
     - [x] [Organisation](#organisation)
     - [x] [Journal](#journal)
+    - [x] [Cahier des charges](#cahier-des-charges)
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
     - [x] [Chronologie](#chronologie) / Déroulement du projet
@@ -56,6 +56,28 @@ fonctionnalités [1](#jeux)
 - Proxmox | Gestion serveur
 - Github Project | assignation des taches et deadline
 
+### Organisation
+
+Pour pouvoir discuter en dehors des séances, nous avons créer un groupe Discord.
+
+À chaque début de séance, nous nous réunissons pour parler des tâches réalisées en dehors des cours (nouvelle fonctionnalités ou même bugs trouvés), prévoir et se distribuer les prochaines tâches à faire, et faire un point sur l'avancement global du projet.
+
+Pour rendre notre code facilement consultable, mais aussi organisé et versionné, nous avons utilisé l'outil git, hébergé avec Github.
+
+Pour la gestion des tâches, nous avons utilisé le système de tâches proposé par Github: les issues (expliquer le fonctionnement + screens).
+
+Pour une prévision et une organisation plus complète, nous avons aussi utilisé Github Project :
+- Tableau Kanban des tâches
+- Rétroplanning (screen + en direct ?)
+
+### Journal
+
+Nous avons tenu à jour le journal de bord, pour qu'il soit représentatif de la chronologie du projet.
+
+Les contenus sont datés, et contiennent de photos : pour chaque jour, un résumé de la réunion du jour est présent, ainsi qu'un résumé des tâches réalisées.
+
+!Montrer le fichier en temps réel!
+
 ### Cahier des charges
 
 Nous avons rédiger le cahier des charges durant les premières séances. Nous y avons dreser une liste des objectifs et fonctionnalités principales attendues de notre projet.
@@ -78,29 +100,6 @@ Nous avons aussi rempli un tableau prévisionnel ainsi que la liste des livrable
 Pour finir, nous avons défini les modalités de suivi de l'avancement du projet.
 
 !Montrer le fichier à l'écran!
-
-### Organisation
-
-Pour pouvoir discuter en dehors des séances, nous avons créer un groupe Discord.
-
-À chaque début de séance, nous nous réunissons pour parler des tâches réalisées en dehors des cours (nouvelle fonctionnalités ou même bugs trouvés), prévoir et se distribuer les prochaines tâches à faire, et faire un point sur l'avancement global du projet.
-
-Pour rendre notre code facilement consultable, mais aussi organisé et versionné, nous avons utilisé l'outil git, hébergé avec Github.
-
-Pour la gestion des tâches, nous avons utilisé le système de tâches proposé par Github: les issues (expliquer le fonctionnement + screens).
-
-Pour une prévision et une organisation plus complète, nous avons aussi utilisé Github Project :
-- Tableau Kanban des tâches
-- Rétroplanning (screen + en direct ?)
-
-
-### Journal
-
-Nous avons tenu à jour le journal de bord, pour qu'il soit représentatif de la chronologie du projet.
-
-Les contenus sont datés, et contiennent de photos : pour chaque jour, un résumé de la réunion du jour est présent, ainsi qu'un résumé des tâches réalisées.
-
-!Montrer le fichier en temps réel!
 
 ### DA / design
 
@@ -367,7 +366,6 @@ TODO: finir
 - Fonctionnement curseur animé
 
 Parler de commenton a implem
-
 
 ### Chronologie
 
