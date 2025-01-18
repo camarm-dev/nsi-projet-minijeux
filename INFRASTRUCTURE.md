@@ -21,6 +21,20 @@ Enfin, le conteneur est accessible depuis une interface web appelée Proxmox :
 
 Pour que les utilisateurs puissent accéder au site, il faut que le conteneur ou est lancé Flask soit accessible sur Internet.
 
+
+
+[![](https://mermaid.ink/img/pako:eNp1kU1OwzAQha8ymg1UajlAFiygLCohVLV0Q92FqaeNRTIO_uFHTQ_EObgYk5jSCqle-SXv87xn73DtDGGBm8q9r0vtI8zuFYOsRSC_VLiItrJBR0pe4QpGo-v2jqMnqAiMq7VlamH8MF9eKpyTfxNfJxUOVvkcET01-_4KrkrROgYj-MVk2sLMpdiPuXEfMGHZM0WZk9H8F0ZXgj96zWFDElDgxvkYWujneRl86wTlPuJAcYZDet563ZQwlVaWIB2LQHYcWmZFbP6Bhzwn9q7ZGXfXj3TqLoVCtK-JTrjc5Khz8r-jcIg1eblMI0-x6z4rjCXVpLCQrdH-RaHivfh0im7-yWssok80RO_StsRio6sgKjVGGo6tlkz1wdJofnKu_jXtfwCnwKSK?type=png)](https://mermaid.live/edit#pako:eNp1kU1OwzAQha8ymg1UajlAFiygLCohVLV0Q92FqaeNRTIO_uFHTQ_EObgYk5jSCqle-SXv87xn73DtDGGBm8q9r0vtI8zuFYOsRSC_VLiItrJBR0pe4QpGo-v2jqMnqAiMq7VlamH8MF9eKpyTfxNfJxUOVvkcET01-_4KrkrROgYj-MVk2sLMpdiPuXEfMGHZM0WZk9H8F0ZXgj96zWFDElDgxvkYWujneRl86wTlPuJAcYZDet563ZQwlVaWIB2LQHYcWmZFbP6Bhzwn9q7ZGXfXj3TqLoVCtK-JTrjc5Khz8r-jcIg1eblMI0-x6z4rjCXVpLCQrdH-RaHivfh0im7-yWssok80RO_StsRio6sgKjVGGo6tlkz1wdJofnKu_jXtfwCnwKSK)
+
+
+
+
+
+
+
+
+
+
+
 ```mermaid
 flowchart RL
     User["Utilisateur"] -->|Entre le domaine| DNS[("Serveur DNS")]
