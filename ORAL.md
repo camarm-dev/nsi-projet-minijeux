@@ -396,6 +396,9 @@ Julien, à toi...
 
 #### Pierre Feuille Ciseaux
 
+- L'utilisateur choisi
+- L'ordinateur choisi aléatoirement
+- Animation et résultats
 
 **Condition de victoire**
 La condition de victoire est vérifiée par une équation simplifiée. On oppose l'ordinateur (`a`) à l'utilisateur (`b`).
@@ -413,9 +416,51 @@ Avec l'équation `(a + 1) % 3 == b`
 | Pierre: `a=0`    | Ciseaux `b=2` | `(0 + 1) % 3 = 1` | `b!=1` Non       |
 | Feuille: `a=1`   | Ciseaux `b=2` | `(1 + 1) % 3 = 2` | `b==2` Oui       |
 | Feuille: `a=1`   | Pierre `b=0`  | `(1 + 1) % 3 = 2` | `b!=2` Non       |
-| Ciseaux: `a=2`   | Pierre `b=0`  | `(2 + 1) % 3 = 0` | `b==0` Oui         |
+| Ciseaux: `a=2`   | Pierre `b=0`  | `(2 + 1) % 3 = 0` | `b==0` Oui       |
 | Ciseaux: `a=2`   | Feuille `b=1` | `(2 + 1) % 3 = 0` | `b!=0` Non       |
-TODO: finir
+
+**Animation**
+
+Les résultats sont annoncés avec une animation de roulette. Voici l'HTML de la roulette de l'ordi.
+
+```html
+<div class="element">
+    <div class="roulette">
+        <img src="/static/img/scissors.png" alt="">
+        <img src="/static/img/paper.png" alt="">
+        <img id="computer" src="/static/img/rock.png" alt="">
+        <img src="/static/img/scissors.png" alt="">
+    </div>
+</div>
+```
+
+```css
+.element {
+    height: 136px;
+    width: 150px;
+    overflow: hidden;
+}
+.element .roulette {
+    transform: translate(0, -408px);
+    animation: .3s ease-in-out roulette;
+}
+
+@keyframes roulette {
+    from {
+        transform: translate(0, -136px);
+    }
+    99% {
+        transform: translate(0, -544px);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+```
+
+![animpfc.png](.github/images/animpfc.png)
+
+Le reste, c'est plutôt classique, rien de particulier tout le monde à du faire pareil...
 
 #### Justeprix
 
