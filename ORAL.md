@@ -19,11 +19,11 @@ fonctionnalités [1](#jeux)
 - [Présentation projet](#présentation-projet)
     - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outils-utilisés) (github, gestion des taches, vscode, piksel)
     - [x] [Cahier des charges](#cahier-des-charges)
-    - [ ] [Organisation](#organisation)
+    - [x] [Organisation](#organisation)
     - [x] [Journal](#journal)
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
-    - [ ] [Chronologie](#chronologie) / Déroulement du projet
+    - [x] [Chronologie](#chronologie) / Déroulement du projet
 - [Fonctionnalités avancées](#fonctionnalités-avancées)
     - [x] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
     - [x] [Authentification](#authentification) (jeton)
@@ -130,6 +130,7 @@ Les contenus sont datés, et contiennent de photos : pour chaque jour, un résum
 
 Julien, à toi...
 
+**Bot plus performant**
 [![](https://mermaid.ink/img/pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw?type=png)](https://mermaid.live/edit#pako:eNptUt1OwjAUfpWT3qgJ8ABcaMARExKFqFdSLsp2GDVdz-wPxjASH8f34MU828QwsVftl--vp92JlDIUQ7E29J5ulAvwnEgLvEYLKR5pRQEKcqUmK8US-v1rqA6f4MlCoOggQ3jFWMGcvNcrbXTQ6BcsnViPxcogMzykFEsPZcMx6Nlp2YZ0ZLV7Na9duclbxEZWwXgnxZ3KrbIBbqTYt8px22UWdQW3nDeliA5MK-KADuuBbAWzSylmFrwuItNqf3Ohsi06r7Tja1CNHPVXrX7W6BNuMMq2A8jPaiSnNTpQkznhzFtl0jrRnA8CVOkOXwyjibqf6t_cCQxqj7_DAB_1lgtUMP13KNPzNtOTNp1pi54o0BVKZ_z8u5osRdhggVIMeZvhWkUTpJB2z1QVAz192FQMg4vYE7HMVMBEq9yp4ghipgO5-_ZHNR-rJ0plX4iYslbGM8dRzDc_p_03aavSPw)
 
 #### Dino
