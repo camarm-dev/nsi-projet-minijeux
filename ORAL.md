@@ -188,11 +188,6 @@ Julien, à toi...
     position: relative;
 }
 
-#dino img, #bird img {
-    width: 100%;
-    height: 100%;
-}
-
 #dino.jumping {
     animation: jump linear .5s;
 }
@@ -245,7 +240,6 @@ Julien, à toi...
     }
 }
 
-
 @keyframes cactus {
     from {
         transform: translate(800px, 368px);
@@ -263,13 +257,8 @@ Julien, à toi...
     }
 }
 
-@keyframes cactus1 {
-
-}
-
-
-@keyframes bird {
-}
+@keyframes cactus1 {}
+@keyframes bird {}
 ```
 
 Les images sont donc déplacées avec le CSS grâce aux animations.
@@ -351,24 +340,25 @@ Julien, à toi...
 
 #### Pierre Feuille Ciseaux
 
-(computerIndex + 1) % 3 == userIndex
-
-Parler condition de victoire
-
-- Fonctionnement général
-- Mécanique de l'animation
 
 **Condition de victoire**
-La condition de victoire est vérifiée par une équation simplifié. On oppose l'ordinateur (`a`) à l'utilisateur (`b`).
+La condition de victoire est vérifiée par une équation simplifiée. On oppose l'ordinateur (`a`) à l'utilisateur (`b`).
 
 En considérant la liste `const items = ["rock", "paper", "scissors"]`
 - L'indice de pierre est `0`
 - L'indice de papier est  `1`
 - L'indice des ciseaux est `2`
 
-| Ordinateur (`a`) | Joueur (`b`) | Equation | Joueur gagnant ? |
-| --- | --- | --- | --- |
-| Pierre: `a=0` | Ciseaux `b=2` | `(0 + 1) % 3 = 1` | `b!=1` Non |
+Avec l'équation `(a + 1) % 3 == b`
+
+| Ordinateur (`a`) | Joueur (`b`)  | Equation          | Joueur gagnant ? |
+|------------------|---------------|-------------------|------------------|
+| Pierre: `a=0`    | Feuille `b=1` | `(0 + 1) % 3 = 1` | `b==1` Oui       |
+| Pierre: `a=0`    | Ciseaux `b=2` | `(0 + 1) % 3 = 1` | `b!=1` Non       |
+| Feuille: `a=1`   | Ciseaux `b=2` | `(1 + 1) % 3 = 2` | `b==2` Oui       |
+| Feuille: `a=1`   | Pierre `b=0`  | `(1 + 1) % 3 = 2` | `b!=2` Non       |
+| Ciseaux: `a=2`   | Pierre `b=0`  | `(2 + 1) % 3 = 0` | `b==0` Oui         |
+| Ciseaux: `a=2`   | Feuille `b=1` | `(2 + 1) % 3 = 0` | `b!=0` Non       |
 TODO: finir
 
 #### Justeprix
