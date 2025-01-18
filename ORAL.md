@@ -18,9 +18,9 @@ fonctionnalités [1](#jeux)
 - Présentation site (montrer les fonctionnalités en direct)
 - [Présentation projet](#présentation-projet)
     - [x] [Rôles](#répartition-des-rôles) + [outils utilisés](#outils-utilisés) (github, gestion des taches, vscode, piksel)
-    - [ ] [Cahier des charges](#cahier-des-charges)
+    - [x] [Cahier des charges](#cahier-des-charges)
     - [ ] [Organisation](#organisation)
-    - [ ] [Journal](#journal)
+    - [x] [Journal](#journal)
     - [x] [DA / design](#da--design)
     - [ ] [Jeux: OSU, Bot morpion](#jeux)
     - [ ] [Chronologie](#chronologie) / Déroulement du projet
@@ -90,7 +90,7 @@ Pour rendre notre code facilement consultable, mais aussi organisé et versionn�
 Pour la gestion des tâches, nous avons utilisé le système de tâches proposé par Github: les issues (expliquer le fonctionnement + screens).
 
 Pour une prévision et une organisation plus complète, nous avons aussi utilisé Github Project :
-- Tableau Kaban des tâches
+- Tableau Kanban des tâches
 - Rétroplanning (screen + en direct ?)
 
 
@@ -375,8 +375,7 @@ TODO: finir
 #### Justeprix
 
 - Fonctionnement classique
-- Fonctionnemnt curseur animé
-- Obfuscation si ça se fait 
+- Fonctionnement curseur animé
 
 Parler de commenton a implem
 
