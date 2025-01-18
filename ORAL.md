@@ -392,7 +392,112 @@ setTimeout(() => {
 
 #### OSU
 
-Julien, à toi...
+Bon sans Julien c'est plus compliqué...
+
+```html
+<div id="boxBalle" class="balle"></div>
+```
+
+Au lancement du jeu, ça lance la génération de balle en fonction du niveau.
+
+Puis à chaque clique sur la balle; màj du score...
+
+```javascript
+let balleInterval;
+let balles = [];
+let currentImageIndex = 1;
+const levelInterval = {
+    easy: 1000,
+    medium: 750,
+    hard: 500
+};
+
+function createNewBalle() {
+    const newBalle = document.createElement("div");
+
+    // Sélectionner l'image dynamique
+    const currentImage = `/static/img/${currentImageIndex}.png`;
+    currentImageIndex = (currentImageIndex % totalImages) + 1; // Passer à l'image suivante
+
+    const randomX = Math.random() * (window.innerWidth - currentBallSize);
+    const randomY = Math.random() * (window.innerHeight - currentBallSize);
+
+    newBalle.style.cssText = `
+        position: absolute;
+        width: ${currentBallSize}px;
+        height: ${currentBallSize}px;
+        border-radius: 50%;
+        background: url('${currentImage}') no-repeat center/cover;
+        left: ${randomX}px;
+        top: ${randomY < 100 ? randomY + 100 : randomY}px;
+        z-index: ${1000 - balleID};
+    `;
+
+    document.body.appendChild(newBalle);
+    balles.push({ element: newBalle, id });
+
+    // Gestion des clics
+    newBalle.addEventListener("click", () => handleBalleClick(id));
+
+    // Suppression automatique après 3 secondes
+    setTimeout(() => {
+        removeBalle(id);
+    }, 3000);
+}
+
+function handleBalleClick(id) {
+    if (balles.length === 0 || balles[0].id !== id) {
+        score -= 1;
+        updateScore();
+        return;
+    }
+
+    score += 1;
+    updateScore();
+    removeBalle(id);
+}
+
+balleInterval = setInterval(createNewBalle, levelInterval[level]);
+```
+
+Pour la sélection du niveau / jouer une musique :
+```html
+<button class="levelButton" data-level="easy">Facile</button>
+<button class="levelButton" data-level="medium">Moyen</button>
+<button class="levelButton" data-level="hard">Difficile</button>
+```
+```javascript
+const levelMusic = {
+    easy: "/static/audio/easy-level.mp3",
+    medium: "/static/audio/medium-level.mp3",
+    hard: "/static/audio/hard-level.mp3"
+};
+
+levelButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        const selectedLevel = e.target.dataset.level;
+        startGame(selectedLevel);
+    });
+});
+
+// Fonction pour démarrer le jeu
+function startGame(level) {
+    startCountdown(() => {
+        playLevelMusic(level, () => {
+            balleInterval = setInterval(createNewBalle, levelInterval[level]);
+        });
+    });
+}
+
+function playLevelMusic(level, callback) {
+    const musicUrl = levelMusic[level];
+    backgroundMusic = new Audio(musicUrl);
+    backgroundMusic.play().then(() => {
+        timeRemaining = 60;
+        callback();
+    })
+}
+```
 
 #### Pierre Feuille Ciseaux
 
