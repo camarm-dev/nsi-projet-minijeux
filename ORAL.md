@@ -136,13 +136,11 @@ Julien, à toi...
 
 **Images**
 
-![](src/images/dino.png)
+|                                 |                          |                                                 |                                                 |
+|---------------------------------|--------------------------|-------------------------------------------------|-------------------------------------------------|
+| ![](static/img/bird.png)        | ![](static/img/bird.gif) | <img src="static/img/cactus1.png" height="100"> | <img src="static/img/cactus2.png" height="100"> |
+| ![](static/img/dino_sprite.png) | ![](static/img/dino.gif) | ![](static/img/dino.png)                        |                                                 |
 
-![](src/images/catcus1.png)
-
-![](src/images/catcus2.png)
-
-![](src/images/bird.png)
 
 **L'HTML**
 
