@@ -22,8 +22,8 @@ fonctionnalités [1](#jeux)
     - [x] [Journal](#journal)
     - [x] [Cahier des charges](#cahier-des-charges)
     - [x] [DA / design](#da--design)
-    - [ ] [Jeux: OSU, Bot morpion](#jeux)
     - [x] [Chronologie](#chronologie) / Déroulement du projet
+    - [ ] [Jeux: OSU, Bot morpion](#jeux)
 - [Fonctionnalités avancées](#fonctionnalités-avancées)
     - [x] [Flask](#le-backend-avec-flask) ? concept + comment on s'en sert + Jinja
     - [x] [Authentification](#authentification) (jeton)
@@ -122,6 +122,21 @@ Pour finir, nous avons défini les modalités de suivi de l'avancement du projet
         - juste prix version console -> rentre dans le theme
         - OSU :
             - bande son dans le theme borne d'arcade
+
+### Chronologie
+
+1. Définition de l'organisation, de la direction artistique
+2. Création d'une page d'accueil de sélection des jeux
+3. Commencement du développement des jeux
+4. Commencement de la partie backend
+5. Authentification fonctionnelle + jeux fonctionnels
+6. Ajout d'un classement + de l'acquisition des scores
+7. Publication du site
+
+[![](https://mermaid.ink/img/pako:eNp9VM2O0zAQfpVRLm2lXgAJRK5d7WElFrQLHFAvrjNJp-vYxj9V0WrfhWvuiBfIizFx002aVuTQxuP5-b5vZvKcSVNglmeBalSkca2Bn0BBIay2zmijTEUIRQTrzA7D0cGjDGQ0rExdo5bIP2Hq0z1vP8C92WO9cZjDTdts4sgN5tK1jUiJ2Fi0jW3_hGX3UpKmzu6hQA9ms-vqlX6IXYxqfDyvcYrlUFAz4yqhyacql9cCCnI9F-EC-UA_I55zHGAzsD0qY23iOyDoPfhP9jBWA7FZ1F1gSoFgRcVizoSUEUkBJqNvG9UX49MO4-EiA3fBJPgjAEkb67AmdD6Fwbw2znLQEiwbHUKJkRT3UpJHEQ-LC2rTfKXR6U4LRaFtPIi90LJt0A98b0mPyU6zRLiLPiB8cXRIDCPckGb4n6hyR077DvGtEv5pMgQbIZ9QF4vLrGMdZyKGLVupJHkMnXOdCv2osRvhEWIg1TUfo_OjkfkuJJNitvftX1RXdO0STJTgqqgdVjwjbpDLS3NNgpTg2GvWnnn6dHFNq8-P33J4YKWNiif4m1j5806x5EL1Y3xt0d7DndB77nk-2UnGGPAQ0J_WQaj_jGdBwhpof7OnoO7M18gJaqtYxHwCA_upY-3dQOC4swU6neay45J4W2XolbWngAP6N-8G-A_c_jhQnGpzkfmr4wnlVbrGNFtmNbqaqfAn7rmrt854cGpcZzm_FliKqMI6W-sXduWhMo-_tMzy4CIuM2ditc3yUijPp2gLluCGBM9w_Wq1Qv8w5nR--QdnV_S5?type=png)](https://mermaid.live/edit#pako:eNp9VM2O0zAQfpVRLm2lXgAJRK5d7WElFrQLHFAvrjNJp-vYxj9V0WrfhWvuiBfIizFx002aVuTQxuP5-b5vZvKcSVNglmeBalSkca2Bn0BBIay2zmijTEUIRQTrzA7D0cGjDGQ0rExdo5bIP2Hq0z1vP8C92WO9cZjDTdts4sgN5tK1jUiJ2Fi0jW3_hGX3UpKmzu6hQA9ms-vqlX6IXYxqfDyvcYrlUFAz4yqhyacql9cCCnI9F-EC-UA_I55zHGAzsD0qY23iOyDoPfhP9jBWA7FZ1F1gSoFgRcVizoSUEUkBJqNvG9UX49MO4-EiA3fBJPgjAEkb67AmdD6Fwbw2znLQEiwbHUKJkRT3UpJHEQ-LC2rTfKXR6U4LRaFtPIi90LJt0A98b0mPyU6zRLiLPiB8cXRIDCPckGb4n6hyR077DvGtEv5pMgQbIZ9QF4vLrGMdZyKGLVupJHkMnXOdCv2osRvhEWIg1TUfo_OjkfkuJJNitvftX1RXdO0STJTgqqgdVjwjbpDLS3NNgpTg2GvWnnn6dHFNq8-P33J4YKWNiif4m1j5806x5EL1Y3xt0d7DndB77nk-2UnGGPAQ0J_WQaj_jGdBwhpof7OnoO7M18gJaqtYxHwCA_upY-3dQOC4swU6neay45J4W2XolbWngAP6N-8G-A_c_jhQnGpzkfmr4wnlVbrGNFtmNbqaqfAn7rmrt854cGpcZzm_FliKqMI6W-sXduWhMo-_tMzy4CIuM2ditc3yUijPp2gLluCGBM9w_Wq1Qv8w5nR--QdnV_S5)
+
+
+!Montrer rétro planning en temps réel!
 
 ### Jeux
 
@@ -620,21 +635,6 @@ Et cela nous permet d'avoir un effet de curseur animé personnalisé :
     }
 }
 ```
-
-### Chronologie
-
-1. Définition de l'organisation, de la direction artistique
-2. Création d'une page d'accueil de sélection des jeux
-3. Commencement du développement des jeux
-4. Commencement de la partie backend
-5. Authentification fonctionnelle + jeux fonctionnels
-6. Ajout d'un classement + de l'acquisition des scores
-7. Publication du site
-
-[![](https://mermaid.ink/img/pako:eNp9VM2O0zAQfpVRLm2lXgAJRK5d7WElFrQLHFAvrjNJp-vYxj9V0WrfhWvuiBfIizFx002aVuTQxuP5-b5vZvKcSVNglmeBalSkca2Bn0BBIay2zmijTEUIRQTrzA7D0cGjDGQ0rExdo5bIP2Hq0z1vP8C92WO9cZjDTdts4sgN5tK1jUiJ2Fi0jW3_hGX3UpKmzu6hQA9ms-vqlX6IXYxqfDyvcYrlUFAz4yqhyacql9cCCnI9F-EC-UA_I55zHGAzsD0qY23iOyDoPfhP9jBWA7FZ1F1gSoFgRcVizoSUEUkBJqNvG9UX49MO4-EiA3fBJPgjAEkb67AmdD6Fwbw2znLQEiwbHUKJkRT3UpJHEQ-LC2rTfKXR6U4LRaFtPIi90LJt0A98b0mPyU6zRLiLPiB8cXRIDCPckGb4n6hyR077DvGtEv5pMgQbIZ9QF4vLrGMdZyKGLVupJHkMnXOdCv2osRvhEWIg1TUfo_OjkfkuJJNitvftX1RXdO0STJTgqqgdVjwjbpDLS3NNgpTg2GvWnnn6dHFNq8-P33J4YKWNiif4m1j5806x5EL1Y3xt0d7DndB77nk-2UnGGPAQ0J_WQaj_jGdBwhpof7OnoO7M18gJaqtYxHwCA_upY-3dQOC4swU6neay45J4W2XolbWngAP6N-8G-A_c_jhQnGpzkfmr4wnlVbrGNFtmNbqaqfAn7rmrt854cGpcZzm_FliKqMI6W-sXduWhMo-_tMzy4CIuM2ditc3yUijPp2gLluCGBM9w_Wq1Qv8w5nR--QdnV_S5?type=png)](https://mermaid.live/edit#pako:eNp9VM2O0zAQfpVRLm2lXgAJRK5d7WElFrQLHFAvrjNJp-vYxj9V0WrfhWvuiBfIizFx002aVuTQxuP5-b5vZvKcSVNglmeBalSkca2Bn0BBIay2zmijTEUIRQTrzA7D0cGjDGQ0rExdo5bIP2Hq0z1vP8C92WO9cZjDTdts4sgN5tK1jUiJ2Fi0jW3_hGX3UpKmzu6hQA9ms-vqlX6IXYxqfDyvcYrlUFAz4yqhyacql9cCCnI9F-EC-UA_I55zHGAzsD0qY23iOyDoPfhP9jBWA7FZ1F1gSoFgRcVizoSUEUkBJqNvG9UX49MO4-EiA3fBJPgjAEkb67AmdD6Fwbw2znLQEiwbHUKJkRT3UpJHEQ-LC2rTfKXR6U4LRaFtPIi90LJt0A98b0mPyU6zRLiLPiB8cXRIDCPckGb4n6hyR077DvGtEv5pMgQbIZ9QF4vLrGMdZyKGLVupJHkMnXOdCv2osRvhEWIg1TUfo_OjkfkuJJNitvftX1RXdO0STJTgqqgdVjwjbpDLS3NNgpTg2GvWnnn6dHFNq8-P33J4YKWNiif4m1j5806x5EL1Y3xt0d7DndB77nk-2UnGGPAQ0J_WQaj_jGdBwhpof7OnoO7M18gJaqtYxHwCA_upY-3dQOC4swU6neay45J4W2XolbWngAP6N-8G-A_c_jhQnGpzkfmr4wnlVbrGNFtmNbqaqfAn7rmrt854cGpcZzm_FliKqMI6W-sXduWhMo-_tMzy4CIuM2ditc3yUijPp2gLluCGBM9w_Wq1Qv8w5nR--QdnV_S5)
-
-
-!Montrer rétro planning en temps réel!
 
 ## Fonctionnalités avancées
 
