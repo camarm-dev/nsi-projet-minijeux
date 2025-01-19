@@ -91,3 +91,6 @@ La clé secrète, permettant de générer des jetons qui font autorité est gén
 Les sons sont des sons libres de droits du site pixabay; liens des sites:
 - https://pixabay.com/sound-effects/success-02-68338/
 - https://pixabay.com/sound-effects/arcade-countdown-7007/
+
+
+Pres: https://docs.google.com/presentation/d/1t0LoICOyvf2f6LLtJ2pq80I2NC7hUi_K/edit?usp=sharing&ouid=107812009650275978551&rtpof=true&sd=true
